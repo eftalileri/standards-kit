@@ -14,7 +14,7 @@ owns: GAPI-C*, GAPI-T1, GGAPI*
 Scope
 
 - Included: HTTP list endpoints that return collections with pagination (REST or documented GraphQL list fields ); PaginationResponse contract; cursor vs skip/offset; stable ordering for cursor lists; default/max limit; N+1 prevention; invalid cursor and empty results; client alignment (TanStack Query patterns ) local minimum.
-- Excluded: Database index design (performance topic ); full HTTP error taxonomy ([error policy](../error-policy/error-policy.md)) — this file binds only pagination failure minimums ; repository internals ([repository contract](../repository/repository-contract.md)) except where list handlers call repositories.
+- Excluded: Database index design ([nosql-declaration-index-and-destructive-writes.md](../nosql-query-safety/nosql-declaration-index-and-destructive-writes.md), [repository-index-migrations-and-validated-reads.md](../repository/repository-index-migrations-and-validated-reads.md)); full HTTP error taxonomy ([error policy](../error-policy/error-policy.md)) — this file binds only pagination failure minimums ; repository internals ([repository contract](../repository/repository-contract.md)) except where list handlers call repositories.
 
 Document type: Normative — rule engine for list pagination .
 

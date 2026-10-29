@@ -75,9 +75,9 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6283 rows, of which 2657 carry a space and 0 carry an
+# 6291 rows, of which 2660 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
-# 433 open tokens + 112 skip tokens are covered; 252 rows
+# 434 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
 # The kit file-size guidance does not apply: it is about single-read ingestion, and nothing
 # here is ingested whole (en/authoring/kit-structural-invariants.md KIT-INV-5).
@@ -596,7 +596,7 @@ backend http efficiency	signal:pagination	open	3	derived
 backend http efficiency	signal:per-item-query	open	1	derived
 backend http efficiency	signal:process-local-cache	open	4	derived
 backend i18n	signal:i18n-error-message	open	2	alias
-backend only	signal:backend-only	skip	79	derived
+backend only	signal:backend-only	skip	78	derived
 backend ssot	signal:duplicate-suppression	open	6	derived
 backend ssot	signal:list-endpoint	open	3	derived
 backend ssot	signal:mutation-endpoint	open	11	derived
@@ -634,7 +634,7 @@ backend-http-efficiency	signal:pagination	open	3	derived
 backend-http-efficiency	signal:per-item-query	open	1	derived
 backend-http-efficiency	signal:process-local-cache	open	4	derived
 backend-i18n	signal:i18n-error-message	open	2	alias
-backend-only	signal:backend-only	skip	79	derived
+backend-only	signal:backend-only	skip	78	derived
 backend-ssot	signal:duplicate-suppression	open	6	derived
 backend-ssot	signal:list-endpoint	open	3	derived
 backend-ssot	signal:mutation-endpoint	open	11	derived
@@ -1221,6 +1221,7 @@ core	signal:list-virtualization	open	2	derived
 core	signal:navigation-change	open	4	derived
 core	signal:notification	open	5	derived
 core	signal:notification-lifecycle	open	2	derived
+core	signal:optimization-change	open	1	derived
 core	signal:persistence-backend-selection	open	1	derived
 core	signal:provider-abstraction	open	1	derived
 core	signal:push-notification	open	11	derived
@@ -2402,6 +2403,7 @@ global ssot	signal:navigation-change	open	4	derived
 global ssot	signal:new-semantic	open	13	derived
 global ssot	signal:notification	open	5	derived
 global ssot	signal:notification-lifecycle	open	2	derived
+global ssot	signal:optimization-change	open	1	derived
 global ssot	signal:persistence-backend-selection	open	1	derived
 global ssot	signal:push-notification	open	11	derived
 global ssot	signal:receipt-timing	open	1	derived
@@ -2448,6 +2450,7 @@ global-ssot	signal:navigation-change	open	4	derived
 global-ssot	signal:new-semantic	open	13	derived
 global-ssot	signal:notification	open	5	derived
 global-ssot	signal:notification-lifecycle	open	2	derived
+global-ssot	signal:optimization-change	open	1	derived
 global-ssot	signal:persistence-backend-selection	open	1	derived
 global-ssot	signal:push-notification	open	11	derived
 global-ssot	signal:receipt-timing	open	1	derived
@@ -3188,10 +3191,10 @@ money-derivation	signal:money-derivation	open	2	derived
 money-owning-delete	signal:money-owning-delete	open	2	derived
 mongo cascade	signal:mongo-cascade	open	6	derived
 mongo index	signal:mongo-index	open	1	derived
-mongo query	signal:mongo-query	open	2	derived
+mongo query	signal:mongo-query	open	3	derived
 mongo-cascade	signal:mongo-cascade	open	6	derived
 mongo-index	signal:mongo-index	open	1	derived
-mongo-query	signal:mongo-query	open	2	derived
+mongo-query	signal:mongo-query	open	3	derived
 mongodb indexing for cascade	signal:editable-attribute	open	7	derived
 mongodb indexing for cascade	signal:mongo-cascade	open	6	derived
 mongodb indexing for cascade	signal:mongo-index	open	1	derived
@@ -3462,7 +3465,7 @@ no phone field	signal:no-phone-field	skip	6	derived
 no provider integration	signal:no-provider-integration	skip	1	derived
 no receipt path change	signal:no-receipt-path-change	skip	1	derived
 no remote config	signal:no-remote-config	skip	3	derived
-no render path change	signal:no-render-path-change	skip	3	derived
+no render path change	signal:no-render-path-change	skip	2	derived
 no reporting surface	signal:no-reporting-surface	skip	1	derived
 no retry surface	signal:no-retry-surface	skip	1	derived
 no screen layout change	signal:no-screen-layout-change	skip	7	derived
@@ -3538,7 +3541,7 @@ no-phone-field	signal:no-phone-field	skip	6	derived
 no-provider-integration	signal:no-provider-integration	skip	1	derived
 no-receipt-path-change	signal:no-receipt-path-change	skip	1	derived
 no-remote-config	signal:no-remote-config	skip	3	derived
-no-render-path-change	signal:no-render-path-change	skip	3	derived
+no-render-path-change	signal:no-render-path-change	skip	2	derived
 no-reporting-surface	signal:no-reporting-surface	skip	1	derived
 no-retry-surface	signal:no-retry-surface	skip	1	derived
 no-screen-layout-change	signal:no-screen-layout-change	skip	7	derived
@@ -3720,10 +3723,10 @@ normative-part	signal:unused-report	open	5	derived
 normative-table	signal:payment-field	open	10	derived
 normative-table	signal:payment-risk-review	open	1	derived
 nosql query safety	signal:destructive-write	open	2	derived
-nosql query safety	signal:mongo-query	open	2	derived
+nosql query safety	signal:mongo-query	open	3	derived
 nosql query safety	signal:user-input-filter	open	2	derived
 nosql-query-safety	signal:destructive-write	open	2	derived
-nosql-query-safety	signal:mongo-query	open	2	derived
+nosql-query-safety	signal:mongo-query	open	3	derived
 nosql-query-safety	signal:user-input-filter	open	2	derived
 not applicable record	signal:not-applicable-record	open	1	derived
 not-applicable-record	signal:not-applicable-record	open	1	derived
@@ -3807,6 +3810,8 @@ operations-and-observability	signal:rate-limit-429	open	1	derived
 operations-and-observability	signal:receipt-worker	open	1	derived
 optimistic update	signal:optimistic-update	open	1	derived
 optimistic-update	signal:optimistic-update	open	1	derived
+optimization change	signal:optimization-change	open	1	derived
+optimization-change	signal:optimization-change	open	1	derived
 optional resend adapter example	signal:email-feedback-webhook	open	1	derived
 optional resend adapter example	signal:email-provider-adapter	open	2	derived
 optional resend adapter example	signal:resend	open	1	derived
@@ -3832,10 +3837,12 @@ otp delivery	signal:otp-delivery	open	1	derived
 otp-delivery	signal:otp-delivery	open	1	derived
 outbound call	signal:outbound-call	open	5	derived
 outbound call time budgets	signal:http-handler	open	6	derived
+outbound call time budgets	signal:mongo-query	open	3	derived
 outbound call time budgets	signal:outbound-call	open	5	derived
 outbound call time budgets	signal:process-local-cache	open	4	derived
 outbound-call	signal:outbound-call	open	5	derived
 outbound-call-time-budgets	signal:http-handler	open	6	derived
+outbound-call-time-budgets	signal:mongo-query	open	3	derived
 outbound-call-time-budgets	signal:outbound-call	open	5	derived
 outbound-call-time-budgets	signal:process-local-cache	open	4	derived
 outbox	signal:email-outbox	open	2	derived
@@ -3995,6 +4002,7 @@ performance	signal:client-state-store	open	7	derived
 performance	signal:infinite-list	open	3	derived
 performance	signal:list-virtualization	open	2	derived
 performance	signal:navigation-change	open	4	derived
+performance	signal:optimization-change	open	1	derived
 performance	signal:render-performance	open	4	derived
 permission prompt	signal:permission-prompt	open	1	derived
 permission-prompt	signal:permission-prompt	open	1	derived
@@ -5426,10 +5434,10 @@ silent-zero	signal:new-guard	open	10	derived
 silent-zero	signal:new-lint-rule	open	10	derived
 silent-zero	signal:suppression-review	open	2	derived
 silently ignored declarations	signal:destructive-write	open	2	derived
-silently ignored declarations	signal:mongo-query	open	2	derived
+silently ignored declarations	signal:mongo-query	open	3	derived
 silently ignored declarations	signal:user-input-filter	open	2	derived
 silently-ignored-declarations	signal:destructive-write	open	2	derived
-silently-ignored-declarations	signal:mongo-query	open	2	derived
+silently-ignored-declarations	signal:mongo-query	open	3	derived
 silently-ignored-declarations	signal:user-input-filter	open	2	derived
 single document write	signal:single-document-write	skip	12	derived
 single instance only	signal:single-instance-only	skip	4	derived

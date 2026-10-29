@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3221 rows; the longest is 85 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3228 rows; the longest is 86 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2497 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2503 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -353,6 +353,7 @@ BHE-M13	en/backend-http-efficiency/set-loading-and-query-fan-out.md
 BHE-M14	en/backend-http-efficiency/set-loading-and-query-fan-out.md
 BHE-M15	en/backend-http-efficiency/authority-document-reuse-and-projection-limit.md
 BHE-M16	en/backend-http-efficiency/set-loading-and-query-fan-out.md
+BHE-M17	en/backend-http-efficiency/outbound-call-time-budget.md
 BHE-M2	en/backend-http-efficiency/backend-http-efficiency.md
 BHE-M3	en/backend-http-efficiency/backend-http-efficiency.md
 BHE-M4	en/backend-http-efficiency/backend-http-efficiency.md
@@ -1435,6 +1436,7 @@ M13	en/ssot-readiness/ssot-readiness-and-form-data.md
 M14	en/agent-gray-decisions/gray-situation-decisions.md
 M14	en/agent-planning/agent-planning-obligations.md
 M14	en/authoring/markdown-authoring.md
+M14	en/decision-function/decision-function.md
 M14	en/error-handling/server-contract-and-display-authority.md
 M14	en/error-policy/error-carrier-and-severity-derivation.md
 M14	en/forms/forms.md
@@ -2240,8 +2242,10 @@ PERF-EX-1	en/performance/performance.md
 PERF-G1	en/performance/performance.md
 PERF-G2	en/performance/performance.md
 PERF-G3	en/performance/performance.md
+PERF-G4	en/performance/performance.md
 PERF-N1	en/performance/performance.md
 PERF-N2	en/performance/performance.md
+PERF-N3	en/performance/performance.md
 PERF-RLM-M1	en/performance/react-lists-and-memoization.md
 PERF-RLM-M10	en/performance/react-lists-and-memoization.md
 PERF-RLM-M11	en/performance/react-lists-and-memoization.md
@@ -2725,6 +2729,7 @@ SEC-M-JWT-4	en/security/security-cryptography.md
 SEC-M-JWT-5	en/security/security-cryptography.md
 SEC-M-JWT-6	en/security/security-cryptography.md
 SEC-M-JWT-7	en/security/security-cryptography.md
+SEC-M-JWT-8	en/security/security-cryptography.md
 SEC-M-KEY-1	en/security/security-secrets-and-logging.md
 SEC-M-LIFE-1	en/security/security-secrets-and-logging.md
 SEC-M-LIFE-2	en/security/security-secrets-and-logging.md
@@ -2745,6 +2750,7 @@ SEC-M-MON-1	en/security/security-ci-and-monitoring.md
 SEC-M-MON-2	en/security/security-ci-and-monitoring.md
 SEC-M-NOSQL-1	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-M-NOSQL-10	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
+SEC-M-NOSQL-11	en/nosql-query-safety/nosql-declaration-index-and-destructive-writes.md
 SEC-M-NOSQL-2	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-M-NOSQL-3	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-M-NOSQL-4	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
@@ -2796,6 +2802,7 @@ SEC-N-CRYPTO-1	en/security/security-cryptography.md
 SEC-N-JWT-1	en/security/security-cryptography.md
 SEC-N-JWT-2	en/security/security-cryptography.md
 SEC-N-JWT-3	en/security/security-cryptography.md
+SEC-N-JWT-4	en/security/security-cryptography.md
 SEC-N-KEY-1	en/security/security-secrets-and-logging.md
 SEC-N-KEY-2	en/security/security-secrets-and-logging.md
 SEC-N-LOG-1	en/security/security-logging-correlation-and-fields.md

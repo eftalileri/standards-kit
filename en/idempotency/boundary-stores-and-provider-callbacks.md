@@ -23,7 +23,7 @@ Part of [the topic index](README.md).
 
 **IDEMP-M9**: Decision functions **MUST** throw or return structured invalid-input errors, never invalid-as-null/undefined.
 
-**IDEMP-M10**: Key/scope/subject/conflict/lease faults **MUST** use the canonical registry error boundary, preserving status/category/retryability/message/trace. Lease contention is retryable. Only successful M6 replay may directly return its frozen status/body; no reduced hand-built error envelope.
+**IDEMP-M10**: Key/scope/subject/conflict/lease faults **MUST** use the canonical registry error boundary, preserving status/category/retryability/message/trace. Lease contention is retryable. Only successful M6 replay may directly return its frozen status/body; no reduced hand-built error envelope. Every claim store answering a caller **MUST** answer each non-replay claim outcome — the same scoped key still in flight, the same key with a different intent — with the one registered code owned for that outcome through one shared outcome→code mapping, and a store-local or domain-prefixed variant **MUST NOT** be registered. Reason: per-store twins drift on category and retryability, so the same duplicate is auto-retried on one route and shown as a dead end on another (error-policy **N25**). Review-held — a store-local variant cannot return without a registry entry, and a store choosing a wrong registered code is a semantic judgement no single-file check decides (**IV-M13**).
 
 **IDEMP-M11**: Document Redis/DB write order and primary replay source. On disagreement the database wins; emit one ERROR `idempotency_store_mismatch` with correlation id before response.
 

@@ -4,15 +4,16 @@
 type: normative
 part-of: README.md
 binds: PERF-C / PERF-G / PERF-N global obligations, the deterministic PERF-T thresholds, the PERF-EX-1 exception and the GPERF gates
-open-when: shape:frontend-heavy, signal:render-performance, signal:list-virtualization, signal:anti-pattern-check
-skip-when: signal:backend-only, signal:no-render-path-change
-owns: PERF-T-ITEM, PERF-T-PROF-MS, PERF-T-FPS, PERF-T-DERIVE-N, PERF-T-JSON, PERF-T-REGEX, PERF-T-PROP-BAND, PERF-EX-1, PERF-C1, PERF-C2, PERF-C3, PERF-C4, PERF-C5, PERF-C6, PERF-C7, PERF-C8, PERF-C9, PERF-C10, PERF-C11, PERF-C12, PERF-G1, PERF-G2, PERF-G3, PERF-N1, PERF-N2, GPERF1, GPERF2, GPERF3, GPERF4, GPERF5, GPERF6, GPERF7, GPERF8
+open-when: shape:frontend-heavy, signal:render-performance, signal:list-virtualization, signal:anti-pattern-check, signal:optimization-change
+skip-when: none
+owns: PERF-T-ITEM, PERF-T-PROF-MS, PERF-T-FPS, PERF-T-DERIVE-N, PERF-T-JSON, PERF-T-REGEX, PERF-T-PROP-BAND, PERF-EX-1, PERF-C1, PERF-C2, PERF-C3, PERF-C4, PERF-C5, PERF-C6, PERF-C7, PERF-C8, PERF-C9, PERF-C10, PERF-C11, PERF-C12, PERF-G1, PERF-G2, PERF-G3, PERF-G4, PERF-N1, PERF-N2, PERF-N3, GPERF1, GPERF2, GPERF3, GPERF4, GPERF5, GPERF6, GPERF7, GPERF8
 ```
 
 Scope
 
 - Included: Performance guidance for React and React Native client code: version compatibility, agent contract, decision routing (GPERF*), global **MUST** / **MUST NOT**, and pointers to part files (PERF-RLM-, PERF-CLA-, PERF-BIM-). List virtualization, memoization, TanStack/Zustand alignment, bundle/navigation, images, and memory detail live in those parts.
 - Excluded: TanStack mutation algebra (MUT-* only in TanStack SSOT); Zustand persist shape (ZSP-*); MMKV instance rules (MMI-*); HTTP client timeout numeric (**UIP-M15**); security of tokens (security SSOT).
+- Scope exception: **PERF-G4** and **PERF-N3**, and the measurement-discipline paragraph they cite, apply to every JavaScript layer (client and server) with no backend copy; the rest of this file stays client-scoped.
 
 Document type: Normative — core for the performance topic.
 
@@ -45,6 +46,8 @@ PERF-T-REGEX: Define when regular-expression work in render is costly enough to 
 PERF-T-PROP-BAND: Document supported list-rendering prop ranges for the application's list sizes and device profile; see PERF-RLM-M1.
 
 Measurement discipline: A performance gate that depends on profiling data cannot treat missing measurements as evidence that the budget passed or failed. Obtain the required measurement or use the conservative choice defined by the adopting application's performance profile. Purely numeric item-count checks may be evaluated from the bounded data definition.
+
+Measurement recipe (**PERF-G4**): a measurement **MUST** run on a release build, not a development build; **MUST** report the first cold call separately from steady-state calls; **MUST** use realistic inputs including malformed and oversize ones; and **MUST** record time and memory as separate figures. A single warm, well-formed, small-input run proves nothing about the cost users and attackers actually trigger.
 
 ---
 
@@ -126,6 +129,8 @@ PERF-G2: Changes touching in-scope UI must not add new violations of **PERF-RLM-
 
 PERF-G3: A release that changes a performance-sensitive list or navigation surface must include a reviewable performance measurement or an entry in the adopting project's release review record, according to its release process. [Consequence: Process bug — release review incomplete] [Verify: Confirm that the required measurement or release record exists for the changed surface]
 
+PERF-G4: A change motivated by speed or memory **MUST** carry a before/after measurement taken per the measurement recipe above, and speed **MUST NOT** buy away type safety, validation, single authority or observability. An unmeasured optimization is a guess, and a faster path that drops a check, a type or a log trades a visible cost for a hidden defect. [Consequence: Unproven or quality-eroding optimization — must not merge] [Verify: review-held — the PR attaches both measurements and the diff removes no type, validation, authority or observability call; no mechanical check decides motivation]
+
 ---
 
 ## **MUST NOT** (global)
@@ -133,6 +138,8 @@ PERF-G3: A release that changes a performance-sensitive list or navigation surfa
 PERF-N1: Do not add always-on render instrumentation or an application-wide alternative to React's memoization APIs without a measured need and an architecture decision. A list-virtualization library selected by the architecture for **PERF-RLM-M7** does not count as such an alternative. [Consequence: Architecture bug — must not ship] [Verify: Review dependency changes and the documented performance need]
 
 PERF-N2: Merge code that calls invalidateQueries() with no arguments (**MUT-N1**) — forbidden. [Consequence: Bug — must not ship] [Verify: rg invalidateQueries\s*\(\s*\) repository must return exit code 1]
+
+PERF-N3: Re-copy an accumulator on every loop step (`{...acc}` or `[...acc, x]` inside reduce or an equivalent loop) or spread an unbounded array into function arguments (`Math.max(...arr)`) — forbidden. Per-step copying is quadratic and argument spreading overflows the call stack on large input; mutate a local accumulator, or use a loop or `reduce` with a single initial value. [Consequence: Quadratic cost or stack overflow on large input — must not ship] [Verify: review-held until a single-file AST lint is admitted under [**ENA-A1**](../enforcement-architecture/enforcement-admission.md); grep for `\.\.\.acc` and `Math\.(max|min)\(\.\.\.` as a candidate list only]
 
 ---
 

@@ -72,6 +72,8 @@ Code samples: [`../_meta/examples/auth-code-samples.md`](../_meta/examples/auth-
 
 **AUTH-N-RBAC-1** application: A global account role and a tenant-scoped actor role may describe different relationships. Do not compare them as if they had the same scope. Derive client diagnostics from one explicit authority, use them only to shape the user experience, and require the server to verify both actor class and resource ownership before granting access. Renamed values, props, and cross-module provenance require review.
 
+AUTH-M-RBAC-1 application — one decision function: a client control shown, hidden or disabled for a server-authorized action **MUST** call the same pure decision function the server gate calls (shared tier), fed with server-delivered actor facts, and **MUST NOT** re-derive the predicate in the client; the financial-visibility client twin of [PAY-UI-M8](../payment-ssot/ui-binding.md) is the money instance of this rule. Reason: two copies drift — a visible control the server answers with 403, or a hidden one the user is entitled to. Review-held: a check could only match function names, and no drift incident has been measured ([ENA-A1](../enforcement-architecture/enforcement-admission.md)).
+
 ---
 
 ## Errors and auto-login
@@ -82,6 +84,8 @@ Code samples: [`../_meta/examples/auth-code-samples.md`](../_meta/examples/auth-
 | **AUTH-M-AUTO-1** | On app resume or startup, validate the session through the documented credential boundary and SEC-D1 before presenting authenticated UI. An invalid session **must** transition to unauthenticated state according to SEC-D2; the navigation layer may then present its chosen unauthenticated route or screen. | Session confusion. | Verify startup, resume, and invalid-session transitions end to end. |
 
 AUTH-M-AUTO-1 application — forced sign-out: a session the server declares invalid (token-integrity code) **must** retire the client data scope through the same logout teardown authority as a user-initiated sign-out, not by dropping the token flag alone. Reason: a flag-only drop lets the same identity's next sign-in inherit the ended session's tenant selection and cached tenant list, so a tenant deleted meanwhile reappears as a scope the server rejects. Review-held (the single writer of the forced sign-out is the check site).
+
+AUTH-M-AUTO-1 application — other browser tabs: where several tabs of one origin share one cookie session but keep their own memory, a sign-out or a newly issued session (sign-in, identity change) in one tab **MUST** retire the client data scope of every other open tab through the same teardown authority, announced by a credential-free same-origin signal (the kind of change only); a tab that has retired follows the cookie's current session through the one boot path, never a second hydrator. The receiving tab **MUST NOT** repeat the device-wide purges, the credential purge or the server sign-out — the tab that changed the session owns them, and a late repeat can wipe or end the next person's session. A write refused for a CSRF token that no longer matches the cookie **MUST** be treated as the same signal once a fresh server session read confirms the session changed. Reason: a tab's memory outlives another tab's sign-out, so the previous person's cached screens stay visible while reads already travel with the next person's cookie. Review-held: whether a tab's memory outlives another tab's session change is runtime behaviour no single-file check can see; the teardown authority and its one channel are the review sites.
 
 
 ---

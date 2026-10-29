@@ -18,8 +18,8 @@
 # measures single-read ingestion, and nothing here is ingested whole. Exemption and reasoning:
 # en/authoring/kit-structural-invariants.md KIT-INV-5.
 #
-# 433 distinct open-when tokens (426 signals, of which
-# 202 name exactly one file; widest is signal:idempotency at 15),
+# 434 distinct open-when tokens (427 signals, of which
+# 203 name exactly one file; widest is signal:idempotency at 15),
 # and 112 distinct skip-when tokens. A skip-when token is a NEGATIVE the task
 # declares about itself ("this change is client-only"); P5 requires those declarations, because
 # a skip condition no task ever states can never fire and is decoration.
@@ -28,7 +28,7 @@
 # token is a sentence about THIS task, so a backend-only change declares the backend-only
 # negative and NEVER the client-only one. Measured on this tree, the two widest negatives:
 #   declaring signal:client-only drops 86 files - so declare it only when that sentence is true of your task, and never because the token reads like the work you are doing
-#   declaring signal:backend-only drops 79 files - so declare it only when that sentence is true of your task, and never because the token reads like the work you are doing
+#   declaring signal:backend-only drops 78 files - so declare it only when that sentence is true of your task, and never because the token reads like the work you are doing
 # A mis-polarised negative silences EXACTLY like a correct one: no warning is emitted, and the
 # hub you most needed leaves the candidate set unseen. So MEASURE YOUR OWN NEGATIVE BEFORE YOU
 # DECLARE IT - the third column is that number, one grep away - because a CORRECT pole can also
@@ -473,85 +473,84 @@ signal:authorization	open	8	en/security/security-server-authority-applications.m
 signal:authorization	open	8	en/security/security-tenant-published-profile.md
 signal:authorization	open	8	en/security/security-tenant-scope-gates.md
 signal:authorization	open	8	en/security/security-zero-trust-authority.md
-signal:backend-only	skip	79	en/accessibility-rn/accessibility-rn.md
-signal:backend-only	skip	79	en/analytics-rn/analytics-rn.md
-signal:backend-only	skip	79	en/android-edge-to-edge/android-16-behavior.md
-signal:backend-only	skip	79	en/android-edge-to-edge/android-16-conditional-rules.md
-signal:backend-only	skip	79	en/android-edge-to-edge/android-edge-to-edge-core.md
-signal:backend-only	skip	79	en/android-edge-to-edge/android-edge-to-edge.md
-signal:backend-only	skip	79	en/android-edge-to-edge/android-native-configuration.md
-signal:backend-only	skip	79	en/android-edge-to-edge/decision-gates.md
-signal:backend-only	skip	79	en/android-edge-to-edge/library-upgrade-policy.md
-signal:backend-only	skip	79	en/android-edge-to-edge/safe-area-ssot.md
-signal:backend-only	skip	79	en/app-lifecycle-rn/app-lifecycle-rn.md
-signal:backend-only	skip	79	en/auth/auth-client-behavior.md
-signal:backend-only	skip	79	en/auth/auth-governance.md
-signal:backend-only	skip	79	en/client-observability-rn/absorbed-defaults-and-global-nets.md
-signal:backend-only	skip	79	en/client-observability-rn/build-symbol-upload-credentials.md
-signal:backend-only	skip	79	en/client-observability-rn/classification-authority-and-outbound-links.md
-signal:backend-only	skip	79	en/client-observability-rn/client-observability-rn.md
-signal:backend-only	skip	79	en/client-observability-rn/credential-masking-and-build-secrets.md
-signal:backend-only	skip	79	en/client-observability-rn/outbound-link-ownership-and-visibility.md
-signal:backend-only	skip	79	en/client-observability-rn/sdk-setup-and-pii-scrubbing.md
-signal:backend-only	skip	79	en/client-observability-rn/silent-failure-paths.md
-signal:backend-only	skip	79	en/connectivity-rn/connectivity-rn.md
-signal:backend-only	skip	79	en/connectivity-rn/retry-rate-limit-ux-rn.md
-signal:backend-only	skip	79	en/error-handling/error-display-ux.md
-signal:backend-only	skip	79	en/error-handling/error-handling.md
-signal:backend-only	skip	79	en/error-handling/server-contract-and-display-authority.md
-signal:backend-only	skip	79	en/expo-notifications/client-expo.md
-signal:backend-only	skip	79	en/expo-notifications/configuration-and-build.md
-signal:backend-only	skip	79	en/expo-notifications/notification-opt-in-and-ux.md
-signal:backend-only	skip	79	en/forms/form-interaction-ux.md
-signal:backend-only	skip	79	en/forms/forms.md
-signal:backend-only	skip	79	en/forms/input-clearable-placeholder.md
-signal:backend-only	skip	79	en/forms/input-clearable-rules.md
-signal:backend-only	skip	79	en/internationalization-rn/internationalization-prohibitions.md
-signal:backend-only	skip	79	en/internationalization-rn/internationalization-rn.md
-signal:backend-only	skip	79	en/local-authentication-rn/local-authentication-rn.md
-signal:backend-only	skip	79	en/local-database-rn/local-database-rn.md
-signal:backend-only	skip	79	en/mmkv/mmkv-async-adapter.md
-signal:backend-only	skip	79	en/mmkv/mmkv-cleanup-and-teardown.md
-signal:backend-only	skip	79	en/mmkv/mmkv-encrypted-instance-design.md
-signal:backend-only	skip	79	en/mmkv/mmkv-instance-and-lazy-init.md
-signal:backend-only	skip	79	en/mmkv/mmkv-retention-limits-and-buster.md
-signal:backend-only	skip	79	en/mmkv/mmkv.md
-signal:backend-only	skip	79	en/mobile-ui-patterns/mobile-ui-patterns-rules.md
-signal:backend-only	skip	79	en/mobile-ui-patterns/mobile-ui-patterns.md
-signal:backend-only	skip	79	en/native-media-rn/native-media-rn.md
-signal:backend-only	skip	79	en/offline-sync-strategy-rn/offline-sync-strategy-rn.md
-signal:backend-only	skip	79	en/pagination-ux-rn/pagination-ux-rn.md
-signal:backend-only	skip	79	en/payment-ssot/ui-binding.md
-signal:backend-only	skip	79	en/performance/bundle-navigation-images-memory.md
-signal:backend-only	skip	79	en/performance/cache-loading-and-stores-alignment.md
-signal:backend-only	skip	79	en/performance/performance.md
-signal:backend-only	skip	79	en/performance/react-lists-and-memoization.md
-signal:backend-only	skip	79	en/realtime-rn/realtime-rn.md
-signal:backend-only	skip	79	en/routing/navigation-flow-and-layout.md
-signal:backend-only	skip	79	en/routing/navigation-rules.md
-signal:backend-only	skip	79	en/routing/routing.md
-signal:backend-only	skip	79	en/security/security-client-mobile-surface.md
-signal:backend-only	skip	79	en/security/security-client-transport.md
-signal:backend-only	skip	79	en/styling/styling.md
-signal:backend-only	skip	79	en/styling/theming-and-appearance.md
-signal:backend-only	skip	79	en/styling/ui-primitives.md
-signal:backend-only	skip	79	en/tanstack-query/mutations-cache-sync.md
-signal:backend-only	skip	79	en/tanstack-query/mutations-invalidation-and-bridge.md
-signal:backend-only	skip	79	en/tanstack-query/mutations-optimistic-strategy.md
-signal:backend-only	skip	79	en/tanstack-query/mutations-provider-and-post-write-sync.md
-signal:backend-only	skip	79	en/tanstack-query/queries-and-transforms.md
-signal:backend-only	skip	79	en/tanstack-query/queries-authority-duplication.md
-signal:backend-only	skip	79	en/tanstack-query/queries-derived-form-state-and-selection.md
-signal:backend-only	skip	79	en/tanstack-query/query-client-and-keys.md
-signal:backend-only	skip	79	en/tanstack-query/tanstack-query.md
-signal:backend-only	skip	79	en/tanstack-query/ui-loading-and-persist-options.md
-signal:backend-only	skip	79	en/tanstack-query/ui-persist-offline.md
-signal:backend-only	skip	79	en/tanstack-query/ui-startup-and-persistence-boundaries.md
-signal:backend-only	skip	79	en/zustand/selectors-and-hooks.md
-signal:backend-only	skip	79	en/zustand/store-actions-logging.md
-signal:backend-only	skip	79	en/zustand/store-boundaries.md
-signal:backend-only	skip	79	en/zustand/store-persist-and-module.md
-signal:backend-only	skip	79	en/zustand/zustand.md
+signal:backend-only	skip	78	en/accessibility-rn/accessibility-rn.md
+signal:backend-only	skip	78	en/analytics-rn/analytics-rn.md
+signal:backend-only	skip	78	en/android-edge-to-edge/android-16-behavior.md
+signal:backend-only	skip	78	en/android-edge-to-edge/android-16-conditional-rules.md
+signal:backend-only	skip	78	en/android-edge-to-edge/android-edge-to-edge-core.md
+signal:backend-only	skip	78	en/android-edge-to-edge/android-edge-to-edge.md
+signal:backend-only	skip	78	en/android-edge-to-edge/android-native-configuration.md
+signal:backend-only	skip	78	en/android-edge-to-edge/decision-gates.md
+signal:backend-only	skip	78	en/android-edge-to-edge/library-upgrade-policy.md
+signal:backend-only	skip	78	en/android-edge-to-edge/safe-area-ssot.md
+signal:backend-only	skip	78	en/app-lifecycle-rn/app-lifecycle-rn.md
+signal:backend-only	skip	78	en/auth/auth-client-behavior.md
+signal:backend-only	skip	78	en/auth/auth-governance.md
+signal:backend-only	skip	78	en/client-observability-rn/absorbed-defaults-and-global-nets.md
+signal:backend-only	skip	78	en/client-observability-rn/build-symbol-upload-credentials.md
+signal:backend-only	skip	78	en/client-observability-rn/classification-authority-and-outbound-links.md
+signal:backend-only	skip	78	en/client-observability-rn/client-observability-rn.md
+signal:backend-only	skip	78	en/client-observability-rn/credential-masking-and-build-secrets.md
+signal:backend-only	skip	78	en/client-observability-rn/outbound-link-ownership-and-visibility.md
+signal:backend-only	skip	78	en/client-observability-rn/sdk-setup-and-pii-scrubbing.md
+signal:backend-only	skip	78	en/client-observability-rn/silent-failure-paths.md
+signal:backend-only	skip	78	en/connectivity-rn/connectivity-rn.md
+signal:backend-only	skip	78	en/connectivity-rn/retry-rate-limit-ux-rn.md
+signal:backend-only	skip	78	en/error-handling/error-display-ux.md
+signal:backend-only	skip	78	en/error-handling/error-handling.md
+signal:backend-only	skip	78	en/error-handling/server-contract-and-display-authority.md
+signal:backend-only	skip	78	en/expo-notifications/client-expo.md
+signal:backend-only	skip	78	en/expo-notifications/configuration-and-build.md
+signal:backend-only	skip	78	en/expo-notifications/notification-opt-in-and-ux.md
+signal:backend-only	skip	78	en/forms/form-interaction-ux.md
+signal:backend-only	skip	78	en/forms/forms.md
+signal:backend-only	skip	78	en/forms/input-clearable-placeholder.md
+signal:backend-only	skip	78	en/forms/input-clearable-rules.md
+signal:backend-only	skip	78	en/internationalization-rn/internationalization-prohibitions.md
+signal:backend-only	skip	78	en/internationalization-rn/internationalization-rn.md
+signal:backend-only	skip	78	en/local-authentication-rn/local-authentication-rn.md
+signal:backend-only	skip	78	en/local-database-rn/local-database-rn.md
+signal:backend-only	skip	78	en/mmkv/mmkv-async-adapter.md
+signal:backend-only	skip	78	en/mmkv/mmkv-cleanup-and-teardown.md
+signal:backend-only	skip	78	en/mmkv/mmkv-encrypted-instance-design.md
+signal:backend-only	skip	78	en/mmkv/mmkv-instance-and-lazy-init.md
+signal:backend-only	skip	78	en/mmkv/mmkv-retention-limits-and-buster.md
+signal:backend-only	skip	78	en/mmkv/mmkv.md
+signal:backend-only	skip	78	en/mobile-ui-patterns/mobile-ui-patterns-rules.md
+signal:backend-only	skip	78	en/mobile-ui-patterns/mobile-ui-patterns.md
+signal:backend-only	skip	78	en/native-media-rn/native-media-rn.md
+signal:backend-only	skip	78	en/offline-sync-strategy-rn/offline-sync-strategy-rn.md
+signal:backend-only	skip	78	en/pagination-ux-rn/pagination-ux-rn.md
+signal:backend-only	skip	78	en/payment-ssot/ui-binding.md
+signal:backend-only	skip	78	en/performance/bundle-navigation-images-memory.md
+signal:backend-only	skip	78	en/performance/cache-loading-and-stores-alignment.md
+signal:backend-only	skip	78	en/performance/react-lists-and-memoization.md
+signal:backend-only	skip	78	en/realtime-rn/realtime-rn.md
+signal:backend-only	skip	78	en/routing/navigation-flow-and-layout.md
+signal:backend-only	skip	78	en/routing/navigation-rules.md
+signal:backend-only	skip	78	en/routing/routing.md
+signal:backend-only	skip	78	en/security/security-client-mobile-surface.md
+signal:backend-only	skip	78	en/security/security-client-transport.md
+signal:backend-only	skip	78	en/styling/styling.md
+signal:backend-only	skip	78	en/styling/theming-and-appearance.md
+signal:backend-only	skip	78	en/styling/ui-primitives.md
+signal:backend-only	skip	78	en/tanstack-query/mutations-cache-sync.md
+signal:backend-only	skip	78	en/tanstack-query/mutations-invalidation-and-bridge.md
+signal:backend-only	skip	78	en/tanstack-query/mutations-optimistic-strategy.md
+signal:backend-only	skip	78	en/tanstack-query/mutations-provider-and-post-write-sync.md
+signal:backend-only	skip	78	en/tanstack-query/queries-and-transforms.md
+signal:backend-only	skip	78	en/tanstack-query/queries-authority-duplication.md
+signal:backend-only	skip	78	en/tanstack-query/queries-derived-form-state-and-selection.md
+signal:backend-only	skip	78	en/tanstack-query/query-client-and-keys.md
+signal:backend-only	skip	78	en/tanstack-query/tanstack-query.md
+signal:backend-only	skip	78	en/tanstack-query/ui-loading-and-persist-options.md
+signal:backend-only	skip	78	en/tanstack-query/ui-persist-offline.md
+signal:backend-only	skip	78	en/tanstack-query/ui-startup-and-persistence-boundaries.md
+signal:backend-only	skip	78	en/zustand/selectors-and-hooks.md
+signal:backend-only	skip	78	en/zustand/store-actions-logging.md
+signal:backend-only	skip	78	en/zustand/store-boundaries.md
+signal:backend-only	skip	78	en/zustand/store-persist-and-module.md
+signal:backend-only	skip	78	en/zustand/zustand.md
 signal:background-foreground	open	1	en/app-lifecycle-rn/app-lifecycle-rn.md
 signal:background-work	open	1	en/logging-policy/shutdown-watchdog-clarifications.md
 signal:background-worker	open	9	en/expo-notifications/backend-dispatcher-durable-handoff.md
@@ -1234,8 +1233,9 @@ signal:mongo-cascade	open	6	en/editable-persistent-attributes/execution-async-ba
 signal:mongo-cascade	open	6	en/editable-persistent-attributes/mongo-cascade-indexing.md
 signal:mongo-cascade	open	6	en/editable-persistent-attributes/validation-types-and-migration.md
 signal:mongo-index	open	1	en/editable-persistent-attributes/mongo-cascade-indexing.md
-signal:mongo-query	open	2	en/nosql-query-safety/nosql-declaration-index-and-destructive-writes.md
-signal:mongo-query	open	2	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
+signal:mongo-query	open	3	en/backend-http-efficiency/outbound-call-time-budget.md
+signal:mongo-query	open	3	en/nosql-query-safety/nosql-declaration-index-and-destructive-writes.md
+signal:mongo-query	open	3	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 signal:multi-kat	open	1	en/ssot/ssot-precedence-and-enforcement.md
 signal:multi-source-form	open	3	en/ssot-readiness/readiness-writes-outcome-and-seed.md
 signal:multi-source-form	open	3	en/ssot-readiness/ssot-readiness-and-form-data.md
@@ -1516,9 +1516,8 @@ signal:no-receipt-path-change	skip	1	en/expo-notifications/receipt-and-delivery.
 signal:no-remote-config	skip	3	en/feature-flags-rn/app-control-policy.md
 signal:no-remote-config	skip	3	en/feature-flags-rn/app-control-release-evidence.md
 signal:no-remote-config	skip	3	en/feature-flags-rn/feature-flags-rn.md
-signal:no-render-path-change	skip	3	en/performance/bundle-navigation-images-memory.md
-signal:no-render-path-change	skip	3	en/performance/cache-loading-and-stores-alignment.md
-signal:no-render-path-change	skip	3	en/performance/performance.md
+signal:no-render-path-change	skip	2	en/performance/bundle-navigation-images-memory.md
+signal:no-render-path-change	skip	2	en/performance/cache-loading-and-stores-alignment.md
 signal:no-reporting-surface	skip	1	en/payment-ssot/reporting.md
 signal:no-retry-surface	skip	1	en/connectivity-rn/retry-rate-limit-ux-rn.md
 signal:no-screen-layout-change	skip	7	en/android-edge-to-edge/safe-area-ssot.md
@@ -1619,6 +1618,7 @@ signal:offline-ui	open	5	en/tanstack-query/ui-startup-and-persistence-boundaries
 signal:online-only-flow	skip	1	en/offline-sync-strategy-rn/offline-sync-strategy-rn.md
 signal:operational-readiness	open	1	en/security/security-program.md
 signal:optimistic-update	open	1	en/tanstack-query/mutations-optimistic-strategy.md
+signal:optimization-change	open	1	en/performance/performance.md
 signal:other-backend-selected	skip	1	en/mmkv/mmkv.md
 signal:otp-delivery	open	1	en/email-provider/email-provider-mandatory.md
 signal:outbound-call	open	5	en/backend-http-efficiency/backend-http-efficiency.md

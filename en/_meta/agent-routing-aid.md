@@ -71,6 +71,7 @@ A task usually does several of these; declare the signals of every row it matche
 | app background and foreground, live updates, websockets | `signal:appstate-transition`, `signal:websocket-client` |
 | device features: camera, files, location, maps, biometrics, local SQL database | `signal:camera-photo-library`, `signal:device-location`, `signal:biometric-gate`, `signal:client-sqlite` |
 | screen or list performance, slowness, bundle size | `signal:render-performance` |
+| a speed or memory optimization anywhere, client or server | `signal:optimization-change` |
 | feature flags, remote config, forced update | `signal:feature-flag`, `signal:remote-config` |
 | Android window insets, edge-to-edge, target SDK | `signal:edge-to-edge` |
 | product analytics, conversion or ad attribution events | `signal:product-analytics`, `signal:analytics-attribution` |
