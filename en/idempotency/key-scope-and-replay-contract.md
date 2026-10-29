@@ -17,7 +17,7 @@ Part of [the topic index](README.md).
 
 ## Key scope and replay — [IDEMP-M1–6/M29](key-scope-and-replay-contract.md)
 
-**IDEMP-M1**: In-scope mutations **MUST** require a documented client key at HTTP boundary, except an exact route-local or policy-record decision stating both `idempotencyKey: optional` and `clientMayRetry: false`, or all temporary IDEMP-M15 conditions.
+**IDEMP-M1**: In-scope mutations **MUST** require a documented client key at HTTP boundary, except an exact route-local or policy-record decision stating both `idempotencyKey: optional` and `clientMayRetry: false`, or all temporary IDEMP-M15 conditions. The exception lifts only the retry duty: a route a user can submit twice (a button, a form) still **MUST** suppress the second submit and prove it ([GIDEMP4](idempotency-decision-gates.md)), because a double tap is a retry the client never chose.
 
 **IDEMP-M2**: The key **MUST** have validated trimmed length ≥ IDEMP-T-KEY-MIN, or a route-registration comment or policy-record format with equivalent entropy/length (UUID/ULID/prefixed opaque) enforced by schema/predicate.
 

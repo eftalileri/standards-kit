@@ -102,6 +102,7 @@ Do **not** leave the template inside the kit named `CLAUDE.md`: Claude Code load
 Ask your agent for a small, real task (for example "add input validation to the signup endpoint"). A correct setup shows up as the agent:
 
 - reading `agent-planning/agent-planning-procedure.md` and `_meta/agent-routing-aid.md` first,
+- naming the signals of the matching **Task kinds** rows and opening the files they return (a new write endpoint, for example, opens `idempotency/`),
 - looking up rule ids in `rule-id-index.tsv` instead of opening whole files,
 - searching the SSoT registry before writing code and registering the authority it used,
 - running your commit gate before committing.

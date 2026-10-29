@@ -75,9 +75,9 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6249 rows, of which 2644 carry a space and 0 carry an
+# 6283 rows, of which 2657 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
-# 433 open tokens + 112 skip tokens are covered; 218 rows
+# 433 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
 # The kit file-size guidance does not apply: it is about single-read ingestion, and nothing
 # here is ingested whole (en/authoring/kit-structural-invariants.md KIT-INV-5).
@@ -688,6 +688,7 @@ blocking-app-control-policy	signal:force-update-policy	open	2	derived
 blocking-app-control-policy	signal:release-identity	open	2	derived
 blocking-app-control-policy	signal:release-promotion	open	1	derived
 blocking-app-control-policy	signal:store-release-evidence	open	1	derived
+booking	signal:appointment-lifecycle	open	4	alias
 boot readiness	signal:boot-readiness	open	9	derived
 boot-readiness	signal:boot-readiness	open	9	derived
 bootstrap and portable text	signal:bootstrap-failure	open	1	derived
@@ -1259,8 +1260,10 @@ counter-semantics	signal:provider-integration	open	7	derived
 counter-semantics	signal:webhook	open	6	derived
 country config	signal:country-config	open	1	derived
 country label	signal:country-label	open	2	derived
+country name	signal:display-names	open	3	alias
 country-config	signal:country-config	open	1	derived
 country-label	signal:country-label	open	2	derived
+country-name	signal:display-names	open	3	alias
 coupled obligation	signal:check-rollout	open	2	derived
 coupled obligation	signal:new-guard	open	10	derived
 coupled obligation	signal:new-lint-rule	open	10	derived
@@ -1279,6 +1282,8 @@ crash sink	signal:crash-sink	open	7	derived
 crash-reporting	signal:crash-reporting	open	1	derived
 crash-session	signal:crash-session	open	2	derived
 crash-sink	signal:crash-sink	open	7	derived
+create endpoint	signal:mutation-endpoint	open	11	alias
+create-endpoint	signal:mutation-endpoint	open	11	alias
 credential binding	signal:credential-binding	open	1	derived
 credential handling	signal:credential-handling	open	1	derived
 credential masking	signal:credential-masking	open	2	derived
@@ -1356,6 +1361,7 @@ data-access	signal:persistence-layer	open	11	derived
 data-access	signal:repository-write	open	6	derived
 data-access-review	signal:data-access-review	open	10	derived
 data-migration	signal:schema-migration	open	1	alias
+database	signal:repository-write	open	6	alias
 date format	signal:date-format	open	2	derived
 date formatting	signal:currency-format	open	2	derived
 date formatting	signal:date-format	open	2	derived
@@ -1641,6 +1647,7 @@ directory-depth	signal:kit-rule-change	open	13	derived
 directory-depth	signal:standards-change	open	6	derived
 disable	signal:form-input	open	4	derived
 disable	signal:submit-ux	open	1	derived
+discount	signal:money-derivation	open	2	alias
 disjunction	signal:check-rollout	open	2	derived
 disjunction	signal:new-guard	open	10	derived
 disjunction	signal:new-lint-rule	open	10	derived
@@ -1675,6 +1682,12 @@ do not disturb	signal:notification-suppression	open	2	alias
 do-not-disturb	signal:notification-suppression	open	2	alias
 domain decision	signal:domain-decision	open	2	derived
 domain-decision	signal:domain-decision	open	2	derived
+double click	signal:idempotency	open	15	alias
+double submit	signal:idempotency	open	15	alias
+double tap	signal:idempotency	open	15	alias
+double-click	signal:idempotency	open	15	alias
+double-submit	signal:idempotency	open	15	alias
+double-tap	signal:idempotency	open	15	alias
 dst handling	signal:dst-handling	open	2	derived
 dst-handling	signal:dst-handling	open	2	derived
 dto	signal:currency-format	open	2	derived
@@ -1937,6 +1950,7 @@ error handling	signal:error-classification	open	8	derived
 error handling	signal:global-error-net	open	4	derived
 error handling	signal:raw-error-text	open	3	derived
 error infrastructure	signal:error-infrastructure	open	6	derived
+error message	signal:raw-error-text	open	3	alias
 error policy	signal:api-error-shape	open	2	derived
 error policy	signal:duplicate-suppression	open	6	derived
 error policy	signal:error-boundary	open	6	derived
@@ -1965,6 +1979,7 @@ error-handling	signal:error-classification	open	8	derived
 error-handling	signal:global-error-net	open	4	derived
 error-handling	signal:raw-error-text	open	3	derived
 error-infrastructure	signal:error-infrastructure	open	6	derived
+error-message	signal:raw-error-text	open	3	alias
 error-policy	signal:api-error-shape	open	2	derived
 error-policy	signal:duplicate-suppression	open	6	derived
 error-policy	signal:error-boundary	open	6	derived
@@ -2653,7 +2668,9 @@ index-migration	signal:index-migration	open	10	derived
 index-regeneration	signal:kit-rule-change	open	13	derived
 index-regeneration	signal:standards-change	open	6	derived
 infinite list	signal:infinite-list	open	3	derived
+infinite scroll	signal:infinite-list	open	3	alias
 infinite-list	signal:infinite-list	open	3	derived
+infinite-scroll	signal:infinite-list	open	3	alias
 inline style	signal:inline-style	open	2	derived
 inline-style	signal:inline-style	open	2	derived
 input	signal:api-endpoint	open	3	derived
@@ -2989,6 +3006,7 @@ logging-policy	signal:logger-wrapper	open	3	derived
 logging-policy	signal:process-lifecycle	open	1	derived
 logging-policy	signal:raw-error-text	open	3	derived
 logging-policy	signal:request-correlation	open	2	derived
+login	signal:client-auth-integration	open	2	alias
 long hard delete	signal:db-transaction	open	13	derived
 long hard delete	signal:multi-step-write	open	13	derived
 long hard delete	signal:session-threading	open	12	derived
@@ -3742,11 +3760,13 @@ numeric input	signal:numeric-input	open	1	derived
 numeric-input	signal:numeric-input	open	1	derived
 observability	signal:crash-reporting	open	1	alias
 offline mutation queue	signal:offline-mutation-queue	open	1	derived
+offline queue	signal:offline-mutation-queue	open	1	alias
 offline sync strategy	signal:cache-persistence	open	10	derived
 offline sync strategy	signal:conflict-policy	open	1	derived
 offline sync strategy	signal:offline-mutation-queue	open	1	derived
 offline ui	signal:offline-ui	open	5	derived
 offline-mutation-queue	signal:offline-mutation-queue	open	1	derived
+offline-queue	signal:offline-mutation-queue	open	1	alias
 offline-sync-strategy	signal:cache-persistence	open	10	derived
 offline-sync-strategy	signal:conflict-policy	open	1	derived
 offline-sync-strategy	signal:offline-mutation-queue	open	1	derived
@@ -4097,12 +4117,15 @@ portability	signal:kit-rule-change	open	13	derived
 portability	signal:standards-change	open	6	derived
 positive proof	signal:new-lint-rule	open	10	alias
 positive-proof	signal:new-lint-rule	open	10	alias
+post	signal:mutation-endpoint	open	11	alias
+post endpoint	signal:mutation-endpoint	open	11	alias
 post write sync	signal:cache-lifecycle	open	11	derived
 post write sync	signal:cross-domain-write	open	7	derived
 post write sync	signal:external-provider	open	6	derived
 post write sync	signal:model-mutation	open	6	derived
 post write sync	signal:retry-ux	open	6	derived
 post write sync	signal:subscription	open	1	derived
+post-endpoint	signal:mutation-endpoint	open	11	alias
 post-write-sync	signal:cache-lifecycle	open	11	derived
 post-write-sync	signal:cross-domain-write	open	7	derived
 post-write-sync	signal:external-provider	open	6	derived
@@ -4163,6 +4186,7 @@ preflight-and-resource-limits	signal:pdf-layout	open	1	derived
 preflight-and-resource-limits	signal:pdf-preflight	open	1	derived
 preflight-and-resource-limits	signal:pdf-report	open	5	derived
 preflight-and-resource-limits	signal:resource-limits	open	1	derived
+price	signal:payment-field	open	10	alias
 principles	signal:ci-pipeline	open	4	derived
 principles	signal:kit-rule-change	open	13	derived
 principles	signal:new-guard	open	10	derived
@@ -4466,6 +4490,7 @@ react native	signal:theme-token	open	3	derived
 react native	signal:translation-catalog	open	8	derived
 react native	signal:user-facing-string	open	8	derived
 react native	signal:websocket-client	open	1	derived
+react query	signal:server-state-cache	open	5	alias
 react-lists-and-memoization	signal:infinite-list	open	3	derived
 react-lists-and-memoization	signal:list-virtualization	open	2	derived
 react-lists-and-memoization	signal:render-performance	open	4	derived
@@ -4524,6 +4549,7 @@ react-native	signal:theme-token	open	3	derived
 react-native	signal:translation-catalog	open	8	derived
 react-native	signal:user-facing-string	open	8	derived
 react-native	signal:websocket-client	open	1	derived
+react-query	signal:server-state-cache	open	5	alias
 read only endpoint	signal:read-only-endpoint	open	1	derived
 read only endpoint	signal:read-only-endpoint	skip	12	derived
 read path integrity	signal:derived-field	open	7	derived
@@ -4672,6 +4698,7 @@ removal-checklist	signal:new-lint-rule	open	10	derived
 remove	signal:subject-deletion	open	1	alias
 remove unused code	signal:dead-code-removal	open	3	alias
 remove-unused-code	signal:dead-code-removal	open	3	alias
+rename	signal:editable-attribute	open	7	alias
 rename bypass	signal:ci-pipeline	open	4	derived
 rename bypass	signal:kit-rule-change	open	13	derived
 rename bypass	signal:new-guard	open	10	derived
@@ -4935,6 +4962,7 @@ rn screen ui	signal:rn-screen-ui	open	8	derived
 rn-screen-ui	signal:rn-screen-ui	open	8	derived
 robots txt	signal:robots-txt	open	1	derived
 robots-txt	signal:robots-txt	open	1	derived
+role	signal:authorization	open	8	alias
 role and conflict routing	signal:ambiguous-requirement	open	2	derived
 role and conflict routing	signal:conflicting-standards	open	4	derived
 role and rules	signal:stack-choice	open	4	derived
@@ -5373,6 +5401,8 @@ shared-types	signal:editable-attribute	open	7	derived
 shared-types	signal:mongo-cascade	open	6	derived
 shared-types	signal:schema-migration	open	1	derived
 shared-types	signal:shared-types	open	1	derived
+sign in	signal:client-auth-integration	open	2	alias
+sign-in	signal:client-auth-integration	open	2	alias
 silent failure	signal:silent-failure	open	2	derived
 silent failure paths	signal:client-failure-path	open	8	derived
 silent failure paths	signal:global-error-net	open	4	derived
@@ -5439,8 +5469,10 @@ skip-when	signal:kit-rule-change	open	13	derived
 skip-when	signal:standards-change	open	6	derived
 slow endpoint	signal:log-write	open	11	alias
 slow request	signal:process-local-cache	open	4	alias
+slow screen	signal:render-performance	open	4	alias
 slow-endpoint	signal:log-write	open	11	alias
 slow-request	signal:process-local-cache	open	4	alias
+slow-screen	signal:render-performance	open	4	alias
 sns	signal:amazon-ses	open	1	derived
 sns	signal:email-provider-adapter	open	2	derived
 sns	signal:transactional-email	open	8	derived
@@ -6278,8 +6310,10 @@ workspace boundary	signal:workspace-boundary	open	4	derived
 workspace-boundary	signal:workspace-boundary	open	4	derived
 write a guard	signal:new-guard	open	10	alias
 write a rule	signal:new-lint-rule	open	10	alias
+write endpoint	signal:mutation-endpoint	open	11	alias
 write-a-guard	signal:new-guard	open	10	alias
 write-a-rule	signal:new-lint-rule	open	10	alias
+write-endpoint	signal:mutation-endpoint	open	11	alias
 writer cutover	signal:writer-cutover	open	7	derived
 writer-cutover	signal:writer-cutover	open	7	derived
 writes code	signal:source-file-change	open	7	alias

@@ -17,7 +17,7 @@ owns: none
 |------|------|------|
 | [`agent-contract.md`](agent-contract.md) | normative | The shared **C1**–**C12** execution contract a hub inherits by linking here, plus the `<TOPIC-PREFIX>-C<n>` resolution notation. |
 | [`precedence.md`](precedence.md) | normative | What a precedence ladder must satisfy, which side wins when two kit statements conflict ([**KIT-PRE-1**](precedence.md)–[**KIT-PRE-3**](precedence.md)), and the named boundary between the kit and the root agent-rule file. The ladder between tiers is the root file's and is not restated here; the normative row **SSG-P1-5** routes here. |
-| [`agent-routing-aid.md`](agent-routing-aid.md) | routing | **P3** closed shape table; **P4** lookup commands. |
+| [`agent-routing-aid.md`](agent-routing-aid.md) | routing | **P3** closed shape table; **P4** task-kind table and lookup commands. |
 | [`rn-hub-merge-lens.md`](rn-hub-merge-lens.md) | reference | Keep-vs-consolidate guidance for `*-rn/` folders. |
 | [`task-skill-hints.md`](task-skill-hints.md) | routing | Pointer only — names the three routing authorities and carries no list. |
 | [`architecture-core.md`](architecture-core.md) | reference | One-screen client map: terminology, layer edges, boundary identifier definition sites, file placement. Restates no rule text. |

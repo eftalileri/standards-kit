@@ -20,7 +20,7 @@
 import fs from 'node:fs';
 
 import { parseCoverBlock } from './cover-block.mjs';
-import { listKitMarkdownFiles, toAbsolute } from './kit-tree.mjs';
+import { listKitMarkdownFiles, listTopicSlugs, toAbsolute } from './kit-tree.mjs';
 
 /** The lookup table, kit-root-relative. Not `.md`. */
 export const VOCABULARY_FILE = 'routing-vocabulary.tsv';
@@ -68,6 +68,69 @@ export function publishedShapes(consumerId) {
     );
   }
   return shapes;
+}
+
+const TASK_KIND_HEADING = '## Task kinds';
+const TASK_KIND_SIGNAL_RE = /`(signal:[a-z0-9-]+)`/gu;
+
+/**
+ * Signals named by the hand-kept Task kinds table (KIT-RCH-10) in the shape glossary file.
+ * @param {string} consumerId - Consumer id shown in the error message.
+ * @returns {Set<string>} `signal:<name>` tokens.
+ */
+export function taskKindSignals(consumerId) {
+  const text = fs.readFileSync(toAbsolute(SHAPE_GLOSSARY_FILE), 'utf8');
+  const start = text.indexOf(`\n${TASK_KIND_HEADING}\n`);
+  const section = start === -1 ? '' : text.slice(start + 1).split(/\n## /u)[0];
+  const signals = new Set(
+    section
+      .split('\n')
+      .filter(line => line.startsWith('| ') && !line.startsWith('| The task'))
+      .flatMap(line => [...line.matchAll(TASK_KIND_SIGNAL_RE)].map(m => m[1]))
+  );
+  if (signals.size === 0) {
+    throw new Error(
+      `ROUTING_TASK_KIND_TABLE_EMPTY: ${SHAPE_GLOSSARY_FILE} — Root cause: no signal could be ` +
+        `read from the \`${TASK_KIND_HEADING}\` table; ${consumerId} cannot confirm any topic is ` +
+        `reachable from a kind of work, and an agent is left to guess token names. Solution: ` +
+        `restore rows of the form \`| <work> | \`signal:<name>\`, … |\`.`
+    );
+  }
+  return signals;
+}
+
+/**
+ * Fails when a Task kinds signal opens nothing, or a topic folder is opened by no row (KIT-RCH-10).
+ * @param {Array<{token: string, field: string, file: string}>} declarations - Cover declarations.
+ * @param {string} consumerId - Consumer id shown in the error message.
+ */
+function assertTaskKindCoverage(declarations, consumerId) {
+  const signals = taskKindSignals(consumerId);
+  const openFiles = new Map();
+  for (const d of declarations.filter(x => x.field === 'open')) {
+    openFiles.set(d.token, [...(openFiles.get(d.token) ?? []), d.file]);
+  }
+  const unknown = [...signals].filter(s => !openFiles.has(s)).sort();
+  if (unknown.length > 0) {
+    throw new Error(
+      `ROUTING_TASK_KIND_TOKEN_UNKNOWN: ${unknown.join(', ')} — Root cause: the Task kinds table ` +
+        `in ${SHAPE_GLOSSARY_FILE} names a signal no cover block opens; an agent doing that row's ` +
+        `work declares it and opens nothing. Solution: use the signal's real name from the cover ` +
+        `blocks, or align the row in the change that renamed it.`
+    );
+  }
+  const topics = new Set(listTopicSlugs(consumerId));
+  for (const signal of signals) {
+    for (const file of openFiles.get(signal)) topics.delete(file.split('/')[1]);
+  }
+  if (topics.size > 0) {
+    throw new Error(
+      `ROUTING_TASK_KIND_TOPIC_UNCOVERED: ${[...topics].sort().join(', ')} — Root cause: no Task ` +
+        `kinds row opens a file of this topic; an agent declares only the signals it is shown, so ` +
+        `the topic is not read by the work it governs. Solution: add a row to the table in ` +
+        `${SHAPE_GLOSSARY_FILE} naming the topic's typical work and the narrow signal that opens it.`
+    );
+  }
 }
 
 /**
@@ -130,6 +193,8 @@ export function renderRoutingVocabulary(consumerId) {
         `one sentence in the same change.`
     );
   }
+
+  assertTaskKindCoverage(declarations, consumerId);
 
   const rows = declarations
     .map(d =>

@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3220 rows; the longest is 85 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3221 rows; the longest is 85 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2496 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2497 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -1321,6 +1321,7 @@ KIT-PRE-1	en/_meta/precedence.md
 KIT-PRE-2	en/_meta/precedence.md
 KIT-PRE-3	en/_meta/precedence.md
 KIT-RCH-1	en/authoring/kit-rule-reachability.md
+KIT-RCH-10	en/authoring/kit-rule-reachability.md
 KIT-RET-1	en/authoring/kit-rule-retirement.md
 KIT-RET-2	en/authoring/kit-rule-retirement.md
 KIT-RET-3	en/authoring/kit-rule-retirement.md

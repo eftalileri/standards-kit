@@ -51,7 +51,7 @@ Every change is a net improvement. Never trade a safer, better-typed, single-aut
 ## MANDATORY READING — start of every task
 
 1. `agent-planning/agent-planning-procedure.md` — P1–P8 in order.
-2. `_meta/agent-routing-aid.md` — shape table and search commands; open only what the search, matrix row and declared signals select. Write a plan document only when the owner asks or work is handed off (C1/P6).
+2. `_meta/agent-routing-aid.md` — before the first edit: name the shape, take the signals of every **Task kinds** row the task matches, run `grep "^signal:<name>	open	" <KIT_ROOT>/routing-vocabulary.tsv` for each and apply the MUST rows of the files it returns. The plan or chat summary names those signals and files (P4); a code change whose summary names none skipped the kit. Open nothing the lookups, matrix rows and declared signals do not select. Write a plan document only when the owner asks or work is handed off (C1/P6).
 3. With an authorized execution MD: `agent-planning/agent-runner-protocol.md` (AR1–AR5, C7).
 
 ## PRECEDENCE

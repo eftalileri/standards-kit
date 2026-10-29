@@ -23,7 +23,7 @@ SSOT for normative text lives in topic folders below. `_meta/` contains both nor
 - [Agent planning procedure](agent-planning/agent-planning-procedure.md) (P1-P8 — binding plan/scoping order; use with topic standards); [Agent runner protocol](agent-planning/agent-runner-protocol.md) (**C7** — when @ referencing an authoritative execution plan MD)
 - [Precedence and conflict layers](_meta/precedence.md) (**normative**: what a precedence ladder must satisfy and which side wins between two kit statements — **KIT-PRE-1**–**KIT-PRE-3**; the ladder between tiers stays in the root agent-rule file. The normative row **SSG-P1-5** routes conflict resolution here)
 - [Agent execution contract, shared](_meta/agent-contract.md) (normative: defines **C1–C12** plus the `<TOPIC-PREFIX>-C<n>` resolution notation for topics that cite it)
-- [Agent routing aid](_meta/agent-routing-aid.md) (non-normative: **P3** shape table + **P4** lookup commands; not SSOT)
+- [Agent routing aid](_meta/agent-routing-aid.md) (non-normative: **P3** shape table + **P4** task-kind table and lookup commands; not SSOT)
 
 ## Topics
 
