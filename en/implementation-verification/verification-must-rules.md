@@ -1,0 +1,56 @@
+# Implementation verification — **MUST** / **MUST NOT** rows (normative)
+
+```kit-cover
+type: normative
+part-of: README.md
+binds: the IV-M and IV-N obligations that govern inventory building, code location, Evidence quality and the forbidden shortcuts of a verification run
+open-when: signal:md-code-verification, signal:plan-vs-code-drift
+skip-when: signal:no-implementation-bound-md
+owns: IV-M1, IV-M2, IV-M3, IV-M4, IV-M5, IV-M6, IV-M7, IV-M8, IV-M9, IV-N1, IV-N2, IV-N3, IV-N4, IV-N5, IV-N6, IV-N7, IV-N8, IV-N9
+```
+
+Scope: Same as [README.md](README.md) hub Scope. This file carries the **MUST** and **MUST NOT** rows that govern how a verification run is conducted and evidenced. The bar a change is accepted against — **IV-M10**, **IV-M11**, **IV-M12**, **IV-M13** and the stated enforcement limit those last two carry — is in [change-acceptance-bar.md](change-acceptance-bar.md). The definitions, output shape, failure paths, cross-standard minima and the agent execution contract they cite live in [validation-rules.md](validation-rules.md).
+
+Document type: Normative part — **IV-M1**–**IV-M9**, **IV-N1**–**IV-N9**.
+
+References: [README.md](README.md); [change-acceptance-bar.md](change-acceptance-bar.md) (**IV-M10**–**IV-M13** — the acceptance bar a verified change still has to clear, and the shape of the limit it owes where part of it cannot be fenced); [validation-rules.md](validation-rules.md) (IV-C, IV-D, IV-O, IV-F, IV-XB); [execution-procedure.md](execution-procedure.md) (order, inventory shape, **V1**–**V8**); [anti-loop-rules.md](anti-loop-rules.md) (IV-AM, IV-AN).
+
+---
+
+## **MUST** (normative) — IV-M
+
+| ID | Rule | Consequence | Verify |
+|----|------|-------------|--------|
+| **IV-M1** | Build a frozen inventory before code comparison: every main section heading that contains technical work and every numbered / bulleted technical sub-item and every row of a Blueprint / Net action table must become one inventory row with stable Item id. Additionally (**IV-D5**): every data row in checklist / verification / evidence tables in the target MD must become one inventory row when **IV-C8** applies or when the table names verifiable obligations. Item ids **MUST** remain stable across re-runs for the same MD revision and the same inventory freeze point: renumbering, merging, or reordering ids after verification has started invalidates diff-based audit and requires full re-verification (new run from step 1 of [execution-procedure.md](execution-procedure.md)). | Invalid verification if skipped or ids churn without full rerun. | Pass: inventory artifact precedes table; count ≥ obvious MD items; id list unchanged mid-pass unless ref-append only (**IV-M6**). |
+| **IV-M2** | For each inventory item: if the MD gives a repo-root-relative path, open that file; else run repo-wide search (search tool / `rg` / equivalent) for symbol, route, or field named in the item. | **IV-F1** if still not found. | Pass: session log shows `read` / `grep` / search for each item or justified Invalid. |
+| **IV-M3** | After locating code, read the implementation per **IV-D2** and compare to MD text per **IV-D1**. | Wrong status → **IV-C5**. | Pass: Evidence quotes come from inside body per **IV-D2**. |
+| **IV-M4** | Assign Compliant only if **IV-D1** passes; Missing if location not found, behavior differs, or item not implemented; Invalid (reason) only per **IV-D4** (explicit MD obsolescence — not agent guess). | False Compliant → **IV-N1** breach. | Pass: spot-check Compliant rows against **IV-D1**; Missing vs Invalid matches **IV-D4**. |
+| **IV-M5** | For every table row, Evidence **MUST** include: (a) repo-root-relative file path; (b) line range (start–end, inclusive or tool-native range copied verbatim); (c) quoted text that includes at least one executable statement or, for items covered only by **IV-D2** declarative targets, the full targeted declarative body or 2–3 lines of it if the body exceeds 15 lines (must still bracket the obligation). Minimum quote: ≥1 non-comment, non-blank line of code or the signature + **IV-D2**-compliant read justification in Change note when MD is existence-only. Maximum: no hard cap if needed to show **IV-D1** match; prefer 2–5 lines when sufficient. | **IV-O2** / **IV-F3**. | Pass: each Evidence parses as `path` + `Lx-Ly` + quote; quote contains executable or declarative rule per **IV-D2**. |
+| **IV-M6** | When the MD references another doc ("See X.md", "Reference:", § links), read that file and append its technical items to the same inventory or verify the chain terminates at SSOT with no further MD obligations (recursive). New items from refs **MUST** receive new Item ids (e.g. `REF1-A.1`, `BP-row-3-suppl`); existing Item ids **MUST NOT** be renamed, reused for a different obligation, or deleted when appending (**IV-N8**). | Skipping chain → **IV-N6**; id churn → invalid audit. | Pass: append-only diff on inventory after each ref expansion; list of opened ref files covers full chain or STOP **IV-F2**. |
+| **IV-M7** | For each Missing item that the user requires implemented, apply full implementation: no `TODO`, no mock, no optional deferral unless user exception is recorded per [gray-situation](../agent-gray-decisions/gray-situation-decisions.md). | Bug — reject. | Pass: `rg TODO|FIXME` on touched files = 0 or exception row exists. |
+| **IV-M8** | After the code changes from this workflow, run the target repository's documented verification gates at their defined checkpoints ([**BE-M20**](../build-environment/build-environment-repository-and-scripts.md)); a red gate STOPS the work, and a narrow check over the changed scope is never recorded as a gate result. If the repository defines no applicable gate, report the verification evidence and remaining boundary rather than inventing a gate. | Non-shippable state. | Static inspection: each applicable gate's own exit status is logged (**BE-M12**) at its checkpoint, and any gap the repository policy leaves to review is recorded. |
+| **IV-M9** | When the MD cites standards-kit paths, open those files before claiming Compliant for items that depend on them (**IV-N6**). | Invalid compliance argument. | Pass: References list includes those reads or item does not depend on them. |
+
+---
+
+## **MUST NOT** (normative) — IV-N
+
+| ID | Rule | Consequence | Verify |
+|----|------|-------------|--------|
+| **IV-N1** | Must not mark Compliant using guess, memory, or "probably" without **IV-D2** evidence. | Reject output — invalid. | Pass: each Compliant row has tool-backed quote. |
+| **IV-N2** | Must not substitute section-level summaries ("Section A is fine") for per-item rows. When **IV-C8** applies, must not collapse multiple checklist / evidence-table data rows into one inventory row unless the MD explicitly defines that merge. | **IV-O1** / **IV-C8** breach — invalid. | Pass: no row whose Item id is only a section title without atomic items; checklist row count matches inventory. |
+| **IV-N3** | Must not skip repo-wide search when the MD omits a path but names a symbol or behavior. | **IV-N1** / Missing misclassified. | Pass: search logs exist or Invalid item. |
+| **IV-N4** | Must not mark Compliant when behavior partially matches the MD (**IV-D1** fail). | Reject. | Pass: diff conditions → Missing. |
+| **IV-N5** | Must not omit the Evidence column or leave it placeholder text. | **IV-O2** — invalid. | Automated / manual empty check. |
+| **IV-N6** | Must not ignore normative References inside the MD or stop the reference chain at depth 1 when deeper refs list obligations. | Bug — reject. | Pass: ref list matches **IV-M6** trace. |
+| **IV-N7** | Must not declare work complete without satisfying **IV-O1**–**IV-O4**. | Reject. | Pass: [execution-procedure.md](execution-procedure.md) Verification checklist. |
+| **IV-N8** | Must not renumber, reuse, or delete Item ids already assigned when appending obligations from a reference chain (**IV-M6**); only append new rows. | Invalid verification — breaks **IV-M1** stability. | Pass: inventory diff is append-only for ref expansion. |
+| **IV-N9** | Must not leave documentation asserting a code shape the same change measured as gone. When a symbol, path or control is removed or renamed, the prose that names it as something to build or use belongs to that removal group and is corrected in the same change ([**DCD-M2**](../dead-code/dead-code-rules.md), [**SSG-M8**](../ssot/ssot-principles-and-precedence.md)) — never deferred, because an unmarked mention of a deleted symbol is an instruction: the next author rebuilds what was just removed and believes the documentation authorised it. Three outcomes, and the change states which was chosen. (a) The document still teaches a live subject → rewrite it to the shape the code has today. (b) Its premise is spent — a plan whose work has shipped, or one whose every implementation detail now contradicts a later standard → retire the document; a section surviving as a half-truth is worse than its absence, and patching it preserves the trap while making it look maintained. (c) The mention is deliberately kept as history → it **MUST** carry the date, the reason, and an explicit *this no longer exists, do not recreate it*; history that is not marked as history reads as specification. A document is judged not by whether it still parses but by whether a reader acting on it would produce today's code. | The deletion silently reverts, with documentation as its justification — the most expensive kind of regression, because the author was following the rules as written and no review flags a change that matches the docs. | Pass: after a removal, a search for the removed name across the documentation tree returns only mentions shaped by (c), or nothing. Stated limit ([**IV-M13**](change-acceptance-bar.md)): a check would need to know, per mention, whether it is an instruction or a historical record and whether its document is living or archived — facts a document tree typically does not declare; a text or path-resolution match alone cannot tell an instruction from an external identifier or a historical record, so search results are candidates and review is the enforcement. |
+
+---
+
+## Mapping note (markdown-authoring)
+
+[`markdown-authoring.md`](../authoring/markdown-authoring.md) **M17** invokes **IV-C8** (when applicable), **IV-M1**–**IV-M9**, **IV-M10**–**IV-M13** (in [change-acceptance-bar.md](change-acceptance-bar.md)), **IV-N1**–**IV-N9**, **IV-F1**–**IV-F3**, **IV-D1**–**IV-D2**, **IV-D4**–**IV-D5**, **IV-O1**–**IV-O4**, **IV-XB1**–**IV-XB3**, and IV-AM / IV-AN in [anti-loop-rules.md](anti-loop-rules.md). The KV rows in markdown-authoring are a one-line pointer to this folder (local minimum); full rules live here only.
+
+When the target MD contains a Cross-impact analysis table shaped per [cross-impact-analysis.md](../authoring/cross-impact-analysis.md) (**XIA-M2**, **XIA-M2b**, **XIA-M3**), treat each data row as a candidate checklist / evidence item under **IV-D5** if the MD presents it as an obligation (same as Technical plan / Blueprint rows). Missing table when **XIA-M1** applies, or non-verifiable rows, makes the target MD invalid until fixed (**XIA-M4**). When **XIA-M1** does not apply, a missing full table is not an XIA violation (**XIA-M5**); **M14** one-line or omit only.

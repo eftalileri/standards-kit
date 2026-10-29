@@ -1,0 +1,28 @@
+# Optional Resend adapter example
+
+```kit-cover
+type: normative
+part-of: README.md
+binds: RSD-M1 to RSD-M5 -- what a Resend adapter must do to satisfy the provider-agnostic port without an SDK: request shape and credentials, idempotent correlated send, error classification, the Svix-signed bounce and complaint webhook, and the feedback vocabulary mapping
+open-when: shape:backend-heavy, signal:transactional-email, signal:resend, signal:email-provider-adapter, signal:email-feedback-webhook
+skip-when: signal:no-email-surface, signal:non-resend-provider
+owns: RSD-M1, RSD-M2, RSD-M3, RSD-M4, RSD-M5
+```
+
+**Keywords:** Resend, REST, fetch, Idempotency-Key, tags, User-Agent, Svix, webhook signature, whsec, raw body, email.bounced, email.complained, email.suppressed
+
+Reads with: [email-provider-core.md](email-provider-core.md), [email-delivery-mandatory.md](email-delivery-mandatory.md). This file is the Resend-specific adapter; it satisfies the core rules and does not restate them.
+
+Purpose: An optional example of implementing a Resend-backed `EmailProvider` over REST without an SDK, with a Svix-signed bounce and complaint feedback webhook. This example does not select a default provider; make that choice against the adopting product's requirements, and compare current provider prices, quotas, and terms before adoption.
+
+---
+
+## **RSD-M** — Resend adapter rules
+
+| ID | Rule | Consequence | Verify |
+|----|------|-------------|--------|
+| **RSD-M1** | Call the documented REST endpoint with the platform `fetch` when the integration is one send call — an SDK is a new dependency and needs approval ([**EMP-C2**](email-provider-core.md)). Every request carries `Authorization: Bearer <key>`, a `User-Agent` (Resend rejects a request without one with 403), `redirect: 'error'` and a bounded timeout composed with the caller's abort signal. The key is a sending-only key from the environment, its `re_` shape validated at boot ([**EMP-M8**](email-provider-mandatory.md)). | Silent 403 on every send, an unbounded hung send, or an over-privileged leaked key. | Inspect the adapter's request headers, timeout and env schema. |
+| **RSD-M2** | Send the app `messageId` ([**EMP-M11**](email-provider-mandatory.md)) as the `Idempotency-Key` header, and stamp `messageId` and the email type as tags (ASCII letters, digits, `_`, `-`, at most 256 characters) under tag names defined once and read by both the adapter and the webhook contract. The provider deduplicates a key for 24 hours, so the outbox retry window ([**EDP-M4**](email-delivery-mandatory.md)) **MUST** stay shorter than that. | Duplicate mail on a retried send, or bounce events that cannot be matched to the original send. | The key and tags are set from `messageId`; retry window below 24 h. |
+| **RSD-M3** | Classify from structured evidence only: no HTTP response is an unknown outcome, except a connection that was provably never established (DNS failure, refused, connect timeout), which is transient; 401/403 is a configuration fault; the shared transient status set (408, 409, 429, 5xx) is transient — a retry under the same idempotency key cannot double-send — except a 429 whose machine `name` is the provider's daily or monthly sending-quota error, which **MUST** map to its own registered non-retryable code (a spent quota does not reopen inside the retry window, so retrying only burns attempts and hides the cause); any other 4xx is a rejection; a 2xx without an `id` is an invalid response. From an error body read only the machine `name`, through the safe-identity validator; never the free-text `message`. | Blind replay of an accepted send, a permanent fault retried as transient, or provider free text (possibly an address) in logs. | Inspect the classifier against the registered codes and the shared transient-status authority. |
+| **RSD-M4** | The feedback webhook **MUST** verify the Svix signature before any body field is read: HMAC-SHA256 over the exact raw bytes `svix-id + "." + svix-timestamp + "." + body`, keyed by the base64-decoded part of the `whsec_` secret, accepted if any `v1` entry of the space-separated `svix-signature` list matches under a constant-time comparison, with a ±5-minute timestamp tolerance. The raw bytes are captured by a parser mounted on that path only, ahead of the global JSON parser — a re-serialised body does not reproduce the signed bytes. Replays are skipped on the signed `svix-id` in a cross-instance store, and the endpoint acknowledges only after the suppression write. A missing secret fails closed as a configuration fault, and is asserted at boot whenever delivery is enabled ([**EDP-M9**](email-delivery-mandatory.md) unfed-authority). | Forged events suppressing arbitrary addresses, every genuine event rejected, or an unfed suppression authority. | Inspect the verifier and the parser mount order; check a published Svix example vector and a tampered body against the verifier. |
+| **RSD-M5** | Only three events may feed the suppression authority: `email.bounced` with `bounce.type` `Permanent`, `email.complained`, and `email.suppressed` with a recognised provider-list type. `Transient` and `Undetermined` bounces are refused on the metric channel; an unrecognised bounce or suppression type is refused on the alert channel and still acknowledged ([**EDP-M5**](email-delivery-mandatory.md) unclassifiable-feedback). Every other event type is acknowledged as a named no-op without validating its payload, so a shape change in an event the sink does not consume cannot raise an alert or trigger provider redelivery. | A transient bounce suppressing a live address, a silent vocabulary gap, or a redelivery storm. | Inspect the classifier's total mapping and the contract's type pre-filter. |

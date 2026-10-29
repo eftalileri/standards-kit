@@ -1,0 +1,49 @@
+# Outbound call time budgets (worst case against the client transport timeout)
+
+```kit-cover
+type: normative
+part-of: README.md
+binds: BHE obligations for an outbound provider call made inside a synchronous HTTP request — the explicit per-attempt bound, the one shared deadline, the worst-case arithmetic proved against the client transport timeout, and the discipline that re-verifies it when any of the three numbers moves
+open-when: shape:backend-heavy, signal:http-handler, signal:outbound-call, signal:process-local-cache
+skip-when: signal:client-only, signal:no-http-handler-change
+owns: BHE-M9, BHE-M10, BHE-M11, BHE-N4
+```
+
+Part of [Backend HTTP efficiency (server handlers and outbound calls)](backend-http-efficiency.md). The agent execution contract (**BHE-C1**–**BHE-C3**), the deliverable-scope row (**BHE-M1**), the deduplication, coherence, call-budget and fan-out rows (**BHE-M2**–**BHE-M8**, **BHE-M12**) and the prohibitions **BHE-N1**–**BHE-N3** are defined there and bind this band — in particular **BHE-M1**'s Technical-plan/Risk obligation and **BHE-M6**'s call budget, which the last workflow step below completes with a *time* budget. The topic's complete band set is [backend-http-efficiency.md](backend-http-efficiency.md) (entry), [set-loading-and-query-fan-out.md](set-loading-and-query-fan-out.md) (**BHE-M13**, **BHE-N5** — set loading) and this file.
+
+
+References: [backend-http-efficiency.md](backend-http-efficiency.md) (**BHE-M1**, **BHE-M6**, **BHE-N2** — the deliverable scope, call budget and authz prohibition these rows depend on); [README.md](README.md); [markdown-authoring.md](../authoring/markdown-authoring.md) (M5, M7); [cross-impact-analysis.md](../authoring/cross-impact-analysis.md) (XIA-M1, XIA-M3); [error-policy.md](../error-policy/error-policy.md) (the registered, retryable error code a budget exhaustion must raise); [redis.md](../redis/redis.md) (GRDS1 — why a process-local budget is not a cross-instance one); [monorepo-architecture.md](../monorepo/monorepo-architecture.md) when the client/server timeout authorities span workspaces.
+
+---
+
+## **MUST**
+
+**BHE-M9**: Outbound time budget (server worst case < client transport timeout): For any outbound provider call made inside a synchronous HTTP request, the server's worst-case total duration — every attempt plus every backoff wait — **MUST** be provably below the calling client's transport timeout, with a documented safety margin. "Provably" means the number is derivable by static arithmetic from declared values: `(maxRetries + 1) x perAttemptTimeout + Σ backoff`. Giving each attempt a fresh timeout while leaving the total unbounded is forbidden — the client closes the socket first, the server keeps working, and the request ends with no honest error envelope on either side. The client transport timeout is a single authority (one HTTP-client config value); the server budget **MUST** be compared against that value, not against a locally repeated copy of the number.
+
+**BHE-M10**: Per-attempt bound + one shared deadline: Every outbound attempt **MUST** carry an explicit upper bound (provider-SDK `timeout`, `AbortSignal`, or equivalent) — relying on a library default is forbidden, because SDK defaults are commonly minutes long. When a request performs more than one outbound flight for the same operation (retry loop, cache-generation retry loop, plus a final direct read), all of them **MUST** share one absolute deadline created once per request; each flight derives its own limit from the remaining budget. Restarting the budget per loop turn multiplies the worst case by the loop count. When the shared budget is exhausted, the code **MUST** fail loud with a registered, retryable error code — never a fabricated result, silent empty value, or continued waiting.
+
+For a multi-stage read (cache, provider job, database, cache write), the deadline covers every awaited stage. A promise race or provider wait hint alone is insufficient: the transport must accept cancellation, a remotely running job must have a server-side expiry and a bounded cancel attempt (a job billed by scanned volume also carries a server-side billed-volume ceiling on every submission, the same store's scheduled jobs included, because a time limit bounds duration, not cost; reaching it is the registered read or write failure, never a partial result), and a database operation must receive the remaining execution limit and cancellation signal. An incomplete result or abandoned background job is not a successful read. For paged provider results, completion must be established on each received page; a prior page's completed flag cannot authorize accepting a later incomplete or malformed page. The aggregate limit is measured against the actual endpoint consumer's transport configuration, including clients in another repository. This cross-process cancellation and per-page completeness property needs provider and database semantics plus the consumer's configuration; a single-file AST cannot prove it, so use a cross-file check where the client configuration is available; otherwise record and review the measured comparison.
+
+Deadline loser continuation: A response-level timeout race does not cancel the losing async chain. After each awaited cache read, factory, or connection acquisition, re-check the same deadline before beginning another provider call or cache/audit write. Pass the same signal into a datastore command where its driver supports cancellation. An operation already submitted to a datastore can still settle after the response; do not describe a race alone as cancellation. This ordering is a call-graph property across the cache helper, caller, and driver; a single-file lint predicate cannot prove it without reproducing their runtime semantics, so this remains a review obligation alongside the total-budget and per-attempt checks.
+
+**BHE-M11**: Budget change discipline: Changing a retry count, per-attempt timeout, or client transport timeout changes this arithmetic. Any such edit **MUST** re-verify **BHE-M9** in the same change. When the values are available across modules or workspaces, use a repository-aware comparison; if a client timeout is external or unavailable, document that limit and review against the consumer's declared timeout.
+
+Post-commit side effects (**BHE-M9** clarification): Bounding the provider flight alone does not prove the HTTP request's total time when database, cache, or response construction still follows it. If the domain mutation has already committed, a provider timeout converted to an HTTP error misstates the durable result and can invite a duplicate client retry. Move non-response-critical provider work behind a durable, same-transaction domain intent and a leased worker when the request cannot prove the complete margin. The intent records the immutable event; the provider delivery ledger decides whether a push was accepted, failed, cancelled, or remains outcome-unknown. A process-local `void` continuation after the response is not a durable handoff. This call-graph and cross-transaction property needs a repository-aware check where its inputs are available, plus review of the commit boundary; a single-file AST cannot prove where the domain commit and client timeout occur.
+
+## **MUST NOT**
+
+**BHE-N4**: **MUST NOT** declare a retry policy that defines an attempt count without also declaring a total time budget (**BHE-M9**). **MUST NOT** let a retry helper hand every attempt a fresh, full-length timeout. **MUST NOT** duplicate the client transport timeout number into server code as a second copy of that authority — read/compare it, do not restate it.
+
+---
+
+## Enforcement (mechanical)
+
+Type-level → no lint rule. "A retry policy declares an attempt count but no total budget" is made unrepresentable by the retry helper's option type: the total budget and the per-attempt timeout are required fields, so a policy without them does not compile. Stated limit: (a) a retry loop written by hand, outside the shared helper; (b) the type only binds callers of the helper; (c) such a loop can exceed the client transport timeout; (d) the helper is the single retry authority and a hand-rolled loop is a review finding.
+
+Cross-file / cross-workspace arithmetic → repository-aware check or review. The **BHE-M9** inequality cannot be decided from one file when the client timeout and server retry policy live in different modules or workspaces. A repository-aware check can resolve the authorities, compute `(maxRetries + 1) × perAttemptTimeout + Σ backoff`, and compare the result with the client timeout plus the required margin. Where that linkage is unavailable, document the measured inputs and review the comparison; keep the per-attempt bound as a separate obligation.
+
+Scope note: an endpoint consumed by a client whose transport configuration is outside the project remains bound by **BHE-M10** (every attempt bounded). **BHE-M9** must be compared against that client's documented timeout; if the value cannot be verified from the available sources, record the unresolved comparison and its owner rather than suppressing the per-attempt requirement.
+
+## Workflow (minimal) — continues the entry file's steps 1-3
+
+4: When the work adds or edits an outbound provider call inside a request, state the **BHE-M9** time budget explicitly: the per-attempt bound, the attempt count, the backoff total, the derived worst case, the client transport timeout, and the resulting margin. A **BHE-M6** *call* budget without a *time* budget is incomplete for outbound work.

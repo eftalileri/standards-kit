@@ -1,0 +1,138 @@
+# standards-kit - retired rule identities. LOOKED UP, NEVER READ.
+#
+# Compact non-reuse authority: one row per identity a kit rule once carried and that must never
+# name an obligation again. It holds no rule text and is not a completion archive.
+#
+#   <identity><TAB><kit-root-relative file whose Document-type line mirrors the gap><TAB><class><TAB><record>
+#
+#     grep "^BE-M10	" retired-rule-ids.tsv        (run from the kit root)
+#
+# HAND-KEPT BY NECESSITY, NOT BY PREFERENCE (KIT-ENF-4): "this number was once used" is not a
+# property of the current tree - a deleted rule leaves nothing to derive from, and a register
+# derived from the gap sentences would shrink the moment one of those sentences was edited away,
+# which is exactly the reuse this file exists to stop. Column 1 is therefore written by hand and
+# column 2 is the derivable half, kept true in BOTH directions by review (KIT-RET-5).
+#
+# NOT AN AUTHORITY FOR - it joins, it replaces nothing:
+#   which identities are LIVE and where       -> rule-id-index.tsv (kit root; generated on demand by tools/kit-lookups.mjs)
+#   how a deletion or move is carried out     -> KIT-CHG-1 .. KIT-CHG-6
+#   when a rule may be retired at all         -> KIT-RET-1 .. KIT-RET-6
+#
+# CLASS is one of: superseded | subject-removed | mirror-to-citation | owner-decision | unrecorded
+#   `unrecorded` is legitimate ONLY for a gap that predates this ledger: a seeded ledger records
+#   what the tree can prove and never invents a reason (KIT-RET-5).
+# A BARE identity (M9, Q1) is keyed by column 1 AND column 2: it is retired in that file only and
+#   stays live in every other file that defines the same string (KIT-RET-5).
+# RECORD is the successor identity when the class is `superseded` (it must resolve in the live
+#   index), otherwise `-`.
+#
+# NO FENCE (KIT-LIM-12): no running check re-verifies this ledger unless the adopting project
+# documents one and records its actual scope. Review keeps both directions true: a
+# retired number never returns as a live definition, no kit file other than its mirror names it,
+# every row's gap sentence still stands, and a `superseded` row's successor still resolves.
+#
+# STATED LIMIT: completeness is editorial - a deletion that wrote neither a ledger row nor a gap
+# sentence leaves no trace either half can see (KIT-RET-7).
+BE-M5	en/build-environment/build-environment-repository-and-scripts.md	unrecorded	-
+BE-M10	en/build-environment/build-environment-repository-and-scripts.md	subject-removed	-
+FP-M2	en/false-positive/guard-runtime-rules.md	superseded	FP-M20
+I18N-RN-S2	en/internationalization-rn/internationalization-rn.md	superseded	I18N-CAT-M4
+KIT-LIM-1	en/authoring/kit-stated-limits.md	subject-removed	-
+KIT-LIM-2	en/authoring/kit-stated-limits.md	owner-decision	-
+KIT-LIM-4	en/authoring/kit-stated-limits.md	owner-decision	-
+KIT-LIM-5	en/authoring/kit-stated-limits.md	owner-decision	-
+KIT-LIM-8	en/authoring/kit-stated-limits.md	owner-decision	-
+KIT-LIM-9	en/authoring/kit-stated-limits.md	owner-decision	-
+KIT-LIM-10	en/authoring/kit-stated-limits.md	subject-removed	-
+KIT-LIM-11	en/authoring/kit-stated-limits.md	subject-removed	-
+KIT-RCH-2	en/authoring/kit-rule-reachability.md	superseded	KIT-RCH-1
+KIT-RCH-3	en/authoring/kit-rule-reachability.md	owner-decision	-
+KIT-RCH-4	en/authoring/kit-rule-reachability.md	superseded	KIT-RCH-1
+KIT-RCH-5	en/authoring/kit-rule-reachability.md	owner-decision	-
+KIT-RCH-6	en/authoring/kit-rule-reachability.md	owner-decision	-
+KIT-RCH-7	en/authoring/kit-rule-reachability.md	owner-decision	-
+KIT-RCH-8	en/authoring/kit-rule-reachability.md	owner-decision	-
+KIT-RCH-9	en/authoring/kit-rule-reachability.md	superseded	KIT-ADD-4
+M9	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q1	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q2	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q3	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q4	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q5	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q6	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q7	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q8	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+Q9	en/agent-planning/agent-planning-obligations.md	owner-decision	-
+SEL-M2	en/agent-planning/agent-planning-procedure.md	superseded	SEL-M1
+SEL-M3	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-M4	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-M5	en/agent-planning/agent-planning-procedure.md	superseded	SEL-M1
+SEL-M6	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-M7	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-M8	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-M9	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-N1	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+SEL-N2	en/agent-planning/agent-planning-procedure.md	owner-decision	-
+FP-M1	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M3	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M5	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M6	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M7	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M8	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M9	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M10	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M12	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M13	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M14	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M15	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M16	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-N1	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-N5	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-N8	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-N9	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-N11	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-LC1	en/false-positive/guard-runtime-rules.md	subject-removed	-
+FP-M11	en/false-positive/guard-runtime-rules.md	superseded	FP-M4
+FP-D1	en/false-positive/rules.md	subject-removed	-
+FP-D2	en/false-positive/rules.md	subject-removed	-
+FP-D5	en/false-positive/rules.md	subject-removed	-
+FP-D6	en/false-positive/rules.md	subject-removed	-
+FP-MS7	en/false-positive/mechanism-selection.md	subject-removed	-
+BE-C2	en/build-environment/build-environment.md	owner-decision	-
+BE-C4	en/build-environment/build-environment.md	owner-decision	-
+BE-C5	en/build-environment/build-environment.md	owner-decision	-
+C6	en/_meta/agent-contract.md	superseded	C2
+C8	en/_meta/agent-contract.md	superseded	C3
+C9	en/_meta/agent-contract.md	subject-removed	-
+C11	en/_meta/agent-contract.md	superseded	C4
+C2	en/logging-policy/logging-policy.md	owner-decision	-
+C5	en/logging-policy/logging-policy.md	owner-decision	-
+C6	en/logging-policy/logging-policy.md	owner-decision	-
+COD-C2	en/code-modularity/code-modularity.md	owner-decision	-
+COD-C3	en/code-modularity/code-modularity.md	owner-decision	-
+COD-C4	en/code-modularity/code-modularity.md	subject-removed	-
+COD-M1	en/code-modularity/code-modularity.md	owner-decision	-
+COD-M2	en/code-modularity/code-modularity.md	owner-decision	-
+COD-N1	en/code-modularity/code-modularity.md	owner-decision	-
+COD-N2	en/code-modularity/code-modularity.md	owner-decision	-
+SEC-GC-2	en/security/security-governance.md	owner-decision	-
+SEC-GC-4	en/security/security-governance.md	owner-decision	-
+SEC-GC-5	en/security/security-governance.md	owner-decision	-
+SEC-GC-8	en/security/security-governance.md	subject-removed	-
+IDEMP-C2	en/idempotency/idempotency.md	owner-decision	-
+IDEMP-C3	en/idempotency/idempotency.md	owner-decision	-
+IDEMP-C4	en/idempotency/idempotency.md	owner-decision	-
+RDS-C2	en/redis/redis.md	owner-decision	-
+RDS-C3	en/redis/redis.md	owner-decision	-
+RDS-C4	en/redis/redis.md	owner-decision	-
+NOTIF-C2	en/expo-notifications/expo-notifications-core.md	owner-decision	-
+NOTIF-C3	en/expo-notifications/expo-notifications-core.md	owner-decision	-
+NOTIF-C5	en/expo-notifications/expo-notifications-core.md	owner-decision	-
+NOTIF-C6	en/expo-notifications/expo-notifications-core.md	owner-decision	-
+NOTIF-C8	en/expo-notifications/expo-notifications-core.md	owner-decision	-
+NOTIF-C11	en/expo-notifications/expo-notifications-core.md	owner-decision	-
+NOTIF-C12	en/expo-notifications/expo-notifications-core.md	subject-removed	-
+Q1	en/tanstack-query/mutations-optimistic-strategy.md	superseded	MUT-M28
+Q2	en/tanstack-query/mutations-optimistic-strategy.md	superseded	MUT-M28
+Q3	en/tanstack-query/mutations-optimistic-strategy.md	superseded	MUT-M28
+G1b	en/tanstack-query/mutations-cache-sync.md	superseded	G1
