@@ -12,6 +12,7 @@ This guide takes you from an empty repository to a working setup in about 30 min
 | `en/_meta/` | How to read the kit: precedence, the agent contract, the routing aid. Only `agent-contract.md` and `precedence.md` bind. |
 | `agent-notes/` | An empty note registry for deferred observations and plan divergences. |
 | `templates/CLAUDE.template.md` | A root agent file (`CLAUDE.md` / `AGENTS.md`) template, taken from a project where this setup works well, with all project facts replaced by placeholders. |
+| `templates/skills/task-orchestration/` | An optional Claude Code skill for running implementation work with several autonomous agents: outcome-sized assignments, one independent review per item, one release owner, a run ledger. |
 | `tools/` | Zero-dependency Node scripts that generate the lookup tables and the topic index. |
 | `*.tsv` (root) | Generated lookups: rule id → file, routing tokens, synonyms; plus the retired-id ledger. Never edited by hand. |
 
@@ -96,6 +97,16 @@ cp docs/standards-kit/templates/CLAUDE.template.md CLAUDE.md
 5. **Delete the HTML comment** at the top and any inline `<!-- … -->` hints once filled.
 
 Do **not** leave the template inside the kit named `CLAUDE.md`: Claude Code loads `CLAUDE.md` files from subfolders it reads, so a placeholder file would be loaded as real instructions.
+
+### Optional — the multi-agent orchestration skill
+
+If you run larger tasks with several agents in parallel, copy the skill into your repository and fill its placeholders:
+
+```bash
+mkdir -p .claude/skills && cp -R docs/standards-kit/templates/skills/task-orchestration .claude/skills/
+```
+
+Replace `<OWNER_LANGUAGE>`, `<AGENT_NOTES_PATH>` and `<KIT_ROOT>`. Keep the "Conditional client release" section only if the project ships a web or mobile client from this workflow, and replace `<WEB_RELEASE_COMMAND>` / `<OTA_PUBLISH_COMMAND>` with your own commands; otherwise delete it. The skill grants no push authority of its own: it pushes only where your root agent file allows it. Invoke it with `/task-orchestration`.
 
 ## Step 6 — First run
 
