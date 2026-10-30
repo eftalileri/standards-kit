@@ -55,6 +55,7 @@ Zero-trust band set (SEC-M-ZT-\*): the family is defined across the five files 6
 6f. [security-model-provider-calls.md](security-model-provider-calls.md) — SEC-M-LLM-1–SEC-M-LLM-4 (a feature that calls a language model: what a steered model may reach, model output as untrusted input, per-request and fail-closed daily bounds on billed calls, and what crosses to the provider and to observability)
 7. [security-client-transport.md](security-client-transport.md) — web headers, pinning, SEC-S-DEVICE, SEC-M-HIJ-1 SHOULD  
 8. [security-ci-and-monitoring.md](security-ci-and-monitoring.md) — applicable SEC-C1-A–SEC-C1-F gates by repository class and security surface (SEC-NA-1 for out-of-scope controls), SEC-S-C1-G, SEC-M-MON-1, SEC-M-MON-2  
+8a. [security-supply-chain-admission.md](security-supply-chain-admission.md) — SEC-SUP-1–SEC-SUP-6 (release-age cool-down, dependency install scripts off, new-package vetting note, exact direct-dependency versions, agent extensions inventoried, pinned and read rather than executed)  
 9. [security-program.md](security-program.md) — ownership, IR minimums, audit bridge (program layer)  
 10. [security-client-mobile-surface.md](security-client-mobile-surface.md) — optional screenshot/recording hardening (SEC-M-MOB-\* ) when product requires sensitive screens.
 

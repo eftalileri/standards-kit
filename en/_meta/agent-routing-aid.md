@@ -86,4 +86,5 @@ A task usually does several of these; declare the signals of every row it matche
 | checking a plan or document against the code | `signal:md-code-verification` |
 | an unclear requirement, or two rules that conflict | `signal:ambiguous-requirement`, `signal:conflicting-standards` |
 | a new layer, library or technology | `signal:stack-choice` |
+| an agent skill, plugin, subagent, hook, MCP server or rules file | `signal:agent-extension` |
 | this kit itself | `signal:kit-rule-change` |

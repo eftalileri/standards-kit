@@ -75,9 +75,9 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6312 rows, of which 2669 carry a space and 0 carry an
+# 6435 rows, of which 2721 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
-# 435 open tokens + 112 skip tokens are covered; 252 rows
+# 436 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
 # The kit file-size guidance does not apply: it is about single-read ingestion, and nothing
 # here is ingested whole (en/authoring/kit-structural-invariants.md KIT-INV-5).
@@ -131,14 +131,26 @@ admission-test-and-governance	signal:ci-pipeline	open	4	derived
 admission-test-and-governance	signal:kit-rule-change	open	13	derived
 admission-test-and-governance	signal:new-guard	open	10	derived
 admission-test-and-governance	signal:new-lint-rule	open	10	derived
+admitting third party code	signal:agent-extension	open	1	derived
+admitting third party code	signal:dependency-audit	open	2	derived
+admitting third party code	signal:dependency-upgrade	open	10	derived
+admitting third party code	signal:stack-choice	open	5	derived
+admitting-third-party-code	signal:agent-extension	open	1	derived
+admitting-third-party-code	signal:dependency-audit	open	2	derived
+admitting-third-party-code	signal:dependency-upgrade	open	10	derived
+admitting-third-party-code	signal:stack-choice	open	5	derived
 agent	signal:ambiguous-requirement	open	2	derived
 agent	signal:conflicting-standards	open	4	derived
 agent execution	signal:authoritative-execution-document	open	1	derived
 agent execution contract	signal:android-manifest	open	4	derived
 agent execution contract	signal:edge-to-edge	open	5	derived
 agent execution contract	signal:safe-area-insets	open	3	derived
+agent extension	signal:agent-extension	open	1	derived
+agent extension	signal:dependency-audit	open	2	derived
+agent extension	signal:dependency-upgrade	open	10	derived
+agent extension	signal:stack-choice	open	5	derived
 agent planning	signal:conflicting-standards	open	4	derived
-agent planning	signal:stack-choice	open	4	derived
+agent planning	signal:stack-choice	open	5	derived
 agent planning	signal:work-registry-update	open	2	derived
 agent runner protocol	signal:authoritative-execution-document	open	1	derived
 agent tools	signal:model-provider-call	open	1	derived
@@ -146,8 +158,12 @@ agent-execution	signal:authoritative-execution-document	open	1	derived
 agent-execution-contract	signal:android-manifest	open	4	derived
 agent-execution-contract	signal:edge-to-edge	open	5	derived
 agent-execution-contract	signal:safe-area-insets	open	3	derived
+agent-extension	signal:agent-extension	open	1	derived
+agent-extension	signal:dependency-audit	open	2	derived
+agent-extension	signal:dependency-upgrade	open	10	derived
+agent-extension	signal:stack-choice	open	5	derived
 agent-planning	signal:conflicting-standards	open	4	derived
-agent-planning	signal:stack-choice	open	4	derived
+agent-planning	signal:stack-choice	open	5	derived
 agent-planning	signal:work-registry-update	open	2	derived
 agent-runner-protocol	signal:authoritative-execution-document	open	1	derived
 agent-tools	signal:model-provider-call	open	1	derived
@@ -215,7 +231,7 @@ and migration	signal:mongo-cascade	open	6	derived
 and migration	signal:schema-migration	open	1	derived
 and migration	signal:shared-types	open	1	derived
 and monitoring	signal:ci-pipeline	open	4	derived
-and monitoring	signal:dependency-audit	open	1	derived
+and monitoring	signal:dependency-audit	open	2	derived
 and monitoring	signal:security-monitoring	open	1	derived
 and must not	signal:customer-package	open	5	derived
 and must not	signal:excel-export	open	4	derived
@@ -286,7 +302,7 @@ and-migration	signal:mongo-cascade	open	6	derived
 and-migration	signal:schema-migration	open	1	derived
 and-migration	signal:shared-types	open	1	derived
 and-monitoring	signal:ci-pipeline	open	4	derived
-and-monitoring	signal:dependency-audit	open	1	derived
+and-monitoring	signal:dependency-audit	open	2	derived
 and-monitoring	signal:security-monitoring	open	1	derived
 and-must-not	signal:customer-package	open	5	derived
 and-must-not	signal:excel-export	open	4	derived
@@ -766,7 +782,7 @@ build and environment	signal:build-config	open	7	derived
 build and environment	signal:build-script	open	6	derived
 build and environment	signal:ci-workflow	open	5	derived
 build and environment	signal:container-image	open	4	derived
-build and environment	signal:dependency-upgrade	open	9	derived
+build and environment	signal:dependency-upgrade	open	10	derived
 build and environment	signal:deployment-cohort	open	1	derived
 build and environment	signal:env-variable	open	10	derived
 build and environment	signal:generated-artifact	open	2	derived
@@ -781,7 +797,7 @@ build-and-environment	signal:build-config	open	7	derived
 build-and-environment	signal:build-script	open	6	derived
 build-and-environment	signal:ci-workflow	open	5	derived
 build-and-environment	signal:container-image	open	4	derived
-build-and-environment	signal:dependency-upgrade	open	9	derived
+build-and-environment	signal:dependency-upgrade	open	10	derived
 build-and-environment	signal:deployment-cohort	open	1	derived
 build-and-environment	signal:env-variable	open	10	derived
 build-and-environment	signal:generated-artifact	open	2	derived
@@ -943,13 +959,13 @@ check-verification-rules	signal:new-guard	open	10	derived
 check-verification-rules	signal:new-lint-rule	open	10	derived
 ci gate	signal:new-guard	open	10	alias
 ci gates	signal:ci-pipeline	open	4	derived
-ci gates	signal:dependency-audit	open	1	derived
+ci gates	signal:dependency-audit	open	2	derived
 ci gates	signal:security-monitoring	open	1	derived
 ci pipeline	signal:ci-pipeline	open	4	derived
 ci workflow	signal:ci-workflow	open	5	derived
 ci-gate	signal:new-guard	open	10	alias
 ci-gates	signal:ci-pipeline	open	4	derived
-ci-gates	signal:dependency-audit	open	1	derived
+ci-gates	signal:dependency-audit	open	2	derived
 ci-gates	signal:security-monitoring	open	1	derived
 ci-pipeline	signal:ci-pipeline	open	4	derived
 ci-workflow	signal:ci-workflow	open	5	derived
@@ -1205,7 +1221,7 @@ contract	signal:conflicting-standards	open	4	derived
 contract	signal:display-names	open	3	derived
 contract	signal:intl-support-evidence	open	1	derived
 contract	signal:label-enforcement	open	1	derived
-contract	signal:stack-choice	open	4	derived
+contract	signal:stack-choice	open	5	derived
 convention driven categories	signal:cache-lifecycle	open	11	derived
 convention driven categories	signal:new-semantic	open	13	derived
 convention driven categories	signal:schema-parse	open	2	derived
@@ -1214,13 +1230,21 @@ convention-driven-categories	signal:new-semantic	open	13	derived
 convention-driven-categories	signal:schema-parse	open	2	derived
 conversion events	signal:conversion-events	open	1	derived
 conversion-events	signal:conversion-events	open	1	derived
+cool down	signal:agent-extension	open	1	derived
+cool down	signal:dependency-audit	open	2	derived
+cool down	signal:dependency-upgrade	open	10	derived
+cool down	signal:stack-choice	open	5	derived
+cool-down	signal:agent-extension	open	1	derived
+cool-down	signal:dependency-audit	open	2	derived
+cool-down	signal:dependency-upgrade	open	10	derived
+cool-down	signal:stack-choice	open	5	derived
 core	signal:android-window-api	open	1	derived
 core	signal:anti-pattern-check	open	1	derived
 core	signal:cache-lifecycle	open	11	derived
 core	signal:cache-persistence	open	10	derived
 core	signal:client-state-store	open	7	derived
 core	signal:deep-link-open	open	5	derived
-core	signal:dependency-upgrade	open	9	derived
+core	signal:dependency-upgrade	open	10	derived
 core	signal:edge-to-edge	open	5	derived
 core	signal:email-provider	open	2	derived
 core	signal:key-value-storage-only	open	6	derived
@@ -1432,7 +1456,7 @@ decision gates	signal:cascade-gate-routing	open	1	derived
 decision gates	signal:ci-workflow	open	5	derived
 decision gates	signal:country-label	open	2	derived
 decision gates	signal:currency-label	open	2	derived
-decision gates	signal:dependency-upgrade	open	9	derived
+decision gates	signal:dependency-upgrade	open	10	derived
 decision gates	signal:display-names	open	3	derived
 decision gates	signal:edge-to-edge	open	5	derived
 decision gates	signal:editable-attribute	open	7	derived
@@ -1454,7 +1478,7 @@ decision gates	signal:safe-area-insets	open	3	derived
 decision gates	signal:security-gate-routing	open	2	derived
 decision gates	signal:timezone-resolution	open	8	derived
 decision gates	signal:token-storage	open	4	derived
-decision matrix	signal:stack-choice	open	4	derived
+decision matrix	signal:stack-choice	open	5	derived
 decision-functions	signal:domain-decision	open	2	derived
 decision-functions	signal:validation-function	open	2	derived
 decision-gates	signal:android-manifest	open	4	derived
@@ -1465,7 +1489,7 @@ decision-gates	signal:cascade-gate-routing	open	1	derived
 decision-gates	signal:ci-workflow	open	5	derived
 decision-gates	signal:country-label	open	2	derived
 decision-gates	signal:currency-label	open	2	derived
-decision-gates	signal:dependency-upgrade	open	9	derived
+decision-gates	signal:dependency-upgrade	open	10	derived
 decision-gates	signal:display-names	open	3	derived
 decision-gates	signal:edge-to-edge	open	5	derived
 decision-gates	signal:editable-attribute	open	7	derived
@@ -1487,7 +1511,7 @@ decision-gates	signal:safe-area-insets	open	3	derived
 decision-gates	signal:security-gate-routing	open	2	derived
 decision-gates	signal:timezone-resolution	open	8	derived
 decision-gates	signal:token-storage	open	4	derived
-decision-matrix	signal:stack-choice	open	4	derived
+decision-matrix	signal:stack-choice	open	5	derived
 declaration table	signal:check-rollout	open	2	derived
 declaration table	signal:new-guard	open	10	derived
 declaration table	signal:new-lint-rule	open	10	derived
@@ -1547,32 +1571,32 @@ denormalization	signal:denormalization	open	3	derived
 denormalization	signal:editable-attribute	open	7	derived
 denormalization	signal:impact-matrix	open	1	derived
 denormalization	signal:multi-tenant-write	open	1	derived
-dependency audit	signal:dependency-audit	open	1	derived
-dependency upgrade	signal:dependency-upgrade	open	9	derived
-dependency-audit	signal:dependency-audit	open	1	derived
-dependency-upgrade	signal:dependency-upgrade	open	9	derived
+dependency audit	signal:dependency-audit	open	2	derived
+dependency upgrade	signal:dependency-upgrade	open	10	derived
+dependency-audit	signal:dependency-audit	open	2	derived
+dependency-upgrade	signal:dependency-upgrade	open	10	derived
 deployable runtime floor	signal:build-config	open	7	derived
 deployable runtime floor	signal:build-script	open	6	derived
 deployable runtime floor	signal:container-image	open	4	derived
-deployable runtime floor	signal:dependency-upgrade	open	9	derived
+deployable runtime floor	signal:dependency-upgrade	open	10	derived
 deployable runtime floor	signal:lint-scope	open	5	derived
 deployable-runtime-floor	signal:build-config	open	7	derived
 deployable-runtime-floor	signal:build-script	open	6	derived
 deployable-runtime-floor	signal:container-image	open	4	derived
-deployable-runtime-floor	signal:dependency-upgrade	open	9	derived
+deployable-runtime-floor	signal:dependency-upgrade	open	10	derived
 deployable-runtime-floor	signal:lint-scope	open	5	derived
 deployment cohort	signal:deployment-cohort	open	1	derived
 deployment configuration source	signal:build-config	open	7	derived
 deployment configuration source	signal:build-script	open	6	derived
 deployment configuration source	signal:ci-workflow	open	5	derived
-deployment configuration source	signal:dependency-upgrade	open	9	derived
+deployment configuration source	signal:dependency-upgrade	open	10	derived
 deployment configuration source	signal:env-variable	open	10	derived
 deployment configuration source	signal:generated-artifact	open	2	derived
 deployment-cohort	signal:deployment-cohort	open	1	derived
 deployment-configuration-source	signal:build-config	open	7	derived
 deployment-configuration-source	signal:build-script	open	6	derived
 deployment-configuration-source	signal:ci-workflow	open	5	derived
-deployment-configuration-source	signal:dependency-upgrade	open	9	derived
+deployment-configuration-source	signal:dependency-upgrade	open	10	derived
 deployment-configuration-source	signal:env-variable	open	10	derived
 deployment-configuration-source	signal:generated-artifact	open	2	derived
 derivation and mapper	signal:money-derivation	open	2	derived
@@ -1934,12 +1958,12 @@ environment	signal:env-variable	open	10	derived
 environment	signal:generated-artifact	open	2	derived
 environment key authority	signal:build-config	open	7	derived
 environment key authority	signal:container-image	open	4	derived
-environment key authority	signal:dependency-upgrade	open	9	derived
+environment key authority	signal:dependency-upgrade	open	10	derived
 environment key authority	signal:env-variable	open	10	derived
 environment key authority	signal:lint-scope	open	5	derived
 environment-key-authority	signal:build-config	open	7	derived
 environment-key-authority	signal:container-image	open	4	derived
-environment-key-authority	signal:dependency-upgrade	open	9	derived
+environment-key-authority	signal:dependency-upgrade	open	10	derived
 environment-key-authority	signal:env-variable	open	10	derived
 environment-key-authority	signal:lint-scope	open	5	derived
 erasure	signal:authorization	open	8	derived
@@ -2015,9 +2039,17 @@ evidence-first	signal:authoritative-execution-document	open	1	derived
 exact match	signal:new-language	open	7	derived
 exact match	signal:translation-catalog	open	8	derived
 exact match	signal:user-facing-string	open	8	derived
+exact version pin	signal:agent-extension	open	1	derived
+exact version pin	signal:dependency-audit	open	2	derived
+exact version pin	signal:dependency-upgrade	open	10	derived
+exact version pin	signal:stack-choice	open	5	derived
 exact-match	signal:new-language	open	7	derived
 exact-match	signal:translation-catalog	open	8	derived
 exact-match	signal:user-facing-string	open	8	derived
+exact-version-pin	signal:agent-extension	open	1	derived
+exact-version-pin	signal:dependency-audit	open	2	derived
+exact-version-pin	signal:dependency-upgrade	open	10	derived
+exact-version-pin	signal:stack-choice	open	5	derived
 example and length	signal:country-config	open	1	derived
 example and length	signal:phone-mask	open	2	derived
 example and length	signal:phone-number	open	6	derived
@@ -2066,7 +2098,7 @@ expo	signal:client-sqlite	open	1	derived
 expo	signal:conflict-policy	open	1	derived
 expo	signal:connectivity-gate	open	1	derived
 expo	signal:crash-session	open	2	derived
-expo	signal:dependency-upgrade	open	9	derived
+expo	signal:dependency-upgrade	open	10	derived
 expo	signal:device-credential	open	1	derived
 expo	signal:device-location	open	2	derived
 expo	signal:directions-handoff	open	2	derived
@@ -2337,7 +2369,7 @@ funnel tracking	signal:funnel-tracking	open	1	derived
 funnel-tracking	signal:funnel-tracking	open	1	derived
 gate coverage proof	signal:build-config	open	7	derived
 gate coverage proof	signal:container-image	open	4	derived
-gate coverage proof	signal:dependency-upgrade	open	9	derived
+gate coverage proof	signal:dependency-upgrade	open	10	derived
 gate coverage proof	signal:env-variable	open	10	derived
 gate coverage proof	signal:lint-scope	open	5	derived
 gate scope	signal:new-language	open	7	derived
@@ -2354,7 +2386,7 @@ gate validation	signal:phone-timezone-handoff	open	2	derived
 gate validation	signal:timezone-phone	open	5	derived
 gate-coverage-proof	signal:build-config	open	7	derived
 gate-coverage-proof	signal:container-image	open	4	derived
-gate-coverage-proof	signal:dependency-upgrade	open	9	derived
+gate-coverage-proof	signal:dependency-upgrade	open	10	derived
 gate-coverage-proof	signal:env-variable	open	10	derived
 gate-coverage-proof	signal:lint-scope	open	5	derived
 gate-scope	signal:new-language	open	7	derived
@@ -2398,7 +2430,7 @@ global ssot	signal:client-state-store	open	7	derived
 global ssot	signal:cross-package-import	open	3	derived
 global ssot	signal:dead-code-removal	open	3	derived
 global ssot	signal:deep-link-open	open	5	derived
-global ssot	signal:dependency-upgrade	open	9	derived
+global ssot	signal:dependency-upgrade	open	10	derived
 global ssot	signal:duplicate-writer	open	5	derived
 global ssot	signal:empty-state	open	4	derived
 global ssot	signal:file-size	open	1	derived
@@ -2445,7 +2477,7 @@ global-ssot	signal:client-state-store	open	7	derived
 global-ssot	signal:cross-package-import	open	3	derived
 global-ssot	signal:dead-code-removal	open	3	derived
 global-ssot	signal:deep-link-open	open	5	derived
-global-ssot	signal:dependency-upgrade	open	9	derived
+global-ssot	signal:dependency-upgrade	open	10	derived
 global-ssot	signal:duplicate-writer	open	5	derived
 global-ssot	signal:empty-state	open	4	derived
 global-ssot	signal:file-size	open	1	derived
@@ -2541,6 +2573,10 @@ heartbeat	signal:background-worker	open	9	derived
 heartbeat	signal:crash-sink	open	7	derived
 heartbeat	signal:scheduled-job	open	12	derived
 home	signal:screen-composition	open	2	alias
+hook	signal:agent-extension	open	1	derived
+hook	signal:dependency-audit	open	2	derived
+hook	signal:dependency-upgrade	open	10	derived
+hook	signal:stack-choice	open	5	derived
 horizontal scaling	signal:cross-instance-state	open	5	alias
 horizontal-scaling	signal:cross-instance-state	open	5	alias
 hosted runtime	signal:hosted-runtime	open	1	derived
@@ -2690,7 +2726,15 @@ input	signal:rate-limit	open	4	derived
 input	signal:security-headers	open	2	derived
 input	signal:ssrf	open	2	derived
 install referrer	signal:install-referrer	open	1	derived
+install script	signal:agent-extension	open	1	derived
+install script	signal:dependency-audit	open	2	derived
+install script	signal:dependency-upgrade	open	10	derived
+install script	signal:stack-choice	open	5	derived
 install-referrer	signal:install-referrer	open	1	derived
+install-script	signal:agent-extension	open	1	derived
+install-script	signal:dependency-audit	open	2	derived
+install-script	signal:dependency-upgrade	open	10	derived
+install-script	signal:stack-choice	open	5	derived
 instant only	signal:instant-only	skip	6	derived
 instant-only	signal:instant-only	skip	6	derived
 internationalization	signal:language-switch	open	2	derived
@@ -2833,10 +2877,10 @@ level and channel routing	signal:logger-wrapper	open	3	derived
 level-and-channel-routing	signal:failure-boundary	open	2	derived
 level-and-channel-routing	signal:log-write	open	11	derived
 level-and-channel-routing	signal:logger-wrapper	open	3	derived
-library upgrade policy	signal:dependency-upgrade	open	9	derived
+library upgrade policy	signal:dependency-upgrade	open	10	derived
 library upgrade policy	signal:edge-to-edge	open	5	derived
 library upgrade policy	signal:gradle-deprecation-warning	open	1	derived
-library-upgrade-policy	signal:dependency-upgrade	open	9	derived
+library-upgrade-policy	signal:dependency-upgrade	open	10	derived
 library-upgrade-policy	signal:edge-to-edge	open	5	derived
 library-upgrade-policy	signal:gradle-deprecation-warning	open	1	derived
 lifecycle	signal:api-key	open	1	derived
@@ -2844,10 +2888,18 @@ lifecycle	signal:env-config	open	1	derived
 lifecycle	signal:pii-masking	open	3	derived
 lifecycle	signal:secret-handling	open	1	derived
 lifecycle	signal:token-storage	open	4	derived
+lifecycle script	signal:agent-extension	open	1	derived
+lifecycle script	signal:dependency-audit	open	2	derived
+lifecycle script	signal:dependency-upgrade	open	10	derived
+lifecycle script	signal:stack-choice	open	5	derived
 lifecycle status economics	signal:customer-package	open	5	derived
 lifecycle status economics	signal:financials	open	6	derived
 lifecycle status economics	signal:payment-field	open	10	derived
 lifecycle status economics	signal:payment-status	open	7	derived
+lifecycle-script	signal:agent-extension	open	1	derived
+lifecycle-script	signal:dependency-audit	open	2	derived
+lifecycle-script	signal:dependency-upgrade	open	10	derived
+lifecycle-script	signal:stack-choice	open	5	derived
 lifecycle-status-economics	signal:customer-package	open	5	derived
 lifecycle-status-economics	signal:financials	open	6	derived
 lifecycle-status-economics	signal:payment-field	open	10	derived
@@ -3082,9 +3134,17 @@ markdown authoring	signal:plan-deliverable	open	4	derived
 markdown-authoring	signal:analysis-deliverable	open	2	derived
 markdown-authoring	signal:md-code-verification	open	6	derived
 markdown-authoring	signal:plan-deliverable	open	4	derived
-material	signal:dependency-upgrade	open	9	derived
+material	signal:dependency-upgrade	open	10	derived
 material	signal:edge-to-edge	open	5	derived
 material	signal:gradle-deprecation-warning	open	1	derived
+mcp server	signal:agent-extension	open	1	derived
+mcp server	signal:dependency-audit	open	2	derived
+mcp server	signal:dependency-upgrade	open	10	derived
+mcp server	signal:stack-choice	open	5	derived
+mcp-server	signal:agent-extension	open	1	derived
+mcp-server	signal:dependency-audit	open	2	derived
+mcp-server	signal:dependency-upgrade	open	10	derived
+mcp-server	signal:stack-choice	open	5	derived
 md code verification	signal:md-code-verification	open	6	derived
 md-code-verification	signal:md-code-verification	open	6	derived
 mechanical enforcement	shape:mechanical-enforcement	open	24	derived
@@ -3412,6 +3472,10 @@ never by default	signal:standards-change	open	6	derived
 never-by-default	signal:kit-rule-change	open	13	derived
 never-by-default	signal:standards-change	open	6	derived
 new check	signal:new-guard	open	10	alias
+new dependency	signal:agent-extension	open	1	derived
+new dependency	signal:dependency-audit	open	2	derived
+new dependency	signal:dependency-upgrade	open	10	derived
+new dependency	signal:stack-choice	open	5	derived
 new guard	signal:new-guard	open	10	derived
 new language	signal:new-language	open	7	derived
 new lint rule	signal:new-lint-rule	open	10	derived
@@ -3421,6 +3485,10 @@ new rule	signal:standards-change	open	6	derived
 new semantic	signal:new-semantic	open	13	derived
 new source file	signal:source-file-change	open	7	alias
 new-check	signal:new-guard	open	10	alias
+new-dependency	signal:agent-extension	open	1	derived
+new-dependency	signal:dependency-audit	open	2	derived
+new-dependency	signal:dependency-upgrade	open	10	derived
+new-dependency	signal:stack-choice	open	5	derived
 new-guard	signal:new-guard	open	10	derived
 new-language	signal:new-language	open	7	derived
 new-lint-rule	signal:new-lint-rule	open	10	derived
@@ -3626,7 +3694,7 @@ normative	signal:currency-label	open	2	derived
 normative	signal:customer-package	open	5	derived
 normative	signal:dashboard-metric	open	1	derived
 normative	signal:dead-code-removal	open	3	derived
-normative	signal:dependency-upgrade	open	9	derived
+normative	signal:dependency-upgrade	open	10	derived
 normative	signal:device-credential	open	1	derived
 normative	signal:device-location	open	2	derived
 normative	signal:directions-handoff	open	2	derived
@@ -3706,7 +3774,7 @@ normative	signal:sensitive-screen-lock	open	1	derived
 normative	signal:seo-crawlability	open	1	derived
 normative	signal:shared-type	open	3	derived
 normative	signal:source-file-change	open	7	derived
-normative	signal:stack-choice	open	4	derived
+normative	signal:stack-choice	open	5	derived
 normative	signal:state-machine	open	1	derived
 normative	signal:submit-ux	open	1	derived
 normative	signal:subscription-cleanup	open	1	derived
@@ -3877,14 +3945,30 @@ output-encoding	signal:output-encoding	open	1	derived
 ownership	signal:incident-response	open	1	derived
 ownership	signal:operational-readiness	open	1	derived
 ownership	signal:security-ownership	open	1	derived
+package admission	signal:agent-extension	open	1	derived
+package admission	signal:dependency-audit	open	2	derived
+package admission	signal:dependency-upgrade	open	10	derived
+package admission	signal:stack-choice	open	5	derived
 package boundaries	signal:cross-package-import	open	3	derived
 package boundaries	signal:shared-type	open	3	derived
 package boundaries	signal:source-file-change	open	7	derived
 package boundaries	signal:workspace-boundary	open	4	derived
+package-admission	signal:agent-extension	open	1	derived
+package-admission	signal:dependency-audit	open	2	derived
+package-admission	signal:dependency-upgrade	open	10	derived
+package-admission	signal:stack-choice	open	5	derived
 package-boundaries	signal:cross-package-import	open	3	derived
 package-boundaries	signal:shared-type	open	3	derived
 package-boundaries	signal:source-file-change	open	7	derived
 package-boundaries	signal:workspace-boundary	open	4	derived
+packages and agent extensions	signal:agent-extension	open	1	derived
+packages and agent extensions	signal:dependency-audit	open	2	derived
+packages and agent extensions	signal:dependency-upgrade	open	10	derived
+packages and agent extensions	signal:stack-choice	open	5	derived
+packages-and-agent-extensions	signal:agent-extension	open	1	derived
+packages-and-agent-extensions	signal:dependency-audit	open	2	derived
+packages-and-agent-extensions	signal:dependency-upgrade	open	10	derived
+packages-and-agent-extensions	signal:stack-choice	open	5	derived
 paged fetch	signal:paged-fetch	open	3	derived
 paged-fetch	signal:paged-fetch	open	3	derived
 pagination	signal:pagination	open	3	derived
@@ -4129,6 +4213,10 @@ plan vs code drift	signal:plan-vs-code-drift	open	4	derived
 plan-deliverable	signal:plan-deliverable	open	4	derived
 plan-reconciliation	signal:plan-vs-code-drift	open	4	alias
 plan-vs-code-drift	signal:plan-vs-code-drift	open	4	derived
+plugin	signal:agent-extension	open	1	derived
+plugin	signal:dependency-audit	open	2	derived
+plugin	signal:dependency-upgrade	open	10	derived
+plugin	signal:stack-choice	open	5	derived
 polling only	signal:polling-only	skip	1	derived
 polling-only	signal:polling-only	skip	1	derived
 port and adapter	signal:email-provider	open	2	derived
@@ -4222,12 +4310,12 @@ principles-and-precedence	signal:duplicate-writer	open	5	derived
 principles-and-precedence	signal:new-semantic	open	13	derived
 principles-and-precedence	signal:ssot-authority	open	11	derived
 privacy	signal:pii-masking	open	3	alias
-problem class	signal:stack-choice	open	4	derived
+problem class	signal:stack-choice	open	5	derived
 problem class extraction	signal:conflicting-standards	open	4	derived
-problem class extraction	signal:stack-choice	open	4	derived
-problem-class	signal:stack-choice	open	4	derived
+problem class extraction	signal:stack-choice	open	5	derived
+problem-class	signal:stack-choice	open	5	derived
 problem-class-extraction	signal:conflicting-standards	open	4	derived
-problem-class-extraction	signal:stack-choice	open	4	derived
+problem-class-extraction	signal:stack-choice	open	5	derived
 procedure	signal:kit-rule-change	open	13	derived
 procedure	signal:standards-change	open	6	derived
 process lifecycle	signal:process-lifecycle	open	1	derived
@@ -4474,7 +4562,7 @@ react native	signal:client-sqlite	open	1	derived
 react native	signal:conflict-policy	open	1	derived
 react native	signal:connectivity-gate	open	1	derived
 react native	signal:crash-session	open	2	derived
-react native	signal:dependency-upgrade	open	9	derived
+react native	signal:dependency-upgrade	open	10	derived
 react native	signal:device-credential	open	1	derived
 react native	signal:device-location	open	2	derived
 react native	signal:directions-handoff	open	2	derived
@@ -4533,7 +4621,7 @@ react-native	signal:client-sqlite	open	1	derived
 react-native	signal:conflict-policy	open	1	derived
 react-native	signal:connectivity-gate	open	1	derived
 react-native	signal:crash-session	open	2	derived
-react-native	signal:dependency-upgrade	open	9	derived
+react-native	signal:dependency-upgrade	open	10	derived
 react-native	signal:device-credential	open	1	derived
 react-native	signal:device-location	open	2	derived
 react-native	signal:directions-handoff	open	2	derived
@@ -4691,12 +4779,20 @@ registry	signal:new-semantic	open	13	derived
 registry	signal:ssot-authority	open	11	derived
 registry update	signal:registry-update	open	3	derived
 registry-update	signal:registry-update	open	3	derived
+release age	signal:agent-extension	open	1	derived
+release age	signal:dependency-audit	open	2	derived
+release age	signal:dependency-upgrade	open	10	derived
+release age	signal:stack-choice	open	5	derived
 release evidence and signals	signal:force-update-policy	open	2	derived
 release evidence and signals	signal:release-promotion	open	1	derived
 release evidence and signals	signal:store-release-evidence	open	1	derived
 release gate	signal:release-gate	open	1	derived
 release identity	signal:release-identity	open	2	derived
 release promotion	signal:release-promotion	open	1	derived
+release-age	signal:agent-extension	open	1	derived
+release-age	signal:dependency-audit	open	2	derived
+release-age	signal:dependency-upgrade	open	10	derived
+release-age	signal:stack-choice	open	5	derived
 release-evidence-and-signals	signal:force-update-policy	open	2	derived
 release-evidence-and-signals	signal:release-promotion	open	1	derived
 release-evidence-and-signals	signal:store-release-evidence	open	1	derived
@@ -4991,10 +5087,10 @@ robots-txt	signal:robots-txt	open	1	derived
 role	signal:authorization	open	8	alias
 role and conflict routing	signal:ambiguous-requirement	open	2	derived
 role and conflict routing	signal:conflicting-standards	open	4	derived
-role and rules	signal:stack-choice	open	4	derived
+role and rules	signal:stack-choice	open	5	derived
 role-and-conflict-routing	signal:ambiguous-requirement	open	2	derived
 role-and-conflict-routing	signal:conflicting-standards	open	4	derived
-role-and-rules	signal:stack-choice	open	4	derived
+role-and-rules	signal:stack-choice	open	5	derived
 route guard	signal:route-guard	open	2	derived
 route params	signal:route-params	open	1	derived
 route-guard	signal:route-guard	open	2	derived
@@ -5005,7 +5101,7 @@ routing	signal:navigation-change	open	4	derived
 routing	signal:navigation-file-layout	open	1	derived
 routing	signal:route-guard	open	2	derived
 routing	signal:route-params	open	1	derived
-routing	signal:stack-choice	open	4	derived
+routing	signal:stack-choice	open	5	derived
 row scoped suppression	signal:guard-authoring	open	2	derived
 row scoped suppression	signal:kit-rule-change	open	13	derived
 row scoped suppression	signal:new-guard	open	10	derived
@@ -5094,6 +5190,14 @@ rules	signal:new-guard	open	10	derived
 rules	signal:new-lint-rule	open	10	derived
 rules	signal:new-semantic	open	13	derived
 rules	signal:registry-update	open	3	derived
+rules file	signal:agent-extension	open	1	derived
+rules file	signal:dependency-audit	open	2	derived
+rules file	signal:dependency-upgrade	open	10	derived
+rules file	signal:stack-choice	open	5	derived
+rules-file	signal:agent-extension	open	1	derived
+rules-file	signal:dependency-audit	open	2	derived
+rules-file	signal:dependency-upgrade	open	10	derived
+rules-file	signal:stack-choice	open	5	derived
 runtime budget	signal:guard-authoring	open	2	derived
 runtime budget	signal:kit-rule-change	open	13	derived
 runtime budget	signal:new-guard	open	10	derived
@@ -5206,7 +5310,7 @@ screen-title	signal:new-language	open	7	derived
 screen-title	signal:notification	open	5	derived
 screen-title	signal:translation-catalog	open	8	derived
 screen-title	signal:user-facing-string	open	8	derived
-screens	signal:dependency-upgrade	open	9	derived
+screens	signal:dependency-upgrade	open	10	derived
 screens	signal:edge-to-edge	open	5	derived
 screens	signal:gradle-deprecation-warning	open	1	derived
 screenshot	signal:analytics-attribution	open	4	derived
@@ -5253,6 +5357,7 @@ secrets	signal:token-storage	open	4	derived
 secure store selection	signal:secure-store-selection	open	1	derived
 secure-store-selection	signal:secure-store-selection	open	1	derived
 security	signal:access-logging	open	1	derived
+security	signal:agent-extension	open	1	derived
 security	signal:analytics-attribution	open	4	derived
 security	signal:api-endpoint	open	3	derived
 security	signal:api-key	open	1	derived
@@ -5266,7 +5371,8 @@ security	signal:crash-reporting	open	1	derived
 security	signal:credential-handling	open	1	derived
 security	signal:cross-tenant-disclosure	open	4	derived
 security	signal:cryptography	open	1	derived
-security	signal:dependency-audit	open	1	derived
+security	signal:dependency-audit	open	2	derived
+security	signal:dependency-upgrade	open	10	derived
 security	signal:device-session	open	1	derived
 security	signal:enforcement-type	open	2	derived
 security	signal:env-config	open	1	derived
@@ -5299,6 +5405,7 @@ security	signal:security-headers	open	2	derived
 security	signal:security-monitoring	open	1	derived
 security	signal:server-authority	open	2	derived
 security	signal:ssrf	open	2	derived
+security	signal:stack-choice	open	5	derived
 security	signal:subject-owned-resource	open	1	derived
 security	signal:tenant-isolation	open	1	derived
 security	signal:threat-model	open	1	derived
@@ -5490,6 +5597,10 @@ size guard and md	signal:md-code-verification	open	6	derived
 size guard and md	signal:plan-deliverable	open	4	derived
 size-guard-and-md	signal:md-code-verification	open	6	derived
 size-guard-and-md	signal:plan-deliverable	open	4	derived
+skill	signal:agent-extension	open	1	derived
+skill	signal:dependency-audit	open	2	derived
+skill	signal:dependency-upgrade	open	10	derived
+skill	signal:stack-choice	open	5	derived
 skip when	signal:kit-rule-change	open	13	derived
 skip when	signal:standards-change	open	6	derived
 skip-when	signal:kit-rule-change	open	13	derived
@@ -5607,8 +5718,8 @@ ssot-registry	signal:authority-move	open	2	derived
 ssot-registry	signal:new-semantic	open	13	derived
 ssot-registry	signal:registry-update	open	3	derived
 ssrf	signal:ssrf	open	2	derived
-stack choice	signal:stack-choice	open	4	derived
-stack-choice	signal:stack-choice	open	4	derived
+stack choice	signal:stack-choice	open	5	derived
+stack-choice	signal:stack-choice	open	5	derived
 staged ratchet	signal:check-rollout	open	2	alias
 staged rollout	signal:check-rollout	open	2	alias
 staged-ratchet	signal:check-rollout	open	2	alias
@@ -5617,8 +5728,8 @@ stale document	signal:plan-vs-code-drift	open	4	alias
 stale plan	signal:plan-vs-code-drift	open	4	alias
 stale-document	signal:plan-vs-code-drift	open	4	alias
 stale-plan	signal:plan-vs-code-drift	open	4	alias
-standard file	signal:stack-choice	open	4	derived
-standard-file	signal:stack-choice	open	4	derived
+standard file	signal:stack-choice	open	5	derived
+standard-file	signal:stack-choice	open	5	derived
 standards	signal:kit-rule-change	open	13	derived
 standards	signal:standards-change	open	6	derived
 standards change	signal:standards-change	open	6	derived
@@ -5748,6 +5859,14 @@ supervisor-alert	signal:scheduled-job	open	12	derived
 supervisor-sampling	signal:background-worker	open	9	derived
 supervisor-sampling	signal:crash-sink	open	7	derived
 supervisor-sampling	signal:scheduled-job	open	12	derived
+supply chain	signal:agent-extension	open	1	derived
+supply chain	signal:dependency-audit	open	2	derived
+supply chain	signal:dependency-upgrade	open	10	derived
+supply chain	signal:stack-choice	open	5	derived
+supply-chain	signal:agent-extension	open	1	derived
+supply-chain	signal:dependency-audit	open	2	derived
+supply-chain	signal:dependency-upgrade	open	10	derived
+supply-chain	signal:stack-choice	open	5	derived
 supported languages	signal:locale-sourced-label	open	4	derived
 supported languages	signal:new-language	open	7	derived
 supported languages	signal:notification	open	5	derived
@@ -5798,7 +5917,7 @@ syntactic-prefilter	signal:guard-authoring	open	2	derived
 syntactic-prefilter	signal:kit-rule-change	open	13	derived
 syntactic-prefilter	signal:new-guard	open	10	derived
 syntactic-prefilter	signal:new-lint-rule	open	10	derived
-system	signal:stack-choice	open	4	derived
+system	signal:stack-choice	open	5	derived
 tab label	signal:locale-sourced-label	open	4	derived
 tab label	signal:new-language	open	7	derived
 tab label	signal:notification	open	5	derived
@@ -5827,7 +5946,7 @@ tanstack query	signal:app-cold-start	open	1	derived
 tanstack query	signal:cache-lifecycle	open	11	derived
 tanstack query	signal:cache-persistence	open	10	derived
 tanstack query	signal:cross-domain-write	open	7	derived
-tanstack query	signal:dependency-upgrade	open	9	derived
+tanstack query	signal:dependency-upgrade	open	10	derived
 tanstack query	signal:derived-field	open	7	derived
 tanstack query	signal:duplicate-writer	open	5	derived
 tanstack query	signal:empty-state	open	4	derived
@@ -5847,7 +5966,7 @@ tanstack-query	signal:app-cold-start	open	1	derived
 tanstack-query	signal:cache-lifecycle	open	11	derived
 tanstack-query	signal:cache-persistence	open	10	derived
 tanstack-query	signal:cross-domain-write	open	7	derived
-tanstack-query	signal:dependency-upgrade	open	9	derived
+tanstack-query	signal:dependency-upgrade	open	10	derived
 tanstack-query	signal:derived-field	open	7	derived
 tanstack-query	signal:duplicate-writer	open	5	derived
 tanstack-query	signal:empty-state	open	4	derived
@@ -6102,6 +6221,10 @@ typing-and-failure-propagation	signal:index-migration	open	10	derived
 typing-and-failure-propagation	signal:persistence-layer	open	11	derived
 typing-and-failure-propagation	signal:repository-write	open	6	derived
 typing-and-failure-propagation	signal:writer-cutover	open	7	derived
+typosquatting	signal:agent-extension	open	1	derived
+typosquatting	signal:dependency-audit	open	2	derived
+typosquatting	signal:dependency-upgrade	open	10	derived
+typosquatting	signal:stack-choice	open	5	derived
 ui binding	signal:financial-list-ui	open	1	derived
 ui binding	signal:payment-field	open	10	derived
 ui binding	signal:payment-status	open	7	derived

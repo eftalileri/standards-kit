@@ -1,0 +1,37 @@
+# Security — admitting third-party code: packages and agent extensions
+
+```kit-cover
+type: normative
+part-of: README.md
+binds: SEC-SUP-1 to SEC-SUP-6 -- when a published package version may be adopted, how installs treat dependency install scripts, what a new package is checked for before approval, how a direct dependency is declared, and how agent extensions are inventoried, pinned and reviewed as dependencies
+open-when: signal:dependency-upgrade, signal:stack-choice, signal:dependency-audit, signal:agent-extension
+skip-when: none
+owns: SEC-SUP-1, SEC-SUP-2, SEC-SUP-3, SEC-SUP-4, SEC-SUP-5, SEC-SUP-6
+```
+
+**Keywords:** supply chain, new dependency, package admission, cool-down, release age, install script, lifecycle script, exact version pin, typosquatting, agent extension, skill, plugin, hook, MCP server, rules file
+
+Scope
+
+- Included: The admission side of third-party code — the release-age cool-down, dependency install scripts, the vetting note a new package carries into its approval, exact declaration of direct dependencies, and agent extensions (skills, plugins, subagent and command definitions, hooks, MCP servers, rules files) treated as dependencies.
+- Excluded: Whether a new dependency is approved at all and the incident-time prohibition ([**SEC-GC-11**](security-governance.md)); vulnerability scanning, its thresholds and update tooling ([**SEC-C1-B**](security-ci-and-monitoring.md), [**SEC-C1-F**](security-ci-and-monitoring.md)); patching a package locally ([**BE-M31**](../build-environment/build-environment-repository-and-scripts.md)); the product's own model and agent features. Extensions configured only in one user's own scope outside the repository belong to that user's inventory, not the repository's.
+- Document type: Normative — **SEC-SUP-1**–**SEC-SUP-6**.
+
+References: [security-governance.md](security-governance.md) (**SEC-GC-11**); [security-ci-and-monitoring.md](security-ci-and-monitoring.md) (**SEC-C1**); [**BE-M13**](../build-environment/build-environment-repository-and-scripts.md) (generated lockfiles); [**ENA-GV3**](../enforcement-architecture/enforcement-admission.md).
+
+---
+
+## Rules
+
+| ID | Rule | Verify |
+|----|------|--------|
+| **SEC-SUP-1** | A third-party package version **MUST NOT** be adopted — declared, upgraded to, or brought in by a lockfile change the author makes — until it has been published for at least the project's cool-down period, seven days unless the project states a longer one; the automated dependency updater **MUST** carry the same cool-down in its configuration. The one exception is a version that fixes a live advisory affecting the project, adopted after its release diff has been read. Reason: hijacked and malicious releases are usually detected and withdrawn within days, while a version adopted on its first day has had no outside scrutiny. | The updater configuration is the mechanism for automated proposals; a manual adoption is review-held against the registry's publish time. |
+| **SEC-SUP-2** | Installing dependencies **MUST NOT** run dependency lifecycle scripts (pre-install, install, post-install, prepare) by default: each package root's committed package-manager configuration, and every build or deploy install command, disables them. A dependency whose script is genuinely required is named in one allowlist per package root and its script is run by an explicit command after the install; the project's own install-time steps are explicit entries that the install instructions and the build path call, never an install hook. Reason: an install script runs arbitrary code with the installing developer's or builder's credentials before any review, audit or test has seen the package, and it is the main propagation path of registry worms. | Static inspection of each root's configuration and each install command. Real-run observation: a clean install runs no lifecycle script, every script-bearing dependency still works, and the project's own step still runs. |
+| **SEC-SUP-3** | Before a new direct dependency is put forward for the approval [**SEC-GC-11**](security-governance.md) requires, its author **MUST** record a vetting note: the exact registry name, confirmed from the publisher's own documentation and never from a model's suggestion or a search snippet; the publisher and maintainers, with any recent ownership or maintainer change; a public source repository whose tagged source matches the published artifact; release cadence and last release; open advisories; install scripts; and the number of transitive packages it adds. A package with no linked source, a name one edit away from a better-known package, an unexplained recent maintainer change or no maintenance activity **MUST NOT** be put forward unless the note states why that risk is accepted. Reason: typosquats, invented names an attacker registers later, hijacked accounts and abandoned packages are each visible in registry metadata before install and invisible after it. | Review-held: the vetting note accompanies the approval request. |
+| **SEC-SUP-4** | A direct dependency that is added or changed **MUST** be declared at one exact version — no range operator, dist-tag, branch or URL — and each package root's configuration **MUST** make the package manager save exact versions; the lockfile stays committed and automated and release installs use the clean-install command. Reason: a range lets the next lockfile regeneration adopt an unreviewed release, bypassing **SEC-SUP-1** and **SEC-SUP-3**. | Static inspection of the manifest diff and each root's configuration. |
+| **SEC-SUP-5** | Every agent extension a repository provides or configures — skills, plugins, subagent and command definitions, hooks, MCP servers, and rules files that steer an agent — **MUST** be listed in one inventory, its single authority, with its location, source (first-party, or the upstream URL), pinned revision (exact version or full commit SHA, plus a content hash for vendored third-party files), the capabilities it is granted (tools, commands, network, credentials) and its last review. An extension absent from the inventory **MUST NOT** be committed or configured. Reason: an extension runs code or steers an agent that holds the developer's credentials, so it is a dependency and needs the pinning and review a package gets. | Review-held: the inventory is compared with the repository's extension locations in the change that adds, updates or removes one. A tree-to-inventory guard is declined: no unlisted-extension defect is recorded ([**ENA-A2**](../enforcement-architecture/enforcement-admission.md)). |
+| **SEC-SUP-6** | A third-party agent extension **MUST** be reviewed by reading every file at the exact revision being pinned, fetched read-only to a location from which no agent loads configuration; it **MUST NOT** be installed, enabled, cloned into an agent configuration directory or executed to find out what it does, and any part that cannot be read as text (binary, archive, obfuscated content) blocks adoption. It is never auto-updated: a new revision moves the pin only after its diff is reviewed the same way, and a changed tool description from a remote server counts as a new revision. Reason: installing or enabling an extension runs its hooks, load-time commands and server code before the review that was meant to decide whether to trust it. | Review-held: the inventory's review entry names the revision read and the decision. |
+
+---
+
+Part of: [README.md](README.md).

@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3232 rows; the longest is 86 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3238 rows; the longest is 86 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2507 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2513 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -2846,6 +2846,12 @@ SEC-S-MON-2	en/security/security-ci-and-monitoring.md
 SEC-S-RL-2	en/security/security-rate-limiting.md
 SEC-S-SBOM-1	en/security/security-ci-and-monitoring.md
 SEC-S-UP-2	en/security/security-backend-controls.md
+SEC-SUP-1	en/security/security-supply-chain-admission.md
+SEC-SUP-2	en/security/security-supply-chain-admission.md
+SEC-SUP-3	en/security/security-supply-chain-admission.md
+SEC-SUP-4	en/security/security-supply-chain-admission.md
+SEC-SUP-5	en/security/security-supply-chain-admission.md
+SEC-SUP-6	en/security/security-supply-chain-admission.md
 SEL-M1	en/agent-planning/agent-planning-procedure.md
 SES-M1	en/email-provider/amazon-ses-adapter.md
 SES-M2	en/email-provider/amazon-ses-adapter.md
