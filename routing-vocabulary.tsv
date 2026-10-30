@@ -14,12 +14,12 @@
 # carried on the line: one grep gives both the files and their place in the order.
 # File paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. 2067 rows. The kit byte ceiling does not apply: it
+# DO NOT OPEN THIS FILE WHOLE. 2073 rows. The kit byte ceiling does not apply: it
 # measures single-read ingestion, and nothing here is ingested whole. Exemption and reasoning:
 # en/authoring/kit-structural-invariants.md KIT-INV-5.
 #
-# 437 distinct open-when tokens (430 signals, of which
-# 202 name exactly one file; widest is signal:idempotency at 15),
+# 440 distinct open-when tokens (433 signals, of which
+# 204 name exactly one file; widest is signal:idempotency at 15),
 # and 112 distinct skip-when tokens. A skip-when token is a NEGATIVE the task
 # declares about itself ("this change is client-only"); P5 requires those declarations, because
 # a skip condition no task ever states can never fire and is decoration.
@@ -941,7 +941,8 @@ signal:editable-attribute	open	7	en/editable-persistent-attributes/execution-asy
 signal:editable-attribute	open	7	en/editable-persistent-attributes/mongo-cascade-indexing.md
 signal:editable-attribute	open	7	en/editable-persistent-attributes/ssot-denormalization-and-impact-matrix.md
 signal:editable-attribute	open	7	en/editable-persistent-attributes/validation-types-and-migration.md
-signal:email-deliverability	open	1	en/email-provider/email-delivery-mandatory.md
+signal:email-deliverability	open	2	en/email-provider/email-delivery-mandatory.md
+signal:email-deliverability	open	2	en/security/security-infrastructure-and-accounts.md
 signal:email-feedback-webhook	open	1	en/email-provider/resend-adapter.md
 signal:email-outbox	open	2	en/email-provider/email-delivery-mandatory.md
 signal:email-outbox	open	2	en/email-provider/email-delivery-pipeline.md
@@ -1120,6 +1121,7 @@ signal:index-migration	open	10	en/repository/repository-unowned-structure-resolu
 signal:infinite-list	open	3	en/pagination-ux-rn/pagination-ux-rn.md
 signal:infinite-list	open	3	en/performance/react-lists-and-memoization.md
 signal:infinite-list	open	3	en/tanstack-query/ui-startup-and-persistence-boundaries.md
+signal:infrastructure-security	open	1	en/security/security-infrastructure-and-accounts.md
 signal:inline-style	open	2	en/styling/stylesheet-and-theme-tokens.md
 signal:inline-style	open	2	en/styling/styling.md
 signal:install-referrer	open	1	en/analytics-rn/ad-platform-attribution.md
@@ -1534,12 +1536,13 @@ signal:no-screen-layout-change	skip	7	en/styling/styling.md
 signal:no-screen-layout-change	skip	7	en/styling/theming-and-appearance.md
 signal:no-screen-layout-change	skip	7	en/styling/ui-primitives.md
 signal:no-secret-surface	skip	1	en/security/security-secrets-and-logging.md
-signal:no-security-surface	skip	6	en/security/security-authorization-decision-gates.md
-signal:no-security-surface	skip	6	en/security/security-ci-and-monitoring.md
-signal:no-security-surface	skip	6	en/security/security-decision-gates.md
-signal:no-security-surface	skip	6	en/security/security-enforcement-and-na.md
-signal:no-security-surface	skip	6	en/security/security-governance.md
-signal:no-security-surface	skip	6	en/security/security-program.md
+signal:no-security-surface	skip	7	en/security/security-authorization-decision-gates.md
+signal:no-security-surface	skip	7	en/security/security-ci-and-monitoring.md
+signal:no-security-surface	skip	7	en/security/security-decision-gates.md
+signal:no-security-surface	skip	7	en/security/security-enforcement-and-na.md
+signal:no-security-surface	skip	7	en/security/security-governance.md
+signal:no-security-surface	skip	7	en/security/security-infrastructure-and-accounts.md
+signal:no-security-surface	skip	7	en/security/security-program.md
 signal:no-sensitive-screen	skip	1	en/security/security-client-mobile-surface.md
 signal:no-server-state-change	skip	5	en/tanstack-query/queries-and-transforms.md
 signal:no-server-state-change	skip	5	en/tanstack-query/queries-authority-duplication.md
@@ -1625,6 +1628,7 @@ signal:online-only-flow	skip	1	en/offline-sync-strategy-rn/offline-sync-strategy
 signal:operational-readiness	open	1	en/security/security-program.md
 signal:optimistic-update	open	1	en/tanstack-query/mutations-optimistic-strategy.md
 signal:optimization-change	open	1	en/performance/performance.md
+signal:ota-update	open	1	en/security/security-infrastructure-and-accounts.md
 signal:other-backend-selected	skip	1	en/mmkv/mmkv.md
 signal:otp-delivery	open	1	en/email-provider/email-provider-mandatory.md
 signal:outbound-call	open	5	en/backend-http-efficiency/backend-http-efficiency.md
@@ -1814,6 +1818,7 @@ signal:release-gate	open	1	en/build-environment/build-environment-release-and-cu
 signal:release-identity	open	2	en/client-observability-rn/sdk-setup-and-pii-scrubbing.md
 signal:release-identity	open	2	en/feature-flags-rn/app-control-policy.md
 signal:release-promotion	open	1	en/feature-flags-rn/app-control-release-evidence.md
+signal:release-signing	open	1	en/security/security-infrastructure-and-accounts.md
 signal:remote-config	open	1	en/feature-flags-rn/feature-flags-rn.md
 signal:render-performance	open	4	en/performance/bundle-navigation-images-memory.md
 signal:render-performance	open	4	en/performance/cache-loading-and-stores-alignment.md
@@ -1893,8 +1898,9 @@ signal:screenshot-protection	open	1	en/security/security-client-mobile-surface.m
 signal:scroll-bottom-padding	open	1	en/android-edge-to-edge/safe-area-ssot.md
 signal:secret-handling	open	1	en/security/security-secrets-and-logging.md
 signal:secure-store-selection	open	1	en/security/security-governance.md
-signal:security-audit	open	2	en/security/security-enforcement-and-na.md
-signal:security-audit	open	2	en/security/security-program.md
+signal:security-audit	open	3	en/security/security-enforcement-and-na.md
+signal:security-audit	open	3	en/security/security-infrastructure-and-accounts.md
+signal:security-audit	open	3	en/security/security-program.md
 signal:security-gate-routing	open	2	en/security/security-authorization-decision-gates.md
 signal:security-gate-routing	open	2	en/security/security-decision-gates.md
 signal:security-governance	open	1	en/security/security-governance.md

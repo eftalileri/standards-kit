@@ -75,9 +75,9 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6516 rows, of which 2751 carry a space and 0 carry an
+# 6791 rows, of which 2874 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
-# 437 open tokens + 112 skip tokens are covered; 252 rows
+# 440 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
 # The kit file-size guidance does not apply: it is about single-read ingestion, and nothing
 # here is ingested whole (en/authoring/kit-structural-invariants.md KIT-INV-5).
@@ -87,10 +87,10 @@
 #
 a policy	signal:enforcement-type	open	2	derived
 a policy	signal:not-applicable-record	open	1	derived
-a policy	signal:security-audit	open	2	derived
+a policy	signal:security-audit	open	3	derived
 a-policy	signal:enforcement-type	open	2	derived
 a-policy	signal:not-applicable-record	open	1	derived
-a-policy	signal:security-audit	open	2	derived
+a-policy	signal:security-audit	open	3	derived
 access logging	signal:access-logging	open	1	derived
 access logging	signal:log-write	open	11	derived
 access logging	signal:request-correlation	open	2	derived
@@ -109,6 +109,16 @@ accessibility	signal:rn-screen-ui	open	8	derived
 accessibility	signal:screen-reader	open	1	derived
 accessibility label	signal:accessibility-label	open	3	derived
 accessibility-label	signal:accessibility-label	open	3	derived
+accounts and release keys	signal:email-deliverability	open	2	derived
+accounts and release keys	signal:infrastructure-security	open	1	derived
+accounts and release keys	signal:ota-update	open	1	derived
+accounts and release keys	signal:release-signing	open	1	derived
+accounts and release keys	signal:security-audit	open	3	derived
+accounts-and-release-keys	signal:email-deliverability	open	2	derived
+accounts-and-release-keys	signal:infrastructure-security	open	1	derived
+accounts-and-release-keys	signal:ota-update	open	1	derived
+accounts-and-release-keys	signal:release-signing	open	1	derived
+accounts-and-release-keys	signal:security-audit	open	3	derived
 actor class gate	signal:actor-class-gate	open	1	derived
 actor detach	signal:actor-detach	open	1	derived
 actor-class-gate	signal:actor-class-gate	open	1	derived
@@ -249,7 +259,7 @@ and offline first	signal:offline-ui	open	5	derived
 and offline first	signal:retry-ux	open	6	derived
 and operational readiness	signal:incident-response	open	1	derived
 and operational readiness	signal:operational-readiness	open	1	derived
-and operational readiness	signal:security-audit	open	2	derived
+and operational readiness	signal:security-audit	open	3	derived
 and operational readiness	signal:security-ownership	open	1	derived
 and orchestration	signal:cache-lifecycle	open	11	derived
 and orchestration	signal:cross-domain-write	open	7	derived
@@ -322,7 +332,7 @@ and-offline-first	signal:offline-ui	open	5	derived
 and-offline-first	signal:retry-ux	open	6	derived
 and-operational-readiness	signal:incident-response	open	1	derived
 and-operational-readiness	signal:operational-readiness	open	1	derived
-and-operational-readiness	signal:security-audit	open	2	derived
+and-operational-readiness	signal:security-audit	open	3	derived
 and-operational-readiness	signal:security-ownership	open	1	derived
 and-orchestration	signal:cache-lifecycle	open	11	derived
 and-orchestration	signal:cross-domain-write	open	7	derived
@@ -405,6 +415,11 @@ api key	signal:api-key	open	1	derived
 api list pagination	signal:cursor-paging	open	1	derived
 api list pagination	signal:list-endpoint	open	3	derived
 api list pagination	signal:pagination	open	3	derived
+api token scope	signal:email-deliverability	open	2	derived
+api token scope	signal:infrastructure-security	open	1	derived
+api token scope	signal:ota-update	open	1	derived
+api token scope	signal:release-signing	open	1	derived
+api token scope	signal:security-audit	open	3	derived
 api-36	signal:android-16-behavior	open	2	derived
 api-36	signal:android-manifest	open	4	derived
 api-36	signal:large-screen-layout	open	1	derived
@@ -416,6 +431,11 @@ api-key	signal:api-key	open	1	derived
 api-list-pagination	signal:cursor-paging	open	1	derived
 api-list-pagination	signal:list-endpoint	open	3	derived
 api-list-pagination	signal:pagination	open	3	derived
+api-token-scope	signal:email-deliverability	open	2	derived
+api-token-scope	signal:infrastructure-security	open	1	derived
+api-token-scope	signal:ota-update	open	1	derived
+api-token-scope	signal:release-signing	open	1	derived
+api-token-scope	signal:security-audit	open	3	derived
 apostrophe	signal:new-language	open	7	derived
 apostrophe	signal:translation-catalog	open	8	derived
 apostrophe	signal:user-facing-string	open	8	derived
@@ -537,10 +557,10 @@ audience eligibility	signal:audience-eligibility	open	2	derived
 audience-eligibility	signal:audience-eligibility	open	2	derived
 audit ssot	signal:enforcement-type	open	2	derived
 audit ssot	signal:not-applicable-record	open	1	derived
-audit ssot	signal:security-audit	open	2	derived
+audit ssot	signal:security-audit	open	3	derived
 audit-ssot	signal:enforcement-type	open	2	derived
 audit-ssot	signal:not-applicable-record	open	1	derived
-audit-ssot	signal:security-audit	open	2	derived
+audit-ssot	signal:security-audit	open	3	derived
 auth	signal:authority-lookup	open	2	derived
 auth	signal:client-auth-integration	open	2	derived
 auth	signal:client-state-store	open	7	derived
@@ -695,6 +715,11 @@ background-worker	signal:background-worker	open	9	derived
 background-worker	signal:email-outbox	open	2	derived
 background-worker	signal:email-worker	open	2	derived
 background-worker	signal:transactional-email	open	8	derived
+backup	signal:email-deliverability	open	2	derived
+backup	signal:infrastructure-security	open	1	derived
+backup	signal:ota-update	open	1	derived
+backup	signal:release-signing	open	1	derived
+backup	signal:security-audit	open	3	derived
 barrel export	signal:barrel-export	open	1	derived
 barrel-export	signal:barrel-export	open	1	derived
 batch load	signal:batch-load	open	1	derived
@@ -1093,11 +1118,21 @@ client-vs-server	signal:server-cache-boundary	open	1	derived
 code modularity	signal:file-size	open	1	derived
 code modularity	signal:module-split	open	1	derived
 code modularity	signal:source-file-change	open	7	derived
+code signing	signal:email-deliverability	open	2	derived
+code signing	signal:infrastructure-security	open	1	derived
+code signing	signal:ota-update	open	1	derived
+code signing	signal:release-signing	open	1	derived
+code signing	signal:security-audit	open	3	derived
 code traceability	signal:md-code-verification	open	6	derived
 code traceability	signal:plan-deliverable	open	4	derived
 code-modularity	signal:file-size	open	1	derived
 code-modularity	signal:module-split	open	1	derived
 code-modularity	signal:source-file-change	open	7	derived
+code-signing	signal:email-deliverability	open	2	derived
+code-signing	signal:infrastructure-security	open	1	derived
+code-signing	signal:ota-update	open	1	derived
+code-signing	signal:release-signing	open	1	derived
+code-signing	signal:security-audit	open	3	derived
 code-traceability	signal:md-code-verification	open	6	derived
 code-traceability	signal:plan-deliverable	open	4	derived
 cold start	signal:app-cold-start	open	1	derived
@@ -1234,8 +1269,28 @@ consecutive-failures	signal:crash-sink	open	7	derived
 consecutive-failures	signal:scheduled-job	open	12	derived
 consent capture	signal:consent-capture	open	1	derived
 consent-capture	signal:consent-capture	open	1	derived
+console mfa	signal:email-deliverability	open	2	derived
+console mfa	signal:infrastructure-security	open	1	derived
+console mfa	signal:ota-update	open	1	derived
+console mfa	signal:release-signing	open	1	derived
+console mfa	signal:security-audit	open	3	derived
+console-mfa	signal:email-deliverability	open	2	derived
+console-mfa	signal:infrastructure-security	open	1	derived
+console-mfa	signal:ota-update	open	1	derived
+console-mfa	signal:release-signing	open	1	derived
+console-mfa	signal:security-audit	open	3	derived
 container image	signal:container-image	open	4	derived
+container image digest	signal:email-deliverability	open	2	derived
+container image digest	signal:infrastructure-security	open	1	derived
+container image digest	signal:ota-update	open	1	derived
+container image digest	signal:release-signing	open	1	derived
+container image digest	signal:security-audit	open	3	derived
 container-image	signal:container-image	open	4	derived
+container-image-digest	signal:email-deliverability	open	2	derived
+container-image-digest	signal:infrastructure-security	open	1	derived
+container-image-digest	signal:ota-update	open	1	derived
+container-image-digest	signal:release-signing	open	1	derived
+container-image-digest	signal:security-audit	open	3	derived
 contract	signal:ambiguous-requirement	open	2	derived
 contract	signal:conflicting-standards	open	4	derived
 contract	signal:display-names	open	3	derived
@@ -1401,6 +1456,16 @@ customer-package	signal:customer-package	open	5	derived
 daily	signal:recurrence-schedule	open	2	alias
 daily notification	signal:notification	open	5	alias
 daily-notification	signal:notification	open	5	alias
+dangling dns	signal:email-deliverability	open	2	derived
+dangling dns	signal:infrastructure-security	open	1	derived
+dangling dns	signal:ota-update	open	1	derived
+dangling dns	signal:release-signing	open	1	derived
+dangling dns	signal:security-audit	open	3	derived
+dangling-dns	signal:email-deliverability	open	2	derived
+dangling-dns	signal:infrastructure-security	open	1	derived
+dangling-dns	signal:ota-update	open	1	derived
+dangling-dns	signal:release-signing	open	1	derived
+dangling-dns	signal:security-audit	open	3	derived
 dashboard metric	signal:dashboard-metric	open	1	derived
 dashboard-metric	signal:dashboard-metric	open	1	derived
 data access	signal:data-access-review	open	10	derived
@@ -1414,6 +1479,16 @@ data-access	signal:repository-write	open	6	derived
 data-access-review	signal:data-access-review	open	10	derived
 data-migration	signal:schema-migration	open	1	alias
 database	signal:repository-write	open	6	alias
+database user	signal:email-deliverability	open	2	derived
+database user	signal:infrastructure-security	open	1	derived
+database user	signal:ota-update	open	1	derived
+database user	signal:release-signing	open	1	derived
+database user	signal:security-audit	open	3	derived
+database-user	signal:email-deliverability	open	2	derived
+database-user	signal:infrastructure-security	open	1	derived
+database-user	signal:ota-update	open	1	derived
+database-user	signal:release-signing	open	1	derived
+database-user	signal:security-audit	open	3	derived
 date format	signal:date-format	open	2	derived
 date formatting	signal:currency-format	open	2	derived
 date formatting	signal:date-format	open	2	derived
@@ -1730,12 +1805,22 @@ dkim	signal:amazon-ses	open	1	derived
 dkim	signal:email-provider-adapter	open	2	derived
 dkim	signal:transactional-email	open	8	derived
 dmarc	signal:amazon-ses	open	1	derived
+dmarc	signal:email-deliverability	open	2	derived
 dmarc	signal:email-provider-adapter	open	2	derived
+dmarc	signal:infrastructure-security	open	1	derived
+dmarc	signal:ota-update	open	1	derived
+dmarc	signal:release-signing	open	1	derived
+dmarc	signal:security-audit	open	3	derived
 dmarc	signal:transactional-email	open	8	derived
 do not disturb	signal:notification-suppression	open	2	alias
 do-not-disturb	signal:notification-suppression	open	2	alias
 domain decision	signal:domain-decision	open	2	derived
 domain-decision	signal:domain-decision	open	2	derived
+domains	signal:email-deliverability	open	2	derived
+domains	signal:infrastructure-security	open	1	derived
+domains	signal:ota-update	open	1	derived
+domains	signal:release-signing	open	1	derived
+domains	signal:security-audit	open	3	derived
 double click	signal:idempotency	open	15	alias
 double submit	signal:idempotency	open	15	alias
 double tap	signal:idempotency	open	15	alias
@@ -1816,7 +1901,17 @@ e164 normalization	signal:e164-normalization	open	3	derived
 e164-normalization	signal:e164-normalization	open	3	derived
 eas build	signal:eas-build	open	1	derived
 eas-build	signal:eas-build	open	1	derived
+edge bypass	signal:email-deliverability	open	2	derived
+edge bypass	signal:infrastructure-security	open	1	derived
+edge bypass	signal:ota-update	open	1	derived
+edge bypass	signal:release-signing	open	1	derived
+edge bypass	signal:security-audit	open	3	derived
 edge to edge	signal:edge-to-edge	open	5	derived
+edge-bypass	signal:email-deliverability	open	2	derived
+edge-bypass	signal:infrastructure-security	open	1	derived
+edge-bypass	signal:ota-update	open	1	derived
+edge-bypass	signal:release-signing	open	1	derived
+edge-bypass	signal:security-audit	open	3	derived
 edge-to-edge	signal:edge-to-edge	open	5	derived
 editable attribute	signal:editable-attribute	open	7	derived
 editable persistent attributes	signal:async-job	open	1	derived
@@ -1853,8 +1948,8 @@ email complained	signal:email-feedback-webhook	open	1	derived
 email complained	signal:email-provider-adapter	open	2	derived
 email complained	signal:resend	open	1	derived
 email complained	signal:transactional-email	open	8	derived
-email deliverability	signal:email-deliverability	open	1	derived
-email delivery pipeline	signal:email-deliverability	open	1	derived
+email deliverability	signal:email-deliverability	open	2	derived
+email delivery pipeline	signal:email-deliverability	open	2	derived
 email delivery pipeline	signal:email-outbox	open	2	derived
 email delivery pipeline	signal:email-worker	open	2	derived
 email delivery pipeline	signal:transactional-email	open	8	derived
@@ -1883,8 +1978,8 @@ email-complained	signal:email-feedback-webhook	open	1	derived
 email-complained	signal:email-provider-adapter	open	2	derived
 email-complained	signal:resend	open	1	derived
 email-complained	signal:transactional-email	open	8	derived
-email-deliverability	signal:email-deliverability	open	1	derived
-email-delivery-pipeline	signal:email-deliverability	open	1	derived
+email-deliverability	signal:email-deliverability	open	2	derived
+email-delivery-pipeline	signal:email-deliverability	open	2	derived
 email-delivery-pipeline	signal:email-outbox	open	2	derived
 email-delivery-pipeline	signal:email-worker	open	2	derived
 email-delivery-pipeline	signal:transactional-email	open	8	derived
@@ -1940,7 +2035,7 @@ enforcement scope	signal:lint-scope	open	5	alias
 enforcement type	signal:enforcement-type	open	2	derived
 enforcement types and n	signal:enforcement-type	open	2	derived
 enforcement types and n	signal:not-applicable-record	open	1	derived
-enforcement types and n	signal:security-audit	open	2	derived
+enforcement types and n	signal:security-audit	open	3	derived
 enforcement-architecture	signal:ci-pipeline	open	4	derived
 enforcement-architecture	signal:guard-authoring	open	2	derived
 enforcement-architecture	signal:kit-rule-change	open	13	derived
@@ -1957,7 +2052,7 @@ enforcement-scope	signal:lint-scope	open	5	alias
 enforcement-type	signal:enforcement-type	open	2	derived
 enforcement-types-and-n	signal:enforcement-type	open	2	derived
 enforcement-types-and-n	signal:not-applicable-record	open	1	derived
-enforcement-types-and-n	signal:security-audit	open	2	derived
+enforcement-types-and-n	signal:security-audit	open	3	derived
 engagement	signal:engagement-inactivity	open	2	alias
 engagement inactivity	signal:engagement-inactivity	open	2	derived
 engagement-inactivity	signal:engagement-inactivity	open	2	derived
@@ -2606,6 +2701,21 @@ horizontal scaling	signal:cross-instance-state	open	5	alias
 horizontal-scaling	signal:cross-instance-state	open	5	alias
 hosted runtime	signal:hosted-runtime	open	1	derived
 hosted-runtime	signal:hosted-runtime	open	1	derived
+hosting	signal:email-deliverability	open	2	derived
+hosting	signal:infrastructure-security	open	1	derived
+hosting	signal:ota-update	open	1	derived
+hosting	signal:release-signing	open	1	derived
+hosting	signal:security-audit	open	3	derived
+hosting exposure	signal:email-deliverability	open	2	derived
+hosting exposure	signal:infrastructure-security	open	1	derived
+hosting exposure	signal:ota-update	open	1	derived
+hosting exposure	signal:release-signing	open	1	derived
+hosting exposure	signal:security-audit	open	3	derived
+hosting-exposure	signal:email-deliverability	open	2	derived
+hosting-exposure	signal:infrastructure-security	open	1	derived
+hosting-exposure	signal:ota-update	open	1	derived
+hosting-exposure	signal:release-signing	open	1	derived
+hosting-exposure	signal:security-audit	open	3	derived
 http handler	signal:http-handler	open	6	derived
 http status	signal:error-raise	open	8	alias
 http-handler	signal:http-handler	open	6	derived
@@ -2742,6 +2852,8 @@ infinite list	signal:infinite-list	open	3	derived
 infinite scroll	signal:infinite-list	open	3	alias
 infinite-list	signal:infinite-list	open	3	derived
 infinite-scroll	signal:infinite-list	open	3	alias
+infrastructure security	signal:infrastructure-security	open	1	derived
+infrastructure-security	signal:infrastructure-security	open	1	derived
 inline style	signal:inline-style	open	2	derived
 inline-style	signal:inline-style	open	2	derived
 input	signal:api-endpoint	open	3	derived
@@ -2884,6 +2996,16 @@ layout	signal:pdf-layout	open	1	derived
 layout	signal:pdf-preflight	open	1	derived
 layout	signal:pdf-report	open	5	derived
 layout	signal:resource-limits	open	1	derived
+least privilege	signal:email-deliverability	open	2	derived
+least privilege	signal:infrastructure-security	open	1	derived
+least privilege	signal:ota-update	open	1	derived
+least privilege	signal:release-signing	open	1	derived
+least privilege	signal:security-audit	open	3	derived
+least-privilege	signal:email-deliverability	open	2	derived
+least-privilege	signal:infrastructure-security	open	1	derived
+least-privilege	signal:ota-update	open	1	derived
+least-privilege	signal:release-signing	open	1	derived
+least-privilege	signal:security-audit	open	3	derived
 ledger	signal:kit-rule-change	open	13	derived
 ledger	signal:standards-change	open	6	derived
 ledger only reversal	signal:compensating-action	open	1	derived
@@ -3115,14 +3237,14 @@ m21 shutdown watchdog	signal:process-lifecycle	open	1	derived
 m21-shutdown-watchdog	signal:background-work	open	1	derived
 m21-shutdown-watchdog	signal:graceful-shutdown	open	1	derived
 m21-shutdown-watchdog	signal:process-lifecycle	open	1	derived
-mandatory rules	signal:email-deliverability	open	1	derived
+mandatory rules	signal:email-deliverability	open	2	derived
 mandatory rules	signal:email-outbox	open	2	derived
 mandatory rules	signal:email-provider	open	2	derived
 mandatory rules	signal:email-template	open	1	derived
 mandatory rules	signal:email-worker	open	2	derived
 mandatory rules	signal:otp-delivery	open	1	derived
 mandatory rules	signal:transactional-email	open	8	derived
-mandatory-rules	signal:email-deliverability	open	1	derived
+mandatory-rules	signal:email-deliverability	open	2	derived
 mandatory-rules	signal:email-outbox	open	2	derived
 mandatory-rules	signal:email-provider	open	2	derived
 mandatory-rules	signal:email-template	open	1	derived
@@ -3579,7 +3701,7 @@ no reporting surface	signal:no-reporting-surface	skip	1	derived
 no retry surface	signal:no-retry-surface	skip	1	derived
 no screen layout change	signal:no-screen-layout-change	skip	7	derived
 no secret surface	signal:no-secret-surface	skip	1	derived
-no security surface	signal:no-security-surface	skip	6	derived
+no security surface	signal:no-security-surface	skip	7	derived
 no sensitive screen	signal:no-sensitive-screen	skip	1	derived
 no server state change	signal:no-server-state-change	skip	5	derived
 no source file change	signal:no-source-file-change	skip	2	derived
@@ -3655,7 +3777,7 @@ no-reporting-surface	signal:no-reporting-surface	skip	1	derived
 no-retry-surface	signal:no-retry-surface	skip	1	derived
 no-screen-layout-change	signal:no-screen-layout-change	skip	7	derived
 no-secret-surface	signal:no-secret-surface	skip	1	derived
-no-security-surface	signal:no-security-surface	skip	6	derived
+no-security-surface	signal:no-security-surface	skip	7	derived
 no-sensitive-screen	signal:no-sensitive-screen	skip	1	derived
 no-server-state-change	signal:no-server-state-change	skip	5	derived
 no-source-file-change	signal:no-source-file-change	skip	2	derived
@@ -3677,10 +3799,20 @@ no-web-surface	signal:no-web-surface	skip	1	derived
 non resend provider	signal:non-resend-provider	skip	1	derived
 non reuse	signal:kit-rule-change	open	13	derived
 non reuse	signal:standards-change	open	6	derived
+non root	signal:email-deliverability	open	2	derived
+non root	signal:infrastructure-security	open	1	derived
+non root	signal:ota-update	open	1	derived
+non root	signal:release-signing	open	1	derived
+non root	signal:security-audit	open	3	derived
 non ses provider	signal:non-ses-provider	skip	1	derived
 non-resend-provider	signal:non-resend-provider	skip	1	derived
 non-reuse	signal:kit-rule-change	open	13	derived
 non-reuse	signal:standards-change	open	6	derived
+non-root	signal:email-deliverability	open	2	derived
+non-root	signal:infrastructure-security	open	1	derived
+non-root	signal:ota-update	open	1	derived
+non-root	signal:release-signing	open	1	derived
+non-root	signal:security-audit	open	3	derived
 non-ses-provider	signal:non-ses-provider	skip	1	derived
 normative	signal:accessibility-label	open	3	derived
 normative	signal:ad-attribution	open	1	derived
@@ -3868,7 +4000,17 @@ notification-preference	signal:notification-suppression	open	2	alias
 notification-suppression	signal:notification-suppression	open	2	derived
 notification-visibility	signal:notification-visibility	open	1	derived
 null handling	signal:empty-semantics	open	4	alias
+null spf	signal:email-deliverability	open	2	derived
+null spf	signal:infrastructure-security	open	1	derived
+null spf	signal:ota-update	open	1	derived
+null spf	signal:release-signing	open	1	derived
+null spf	signal:security-audit	open	3	derived
 null-handling	signal:empty-semantics	open	4	alias
+null-spf	signal:email-deliverability	open	2	derived
+null-spf	signal:infrastructure-security	open	1	derived
+null-spf	signal:ota-update	open	1	derived
+null-spf	signal:release-signing	open	1	derived
+null-spf	signal:security-audit	open	3	derived
 numeric input	signal:numeric-input	open	1	derived
 numeric-input	signal:numeric-input	open	1	derived
 observability	signal:crash-reporting	open	1	alias
@@ -3933,6 +4075,16 @@ optional-resend-adapter-example	signal:transactional-email	open	8	derived
 orchestration	signal:cache-persistence	open	10	derived
 orchestration	signal:key-value-storage-only	open	6	derived
 orchestration	signal:persistence-invariant	open	4	derived
+origin lock	signal:email-deliverability	open	2	derived
+origin lock	signal:infrastructure-security	open	1	derived
+origin lock	signal:ota-update	open	1	derived
+origin lock	signal:release-signing	open	1	derived
+origin lock	signal:security-audit	open	3	derived
+origin-lock	signal:email-deliverability	open	2	derived
+origin-lock	signal:infrastructure-security	open	1	derived
+origin-lock	signal:ota-update	open	1	derived
+origin-lock	signal:release-signing	open	1	derived
+origin-lock	signal:security-audit	open	3	derived
 orphan file	signal:unused-report	open	5	alias
 orphan-file	signal:unused-report	open	5	alias
 orthographic corruption	signal:new-language	open	7	derived
@@ -3957,6 +4109,8 @@ os-permissions	signal:permission-prompt	open	2	derived
 os-permissions	signal:screenshot-protection	open	1	derived
 os-permissions	signal:sensitive-screen	open	1	derived
 os-permissions	signal:token-storage	open	4	derived
+ota update	signal:ota-update	open	1	derived
+ota-update	signal:ota-update	open	1	derived
 other backend selected	signal:other-backend-selected	skip	1	derived
 other-backend-selected	signal:other-backend-selected	skip	1	derived
 otp delivery	signal:otp-delivery	open	1	derived
@@ -3984,9 +4138,29 @@ outcome-reporting	signal:crash-sink	open	7	derived
 outcome-reporting	signal:scheduled-job	open	12	derived
 output encoding	signal:output-encoding	open	1	derived
 output-encoding	signal:output-encoding	open	1	derived
+outside the code	signal:email-deliverability	open	2	derived
+outside the code	signal:infrastructure-security	open	1	derived
+outside the code	signal:ota-update	open	1	derived
+outside the code	signal:release-signing	open	1	derived
+outside the code	signal:security-audit	open	3	derived
+outside-the-code	signal:email-deliverability	open	2	derived
+outside-the-code	signal:infrastructure-security	open	1	derived
+outside-the-code	signal:ota-update	open	1	derived
+outside-the-code	signal:release-signing	open	1	derived
+outside-the-code	signal:security-audit	open	3	derived
+over the air update	signal:email-deliverability	open	2	derived
+over the air update	signal:infrastructure-security	open	1	derived
+over the air update	signal:ota-update	open	1	derived
+over the air update	signal:release-signing	open	1	derived
+over the air update	signal:security-audit	open	3	derived
+over-the-air-update	signal:email-deliverability	open	2	derived
+over-the-air-update	signal:infrastructure-security	open	1	derived
+over-the-air-update	signal:ota-update	open	1	derived
+over-the-air-update	signal:release-signing	open	1	derived
+over-the-air-update	signal:security-audit	open	3	derived
 ownership	signal:incident-response	open	1	derived
 ownership	signal:operational-readiness	open	1	derived
-ownership	signal:security-audit	open	2	derived
+ownership	signal:security-audit	open	3	derived
 ownership	signal:security-ownership	open	1	derived
 package admission	signal:agent-extension	open	1	derived
 package admission	signal:dependency-audit	open	2	derived
@@ -4354,6 +4528,16 @@ principles-and-precedence	signal:duplicate-writer	open	5	derived
 principles-and-precedence	signal:new-semantic	open	13	derived
 principles-and-precedence	signal:ssot-authority	open	11	derived
 privacy	signal:pii-masking	open	3	alias
+private network	signal:email-deliverability	open	2	derived
+private network	signal:infrastructure-security	open	1	derived
+private network	signal:ota-update	open	1	derived
+private network	signal:release-signing	open	1	derived
+private network	signal:security-audit	open	3	derived
+private-network	signal:email-deliverability	open	2	derived
+private-network	signal:infrastructure-security	open	1	derived
+private-network	signal:ota-update	open	1	derived
+private-network	signal:release-signing	open	1	derived
+private-network	signal:security-audit	open	3	derived
 problem class	signal:stack-choice	open	5	derived
 problem class extraction	signal:conflicting-standards	open	4	derived
 problem class extraction	signal:stack-choice	open	5	derived
@@ -4502,10 +4686,30 @@ provider-sdk	signal:provider-sdk	open	1	derived
 provider-swap-guide	signal:email-provider-swap	open	1	derived
 provider-swap-guide	signal:transactional-email	open	8	derived
 provider-swap-guide	signal:vendor-migration	open	1	derived
+public endpoint	signal:email-deliverability	open	2	derived
+public endpoint	signal:infrastructure-security	open	1	derived
+public endpoint	signal:ota-update	open	1	derived
+public endpoint	signal:release-signing	open	1	derived
+public endpoint	signal:security-audit	open	3	derived
 public listing	signal:public-listing	open	1	derived
+public-endpoint	signal:email-deliverability	open	2	derived
+public-endpoint	signal:infrastructure-security	open	1	derived
+public-endpoint	signal:ota-update	open	1	derived
+public-endpoint	signal:release-signing	open	1	derived
+public-endpoint	signal:security-audit	open	3	derived
 public-listing	signal:public-listing	open	1	derived
 publication consent	signal:publication-consent	open	2	derived
 publication-consent	signal:publication-consent	open	2	derived
+publish token	signal:email-deliverability	open	2	derived
+publish token	signal:infrastructure-security	open	1	derived
+publish token	signal:ota-update	open	1	derived
+publish token	signal:release-signing	open	1	derived
+publish token	signal:security-audit	open	3	derived
+publish-token	signal:email-deliverability	open	2	derived
+publish-token	signal:infrastructure-security	open	1	derived
+publish-token	signal:ota-update	open	1	derived
+publish-token	signal:release-signing	open	1	derived
+publish-token	signal:security-audit	open	3	derived
 purchase	signal:store-subscription	open	1	alias
 push notification	signal:push-notification	open	11	derived
 push notification metrics	signal:notification-analytics	open	1	alias
@@ -4806,8 +5010,18 @@ redis	signal:provider-cache	open	1	derived
 redis	signal:rate-limit-store	open	1	derived
 redis	signal:redis-key	open	1	derived
 redis	signal:redis-review	open	1	derived
+redis acl	signal:email-deliverability	open	2	derived
+redis acl	signal:infrastructure-security	open	1	derived
+redis acl	signal:ota-update	open	1	derived
+redis acl	signal:release-signing	open	1	derived
+redis acl	signal:security-audit	open	3	derived
 redis key	signal:redis-key	open	1	derived
 redis review	signal:redis-review	open	1	derived
+redis-acl	signal:email-deliverability	open	2	derived
+redis-acl	signal:infrastructure-security	open	1	derived
+redis-acl	signal:ota-update	open	1	derived
+redis-acl	signal:release-signing	open	1	derived
+redis-acl	signal:security-audit	open	3	derived
 redis-key	signal:redis-key	open	1	derived
 redis-review	signal:redis-review	open	1	derived
 refactoring	shape:refactoring	open	7	derived
@@ -4818,6 +5032,16 @@ refund	signal:compensating-action	open	1	derived
 refund	signal:derived-field	open	7	derived
 refund	signal:provider-integration	open	7	derived
 refund	signal:webhook	open	6	derived
+registrar lock	signal:email-deliverability	open	2	derived
+registrar lock	signal:infrastructure-security	open	1	derived
+registrar lock	signal:ota-update	open	1	derived
+registrar lock	signal:release-signing	open	1	derived
+registrar lock	signal:security-audit	open	3	derived
+registrar-lock	signal:email-deliverability	open	2	derived
+registrar-lock	signal:infrastructure-security	open	1	derived
+registrar-lock	signal:ota-update	open	1	derived
+registrar-lock	signal:release-signing	open	1	derived
+registrar-lock	signal:security-audit	open	3	derived
 registry	signal:error-boundary	open	6	derived
 registry	signal:error-infrastructure	open	6	derived
 registry	signal:error-raise	open	8	derived
@@ -4836,6 +5060,7 @@ release evidence and signals	signal:store-release-evidence	open	1	derived
 release gate	signal:release-gate	open	1	derived
 release identity	signal:release-identity	open	2	derived
 release promotion	signal:release-promotion	open	1	derived
+release signing	signal:release-signing	open	1	derived
 release-age	signal:agent-extension	open	1	derived
 release-age	signal:dependency-audit	open	2	derived
 release-age	signal:dependency-upgrade	open	10	derived
@@ -4846,6 +5071,7 @@ release-evidence-and-signals	signal:store-release-evidence	open	1	derived
 release-gate	signal:release-gate	open	1	derived
 release-identity	signal:release-identity	open	2	derived
 release-promotion	signal:release-promotion	open	1	derived
+release-signing	signal:release-signing	open	1	derived
 remote config	signal:remote-config	open	1	derived
 remote setting	signal:remote-config	open	1	alias
 remote-config	signal:remote-config	open	1	derived
@@ -5038,6 +5264,16 @@ rest	signal:email-provider-adapter	open	2	derived
 rest	signal:resend	open	1	derived
 rest	signal:transactional-email	open	8	derived
 restatement	signal:kit-rule-change	open	13	derived
+restore exercise	signal:email-deliverability	open	2	derived
+restore exercise	signal:infrastructure-security	open	1	derived
+restore exercise	signal:ota-update	open	1	derived
+restore exercise	signal:release-signing	open	1	derived
+restore exercise	signal:security-audit	open	3	derived
+restore-exercise	signal:email-deliverability	open	2	derived
+restore-exercise	signal:infrastructure-security	open	1	derived
+restore-exercise	signal:ota-update	open	1	derived
+restore-exercise	signal:release-signing	open	1	derived
+restore-exercise	signal:security-audit	open	3	derived
 resume and completion	signal:db-transaction	open	13	derived
 resume and completion	signal:multi-step-write	open	13	derived
 resume and completion	signal:session-threading	open	12	derived
@@ -5431,18 +5667,21 @@ security	signal:cryptography	open	1	derived
 security	signal:dependency-audit	open	2	derived
 security	signal:dependency-upgrade	open	10	derived
 security	signal:device-session	open	1	derived
+security	signal:email-deliverability	open	2	derived
 security	signal:enforcement-type	open	2	derived
 security	signal:env-config	open	1	derived
 security	signal:env-variable	open	10	derived
 security	signal:external-provider	open	6	derived
 security	signal:field-encryption	open	1	derived
 security	signal:file-upload	open	2	derived
+security	signal:infrastructure-security	open	1	derived
 security	signal:jwt	open	1	derived
 security	signal:log-write	open	11	derived
 security	signal:membership-gate	open	2	derived
 security	signal:model-provider-call	open	1	derived
 security	signal:multi-tenant-scope	open	4	derived
 security	signal:not-applicable-record	open	1	derived
+security	signal:ota-update	open	1	derived
 security	signal:outbound-call	open	5	derived
 security	signal:password-hashing	open	1	derived
 security	signal:pii-masking	open	3	derived
@@ -5451,11 +5690,12 @@ security	signal:provider-integration	open	7	derived
 security	signal:public-listing	open	1	derived
 security	signal:publication-consent	open	2	derived
 security	signal:rate-limit	open	4	derived
+security	signal:release-signing	open	1	derived
 security	signal:request-correlation	open	2	derived
 security	signal:scoped-role	open	2	derived
 security	signal:secret-handling	open	1	derived
 security	signal:secure-store-selection	open	1	derived
-security	signal:security-audit	open	2	derived
+security	signal:security-audit	open	3	derived
 security	signal:security-gate-routing	open	2	derived
 security	signal:security-governance	open	1	derived
 security	signal:security-headers	open	2	derived
@@ -5470,7 +5710,7 @@ security	signal:tenant-isolation	open	1	derived
 security	signal:threat-model	open	1	derived
 security	signal:token-storage	open	4	derived
 security	signal:web-headers	open	1	derived
-security audit	signal:security-audit	open	2	derived
+security audit	signal:security-audit	open	3	derived
 security gate routing	signal:security-gate-routing	open	2	derived
 security governance	signal:security-governance	open	1	derived
 security headers	signal:security-headers	open	2	derived
@@ -5478,10 +5718,10 @@ security monitoring	signal:security-monitoring	open	1	derived
 security ownership	signal:security-ownership	open	1	derived
 security program	signal:incident-response	open	1	derived
 security program	signal:operational-readiness	open	1	derived
-security program	signal:security-audit	open	2	derived
+security program	signal:security-audit	open	3	derived
 security program	signal:security-ownership	open	1	derived
 security review	signal:security-review	open	1	derived
-security-audit	signal:security-audit	open	2	derived
+security-audit	signal:security-audit	open	3	derived
 security-gate-routing	signal:security-gate-routing	open	2	derived
 security-governance	signal:security-governance	open	1	derived
 security-headers	signal:security-headers	open	2	derived
@@ -5489,7 +5729,7 @@ security-monitoring	signal:security-monitoring	open	1	derived
 security-ownership	signal:security-ownership	open	1	derived
 security-program	signal:incident-response	open	1	derived
 security-program	signal:operational-readiness	open	1	derived
-security-program	signal:security-audit	open	2	derived
+security-program	signal:security-audit	open	3	derived
 security-program	signal:security-ownership	open	1	derived
 security-review	signal:security-review	open	1	derived
 selection state	signal:selection-state	open	3	derived
@@ -5600,6 +5840,16 @@ shared-types	signal:schema-migration	open	1	derived
 shared-types	signal:shared-types	open	1	derived
 sign in	signal:client-auth-integration	open	2	alias
 sign-in	signal:client-auth-integration	open	2	alias
+signing key custody	signal:email-deliverability	open	2	derived
+signing key custody	signal:infrastructure-security	open	1	derived
+signing key custody	signal:ota-update	open	1	derived
+signing key custody	signal:release-signing	open	1	derived
+signing key custody	signal:security-audit	open	3	derived
+signing-key-custody	signal:email-deliverability	open	2	derived
+signing-key-custody	signal:infrastructure-security	open	1	derived
+signing-key-custody	signal:ota-update	open	1	derived
+signing-key-custody	signal:release-signing	open	1	derived
+signing-key-custody	signal:security-audit	open	3	derived
 silent failure	signal:silent-failure	open	2	derived
 silent failure paths	signal:client-failure-path	open	8	derived
 silent failure paths	signal:global-error-net	open	4	derived
@@ -5699,7 +5949,12 @@ spelling-corruption	signal:new-language	open	7	derived
 spelling-corruption	signal:translation-catalog	open	8	derived
 spelling-corruption	signal:user-facing-string	open	8	derived
 spf	signal:amazon-ses	open	1	derived
+spf	signal:email-deliverability	open	2	derived
 spf	signal:email-provider-adapter	open	2	derived
+spf	signal:infrastructure-security	open	1	derived
+spf	signal:ota-update	open	1	derived
+spf	signal:release-signing	open	1	derived
+spf	signal:security-audit	open	3	derived
 spf	signal:transactional-email	open	8	derived
 ssot	signal:denormalization	open	3	derived
 ssot	signal:editable-attribute	open	7	derived
@@ -5873,6 +6128,16 @@ styling	signal:pdf-template-markup	open	2	derived
 styling	signal:rn-screen-ui	open	8	derived
 styling	signal:theme-token	open	3	derived
 styling	signal:transactional-email	open	8	derived
+subdomain takeover	signal:email-deliverability	open	2	derived
+subdomain takeover	signal:infrastructure-security	open	1	derived
+subdomain takeover	signal:ota-update	open	1	derived
+subdomain takeover	signal:release-signing	open	1	derived
+subdomain takeover	signal:security-audit	open	3	derived
+subdomain-takeover	signal:email-deliverability	open	2	derived
+subdomain-takeover	signal:infrastructure-security	open	1	derived
+subdomain-takeover	signal:ota-update	open	1	derived
+subdomain-takeover	signal:release-signing	open	1	derived
+subdomain-takeover	signal:security-audit	open	3	derived
 subject	signal:identity-migration	open	1	derived
 subject	signal:natural-key-change	open	1	derived
 subject	signal:outbox-recipient	open	1	derived
@@ -6386,6 +6651,16 @@ upload	signal:file-upload	open	2	derived
 upload	signal:rate-limit	open	4	derived
 upload	signal:security-headers	open	2	derived
 upload	signal:ssrf	open	2	derived
+upload key	signal:email-deliverability	open	2	derived
+upload key	signal:infrastructure-security	open	1	derived
+upload key	signal:ota-update	open	1	derived
+upload key	signal:release-signing	open	1	derived
+upload key	signal:security-audit	open	3	derived
+upload-key	signal:email-deliverability	open	2	derived
+upload-key	signal:infrastructure-security	open	1	derived
+upload-key	signal:ota-update	open	1	derived
+upload-key	signal:release-signing	open	1	derived
+upload-key	signal:security-audit	open	3	derived
 upstream failure	signal:upstream-failure	open	1	derived
 upstream-failure	signal:upstream-failure	open	1	derived
 user agent	signal:email-feedback-webhook	open	1	derived

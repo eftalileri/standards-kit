@@ -128,7 +128,14 @@ SEC-C1 workflow dependency integrity: A remote CI action that executes code
 recorded as a comment but **must not** be the execution reference; the action
 dependency **must** remain visible to the platform's dependency updater. A
 `docker://` action has no repository commit ref and therefore **must** use an
-immutable `sha256` image digest; a mutable image tag is not compliant.
+immutable `sha256` image digest; a mutable image tag is not compliant. Text an
+outsider controls in a workflow event — titles, bodies, comments, branch and tag
+names, commit messages, file names — **must not** be expanded into a `run:` step's
+script or into an AI agent's prompt or instructions; it reaches a step only as an
+environment variable that the script treats as data, and an agent reading it holds
+no write token or secret. Reason: an expression expanded into a script is executed
+as code with the job's credentials, which turns any pull request or issue into
+code execution in the pipeline.
 
 SEC-C1-B deployment-boundary integrity: The production dependency scan **must**
 be fail-closed at the merge/push boundary and **must not** be fail-closed at the

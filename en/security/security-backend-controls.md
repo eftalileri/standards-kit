@@ -13,7 +13,7 @@ Normative parts split out of this file: [zero trust — server authority and pro
 
 Scope
 
-- Included: Conditional SEC-M-CSRF-1, rate limiting, Helmet / security headers, MongoDB / NoSQL bridge (SEC-M-BE-NOSQL-1), webhook exception, upload rules, CORS, SEC-M-ZT-1–SEC-M-ZT-3. SSRF minimum when surface exists (OWASP A10). Request input shape, redirects, server-side code execution and the production route set (SEC-M-INPUT-1–SEC-M-INPUT-3, SEC-M-REDIRECT-1, SEC-N-EXEC-1, SEC-N-ROUTE-1). NoSQL detail: [`nosql-query-safety`](../nosql-query-safety/README.md).
+- Included: Conditional SEC-M-CSRF-1, rate limiting, Helmet / security headers, MongoDB / NoSQL bridge (SEC-M-BE-NOSQL-1), webhook exception, upload rules, CORS, SEC-M-ZT-1–SEC-M-ZT-3. SSRF minimum when surface exists (OWASP Top 10:2025 A01). Request input shape, redirects, server-side code execution and the production route set (SEC-M-INPUT-1–SEC-M-INPUT-3, SEC-M-REDIRECT-1, SEC-N-EXEC-1, SEC-N-ROUTE-1). NoSQL detail: [`nosql-query-safety`](../nosql-query-safety/README.md).
 
 Document type: Normative — SEC-M- / SEC-N- rows below.
 
@@ -93,7 +93,7 @@ The rows SEC-M-ZT-1 (with its three notes) and SEC-M-ZT-2 are defined in [securi
 
 ## SSRF (when surface exists)
 
-SEC-M-SSRF-1: If the product fetches user-supplied URLs server-side: allowlist hosts/schemes + Zod URL schema; if no such surface, SEC-NA-1 (OWASP A10). [Consequence: Bug when surface exists] [Verify: Architecture + code search]
+SEC-M-SSRF-1: If the product fetches user-supplied URLs server-side: allowlist hosts/schemes + Zod URL schema; if no such surface, SEC-NA-1 (OWASP Top 10:2025 A01). [Consequence: Bug when surface exists] [Verify: Architecture + code search]
 
 ---
 

@@ -3,17 +3,17 @@
 ```kit-cover
 type: normative
 part-of: README.md
-binds: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3, SEC-PROG-N1, SEC-PROG-S-1 and SEC-PROG-S-2 -- who owns security, what incident response must exist, how often the whole project is audited and where the audit is kept, and the operational readiness expectations around it
+binds: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3, SEC-PROG-M-4, SEC-PROG-N1, SEC-PROG-S-1 and SEC-PROG-S-2 -- who owns security, how an outsider reports a vulnerability, what incident response must exist, how often the whole project is audited and where the audit is kept, and the operational readiness expectations around it
 open-when: signal:security-ownership, signal:incident-response, signal:operational-readiness, signal:security-audit
 skip-when: signal:no-security-surface
-owns: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3, SEC-PROG-N1, SEC-PROG-S-1, SEC-PROG-S-2
+owns: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3, SEC-PROG-M-4, SEC-PROG-N1, SEC-PROG-S-1, SEC-PROG-S-2
 ```
 
 Scope
 
-- Included: Program layer items that are not a substitute for SEC-M/SEC-N technical controls: accountability, incident response minimums, the periodic full audit cadence, optional SLOs, tabletop exercises, audit readiness bridge.
+- Included: Program layer items that are not a substitute for SEC-M/SEC-N technical controls: accountability, the vulnerability-reporting channel, incident response minimums, the periodic full audit cadence, optional SLOs, tabletop exercises, audit readiness bridge.
 
-Document type: Normative minimums (SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3); SEC-PROG-S-\* are SHOULD (enterprise hardening).
+Document type: Normative minimums (SEC-PROG-M-1–SEC-PROG-M-4); SEC-PROG-S-\* are SHOULD (enterprise hardening).
 
 Environment: Organization / product team; applies per production service boundary.
 
@@ -29,6 +29,7 @@ This file does not repeat SEC-C1 or SEC-CRYPTO rules — it sits above them for 
 |----|------|--------------|-----------|
 | **SEC-PROG-M-1** | A named security accountability path (role + escalation contact) for production **must** be documented in `SECURITY.md` (or equivalent single page) — not orphaned wiki only. | Audit / ops gap. | Doc exists + link from repo README or runbook index. |
 | **SEC-PROG-M-2** | Incident response (IR) **must** define: severity levels (at least *low / medium / high / critical* or equivalent), who is contacted first, and where incidents are tracked (ticket, hotline). | Cannot execute coherent response. | IR one-pager. |
+| **SEC-PROG-M-4** | A production service **must** publish a vulnerability-reporting channel: a monitored contact address stated on the **SEC-PROG-M-1** page, and on each public web domain a `/.well-known/security.txt` file (RFC 9116) carrying that contact and an `Expires` date at most one year ahead, renewed before it passes. The page states how soon a report is acknowledged, and each report is triaged under [SEC-GC-15](security-governance.md). *Reason:* without a published channel an outside finder either gives up or discloses publicly, and an expired file tells them the channel is dead. | Reports reach no one or go public first. | The page section and the served file with a future `Expires` date. |
 
 | ID | Rule | On violation | Verify by |
 |----|------|--------------|-----------|
