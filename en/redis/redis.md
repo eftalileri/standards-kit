@@ -9,7 +9,7 @@ skip-when: signal:single-instance-only, signal:client-side-only
 owns: RDS-C*, RDS-D*, GRDS*
 ```
 
-**MUST** / **MUST NOT** rows of this topic (the **RDS-M** family, banded): [redis-connection-keys-and-authority.md](redis-connection-keys-and-authority.md) (**RDS-M1**–**RDS-M13**); [redis-degraded-mode-and-invalidation-ordering.md](redis-degraded-mode-and-invalidation-ordering.md) (**RDS-M14**–**RDS-M19**); [redis-prohibitions.md](redis-prohibitions.md) (**RDS-M20**–**RDS-M23** and **RDS-N1**–**RDS-N14**). They are cited from here by ID, never restated. Non-binding tail: [redis-appendix.md](redis-appendix.md). The threshold identities **RDS-T-CONNECT-TIMEOUT-MS**, **RDS-T-SUSTAINED-DISCONNECT-ALERT-MS**, **RDS-T-DEFAULT-CACHE-TTL-SEC** and **RDS-T-LEASE-TTL** are defined in this file, in `## Normative constants`.
+**MUST** / **MUST NOT** rows of this topic (the **RDS-M** family, banded): [redis-connection-keys-and-authority.md](redis-connection-keys-and-authority.md) (**RDS-M1**–**RDS-M13**); [redis-degraded-mode-and-invalidation-ordering.md](redis-degraded-mode-and-invalidation-ordering.md) (**RDS-M14**–**RDS-M19**); [redis-prohibitions.md](redis-prohibitions.md) (**RDS-M20**–**RDS-M23** and **RDS-N1**–**RDS-N15**). They are cited from here by ID, never restated. Non-binding tail: [redis-appendix.md](redis-appendix.md). The threshold identities **RDS-T-CONNECT-TIMEOUT-MS**, **RDS-T-SUSTAINED-DISCONNECT-ALERT-MS**, **RDS-T-DEFAULT-CACHE-TTL-SEC** and **RDS-T-LEASE-TTL** are defined in this file, in `## Normative constants`.
 
 Scope
 

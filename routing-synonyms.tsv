@@ -75,7 +75,7 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6449 rows, of which 2726 carry a space and 0 carry an
+# 6516 rows, of which 2751 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
 # 437 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
@@ -516,6 +516,14 @@ atomicity and session scope	signal:session-threading	open	12	derived
 atomicity-and-session-scope	signal:db-transaction	open	13	derived
 atomicity-and-session-scope	signal:multi-step-write	open	13	derived
 atomicity-and-session-scope	signal:session-threading	open	12	derived
+attestation	signal:analytics-attribution	open	4	derived
+attestation	signal:consent-capture	open	1	derived
+attestation	signal:location-permission	open	3	derived
+attestation	signal:media-permission	open	2	derived
+attestation	signal:permission-prompt	open	2	derived
+attestation	signal:screenshot-protection	open	1	derived
+attestation	signal:sensitive-screen	open	1	derived
+attestation	signal:token-storage	open	4	derived
 audience	signal:audience-eligibility	open	2	derived
 audience	signal:engagement-inactivity	open	2	derived
 audience	signal:multi-tenant-audience	open	1	derived
@@ -1003,6 +1011,9 @@ client integration ssot	signal:authority-lookup	open	2	derived
 client integration ssot	signal:client-auth-integration	open	2	derived
 client mobile surface	signal:analytics-attribution	open	4	derived
 client mobile surface	signal:consent-capture	open	1	derived
+client mobile surface	signal:location-permission	open	3	derived
+client mobile surface	signal:media-permission	open	2	derived
+client mobile surface	signal:permission-prompt	open	2	derived
 client mobile surface	signal:screenshot-protection	open	1	derived
 client mobile surface	signal:sensitive-screen	open	1	derived
 client mobile surface	signal:token-storage	open	4	derived
@@ -1016,7 +1027,7 @@ client observability	signal:global-error-net	open	4	derived
 client observability	signal:pii-scrubbing	open	4	derived
 client observability	signal:release-identity	open	2	derived
 client observability	signal:silent-failure	open	2	derived
-client observability	signal:source-map-upload	open	2	derived
+client observability	signal:source-map-upload	open	3	derived
 client observability init	signal:client-observability-init	open	1	derived
 client only	signal:client-only	skip	86	derived
 client only notification change	signal:client-only-notification-change	skip	6	derived
@@ -1030,6 +1041,7 @@ client surfaces	signal:retry-ux	open	6	derived
 client transport	signal:certificate-pinning	open	1	derived
 client transport	signal:client-transport	open	1	derived
 client transport	signal:device-session	open	1	derived
+client transport	signal:source-map-upload	open	3	derived
 client transport	signal:web-headers	open	1	derived
 client vs server	signal:client-state-store	open	7	derived
 client vs server	signal:duplicate-writer	open	5	derived
@@ -1042,6 +1054,9 @@ client-integration-ssot	signal:authority-lookup	open	2	derived
 client-integration-ssot	signal:client-auth-integration	open	2	derived
 client-mobile-surface	signal:analytics-attribution	open	4	derived
 client-mobile-surface	signal:consent-capture	open	1	derived
+client-mobile-surface	signal:location-permission	open	3	derived
+client-mobile-surface	signal:media-permission	open	2	derived
+client-mobile-surface	signal:permission-prompt	open	2	derived
 client-mobile-surface	signal:screenshot-protection	open	1	derived
 client-mobile-surface	signal:sensitive-screen	open	1	derived
 client-mobile-surface	signal:token-storage	open	4	derived
@@ -1055,7 +1070,7 @@ client-observability	signal:global-error-net	open	4	derived
 client-observability	signal:pii-scrubbing	open	4	derived
 client-observability	signal:release-identity	open	2	derived
 client-observability	signal:silent-failure	open	2	derived
-client-observability	signal:source-map-upload	open	2	derived
+client-observability	signal:source-map-upload	open	3	derived
 client-observability-init	signal:client-observability-init	open	1	derived
 client-only	signal:client-only	skip	86	derived
 client-only-notification-change	signal:client-only-notification-change	skip	6	derived
@@ -1069,6 +1084,7 @@ client-surfaces	signal:retry-ux	open	6	derived
 client-transport	signal:certificate-pinning	open	1	derived
 client-transport	signal:client-transport	open	1	derived
 client-transport	signal:device-session	open	1	derived
+client-transport	signal:source-map-upload	open	3	derived
 client-transport	signal:web-headers	open	1	derived
 client-vs-server	signal:client-state-store	open	7	derived
 client-vs-server	signal:duplicate-writer	open	5	derived
@@ -1324,12 +1340,12 @@ credential binding	signal:credential-binding	open	1	derived
 credential handling	signal:credential-handling	open	1	derived
 credential masking	signal:credential-masking	open	2	derived
 credential masking	signal:pii-scrubbing	open	4	derived
-credential masking	signal:source-map-upload	open	2	derived
+credential masking	signal:source-map-upload	open	3	derived
 credential-binding	signal:credential-binding	open	1	derived
 credential-handling	signal:credential-handling	open	1	derived
 credential-masking	signal:credential-masking	open	2	derived
 credential-masking	signal:pii-scrubbing	open	4	derived
-credential-masking	signal:source-map-upload	open	2	derived
+credential-masking	signal:source-map-upload	open	3	derived
 cron	signal:background-worker	open	9	derived
 cron	signal:crash-sink	open	7	derived
 cron	signal:scheduled-job	open	12	derived
@@ -1660,6 +1676,7 @@ device session	signal:device-session	open	1	derived
 device sessions	signal:certificate-pinning	open	1	derived
 device sessions	signal:client-transport	open	1	derived
 device sessions	signal:device-session	open	1	derived
+device sessions	signal:source-map-upload	open	3	derived
 device sessions	signal:web-headers	open	1	derived
 device-credential	signal:device-credential	open	1	derived
 device-location	signal:device-location	open	2	derived
@@ -1668,6 +1685,7 @@ device-session	signal:device-session	open	1	derived
 device-sessions	signal:certificate-pinning	open	1	derived
 device-sessions	signal:client-transport	open	1	derived
 device-sessions	signal:device-session	open	1	derived
+device-sessions	signal:source-map-upload	open	3	derived
 device-sessions	signal:web-headers	open	1	derived
 diacritic	signal:new-language	open	7	derived
 diacritic	signal:translation-catalog	open	8	derived
@@ -2118,9 +2136,9 @@ expo	signal:infinite-list	open	3	derived
 expo	signal:language-switch	open	2	derived
 expo	signal:live-updates	open	1	derived
 expo	signal:local-schema-migration	open	1	derived
-expo	signal:location-permission	open	2	derived
+expo	signal:location-permission	open	3	derived
 expo	signal:map-view	open	2	derived
-expo	signal:media-permission	open	1	derived
+expo	signal:media-permission	open	2	derived
 expo	signal:modal-focus	open	1	derived
 expo	signal:network-reachability	open	1	derived
 expo	signal:new-language	open	7	derived
@@ -3026,12 +3044,12 @@ localized-digits	signal:new-language	open	7	derived
 localized-digits	signal:translation-catalog	open	8	derived
 localized-digits	signal:user-facing-string	open	8	derived
 localized-label	signal:locale-sourced-label	open	4	alias
-location permission	signal:location-permission	open	2	derived
+location permission	signal:location-permission	open	3	derived
 location value resolution	signal:check-rollout	open	2	derived
 location value resolution	signal:new-guard	open	10	derived
 location value resolution	signal:new-lint-rule	open	10	derived
 location value resolution	signal:suppression-review	open	2	derived
-location-permission	signal:location-permission	open	2	derived
+location-permission	signal:location-permission	open	3	derived
 location-value-resolution	signal:check-rollout	open	2	derived
 location-value-resolution	signal:new-guard	open	10	derived
 location-value-resolution	signal:new-lint-rule	open	10	derived
@@ -3128,12 +3146,12 @@ map-view	signal:map-view	open	2	derived
 maps and location	signal:device-location	open	2	derived
 maps and location	signal:directions-handoff	open	2	derived
 maps and location	signal:geo-query	open	2	derived
-maps and location	signal:location-permission	open	2	derived
+maps and location	signal:location-permission	open	3	derived
 maps and location	signal:map-view	open	2	derived
 maps-and-location	signal:device-location	open	2	derived
 maps-and-location	signal:directions-handoff	open	2	derived
 maps-and-location	signal:geo-query	open	2	derived
-maps-and-location	signal:location-permission	open	2	derived
+maps-and-location	signal:location-permission	open	3	derived
 maps-and-location	signal:map-view	open	2	derived
 markdown authoring	signal:analysis-deliverable	open	2	derived
 markdown authoring	signal:md-code-verification	open	6	derived
@@ -3170,8 +3188,8 @@ mechanism selection	signal:new-lint-rule	open	10	derived
 mechanism-choice	signal:new-guard	open	10	alias
 mechanism-selection	signal:new-guard	open	10	derived
 mechanism-selection	signal:new-lint-rule	open	10	derived
-media permission	signal:media-permission	open	1	derived
-media-permission	signal:media-permission	open	1	derived
+media permission	signal:media-permission	open	2	derived
+media-permission	signal:media-permission	open	2	derived
 membership audit	signal:check-rollout	open	2	derived
 membership audit	signal:new-guard	open	10	derived
 membership audit	signal:new-lint-rule	open	10	derived
@@ -3450,12 +3468,12 @@ naming-authority	signal:user-facing-string	open	8	derived
 native credentials	signal:native-credentials	open	1	derived
 native media	signal:camera-photo-library	open	1	derived
 native media	signal:file-system-access	open	1	derived
-native media	signal:media-permission	open	1	derived
+native media	signal:media-permission	open	2	derived
 native module bridge	signal:native-module-bridge	open	1	derived
 native-credentials	signal:native-credentials	open	1	derived
 native-media	signal:camera-photo-library	open	1	derived
 native-media	signal:file-system-access	open	1	derived
-native-media	signal:media-permission	open	1	derived
+native-media	signal:media-permission	open	2	derived
 native-module-bridge	signal:native-module-bridge	open	1	derived
 natural key change	signal:natural-key-change	open	1	derived
 natural-key-change	signal:natural-key-change	open	1	derived
@@ -3738,10 +3756,10 @@ normative	signal:live-updates	open	1	derived
 normative	signal:local-schema-migration	open	1	derived
 normative	signal:local-to-utc	open	5	derived
 normative	signal:locale-sourced-label	open	4	derived
-normative	signal:location-permission	open	2	derived
+normative	signal:location-permission	open	3	derived
 normative	signal:map-view	open	2	derived
 normative	signal:md-code-verification	open	6	derived
-normative	signal:media-permission	open	1	derived
+normative	signal:media-permission	open	2	derived
 normative	signal:modal-focus	open	1	derived
 normative	signal:money-derivation	open	2	derived
 normative	signal:multi-source-form	open	3	derived
@@ -3755,6 +3773,7 @@ normative	signal:offline-ui	open	5	derived
 normative	signal:paged-fetch	open	3	derived
 normative	signal:payment-field	open	10	derived
 normative	signal:payment-status	open	7	derived
+normative	signal:permission-prompt	open	2	derived
 normative	signal:phone-display	open	1	derived
 normative	signal:phone-mask	open	2	derived
 normative	signal:phone-number	open	6	derived
@@ -3922,6 +3941,22 @@ orthographic corruption	signal:user-facing-string	open	8	derived
 orthographic-corruption	signal:new-language	open	7	derived
 orthographic-corruption	signal:translation-catalog	open	8	derived
 orthographic-corruption	signal:user-facing-string	open	8	derived
+os permissions	signal:analytics-attribution	open	4	derived
+os permissions	signal:consent-capture	open	1	derived
+os permissions	signal:location-permission	open	3	derived
+os permissions	signal:media-permission	open	2	derived
+os permissions	signal:permission-prompt	open	2	derived
+os permissions	signal:screenshot-protection	open	1	derived
+os permissions	signal:sensitive-screen	open	1	derived
+os permissions	signal:token-storage	open	4	derived
+os-permissions	signal:analytics-attribution	open	4	derived
+os-permissions	signal:consent-capture	open	1	derived
+os-permissions	signal:location-permission	open	3	derived
+os-permissions	signal:media-permission	open	2	derived
+os-permissions	signal:permission-prompt	open	2	derived
+os-permissions	signal:screenshot-protection	open	1	derived
+os-permissions	signal:sensitive-screen	open	1	derived
+os-permissions	signal:token-storage	open	4	derived
 other backend selected	signal:other-backend-selected	skip	1	derived
 other-backend-selected	signal:other-backend-selected	skip	1	derived
 otp delivery	signal:otp-delivery	open	1	derived
@@ -4112,8 +4147,8 @@ performance	signal:list-virtualization	open	2	derived
 performance	signal:navigation-change	open	4	derived
 performance	signal:optimization-change	open	1	derived
 performance	signal:render-performance	open	4	derived
-permission prompt	signal:permission-prompt	open	1	derived
-permission-prompt	signal:permission-prompt	open	1	derived
+permission prompt	signal:permission-prompt	open	2	derived
+permission-prompt	signal:permission-prompt	open	2	derived
 persist	signal:cache-lifecycle	open	11	derived
 persist	signal:cache-persistence	open	10	derived
 persist	signal:client-state-store	open	7	derived
@@ -4193,6 +4228,7 @@ pii-scrubbing	signal:pii-scrubbing	open	4	derived
 pinning	signal:certificate-pinning	open	1	derived
 pinning	signal:client-transport	open	1	derived
 pinning	signal:device-session	open	1	derived
+pinning	signal:source-map-upload	open	3	derived
 pinning	signal:web-headers	open	1	derived
 placeholder	signal:empty-semantics	open	4	derived
 placeholder	signal:form-input	open	4	derived
@@ -4587,9 +4623,9 @@ react native	signal:inline-style	open	2	derived
 react native	signal:language-switch	open	2	derived
 react native	signal:live-updates	open	1	derived
 react native	signal:local-schema-migration	open	1	derived
-react native	signal:location-permission	open	2	derived
+react native	signal:location-permission	open	3	derived
 react native	signal:map-view	open	2	derived
-react native	signal:media-permission	open	1	derived
+react native	signal:media-permission	open	2	derived
 react native	signal:modal-focus	open	1	derived
 react native	signal:network-reachability	open	1	derived
 react native	signal:new-language	open	7	derived
@@ -4646,9 +4682,9 @@ react-native	signal:inline-style	open	2	derived
 react-native	signal:language-switch	open	2	derived
 react-native	signal:live-updates	open	1	derived
 react-native	signal:local-schema-migration	open	1	derived
-react-native	signal:location-permission	open	2	derived
+react-native	signal:location-permission	open	3	derived
 react-native	signal:map-view	open	2	derived
-react-native	signal:media-permission	open	1	derived
+react-native	signal:media-permission	open	2	derived
 react-native	signal:modal-focus	open	1	derived
 react-native	signal:network-reachability	open	1	derived
 react-native	signal:new-language	open	7	derived
@@ -4738,6 +4774,9 @@ reconnect backoff	signal:reconnect-backoff	open	1	derived
 reconnect-backoff	signal:reconnect-backoff	open	1	derived
 recording	signal:analytics-attribution	open	4	derived
 recording	signal:consent-capture	open	1	derived
+recording	signal:location-permission	open	3	derived
+recording	signal:media-permission	open	2	derived
+recording	signal:permission-prompt	open	2	derived
 recording	signal:screenshot-protection	open	1	derived
 recording	signal:sensitive-screen	open	1	derived
 recording	signal:token-storage	open	4	derived
@@ -5324,6 +5363,9 @@ screens	signal:edge-to-edge	open	5	derived
 screens	signal:gradle-deprecation-warning	open	1	derived
 screenshot	signal:analytics-attribution	open	4	derived
 screenshot	signal:consent-capture	open	1	derived
+screenshot	signal:location-permission	open	3	derived
+screenshot	signal:media-permission	open	2	derived
+screenshot	signal:permission-prompt	open	2	derived
 screenshot	signal:screenshot-protection	open	1	derived
 screenshot	signal:sensitive-screen	open	1	derived
 screenshot	signal:token-storage	open	4	derived
@@ -5349,12 +5391,18 @@ second-copy	signal:duplicate-writer	open	5	alias
 secret handling	signal:secret-handling	open	1	derived
 secret store access class	signal:analytics-attribution	open	4	derived
 secret store access class	signal:consent-capture	open	1	derived
+secret store access class	signal:location-permission	open	3	derived
+secret store access class	signal:media-permission	open	2	derived
+secret store access class	signal:permission-prompt	open	2	derived
 secret store access class	signal:screenshot-protection	open	1	derived
 secret store access class	signal:sensitive-screen	open	1	derived
 secret store access class	signal:token-storage	open	4	derived
 secret-handling	signal:secret-handling	open	1	derived
 secret-store-access-class	signal:analytics-attribution	open	4	derived
 secret-store-access-class	signal:consent-capture	open	1	derived
+secret-store-access-class	signal:location-permission	open	3	derived
+secret-store-access-class	signal:media-permission	open	2	derived
+secret-store-access-class	signal:permission-prompt	open	2	derived
 secret-store-access-class	signal:screenshot-protection	open	1	derived
 secret-store-access-class	signal:sensitive-screen	open	1	derived
 secret-store-access-class	signal:token-storage	open	4	derived
@@ -5414,6 +5462,7 @@ security	signal:security-headers	open	2	derived
 security	signal:security-monitoring	open	1	derived
 security	signal:security-review	open	1	derived
 security	signal:server-authority	open	2	derived
+security	signal:source-map-upload	open	3	derived
 security	signal:ssrf	open	2	derived
 security	signal:stack-choice	open	5	derived
 security	signal:subject-owned-resource	open	1	derived
@@ -5632,12 +5681,12 @@ source call site	signal:new-language	open	7	derived
 source call site	signal:translation-catalog	open	8	derived
 source call site	signal:user-facing-string	open	8	derived
 source file change	signal:source-file-change	open	7	derived
-source map upload	signal:source-map-upload	open	2	derived
+source map upload	signal:source-map-upload	open	3	derived
 source-call-site	signal:new-language	open	7	derived
 source-call-site	signal:translation-catalog	open	8	derived
 source-call-site	signal:user-facing-string	open	8	derived
 source-file-change	signal:source-file-change	open	7	derived
-source-map-upload	signal:source-map-upload	open	2	derived
+source-map-upload	signal:source-map-upload	open	3	derived
 span	signal:log-write	open	11	alias
 specimen	signal:check-rollout	open	2	derived
 specimen	signal:new-guard	open	10	derived
@@ -6420,13 +6469,31 @@ watchdog	signal:scheduled-job	open	12	derived
 web headers	signal:certificate-pinning	open	1	derived
 web headers	signal:client-transport	open	1	derived
 web headers	signal:device-session	open	1	derived
+web headers	signal:source-map-upload	open	3	derived
 web headers	signal:web-headers	open	1	derived
 web property content	signal:web-property-content	open	1	derived
+web views	signal:analytics-attribution	open	4	derived
+web views	signal:consent-capture	open	1	derived
+web views	signal:location-permission	open	3	derived
+web views	signal:media-permission	open	2	derived
+web views	signal:permission-prompt	open	2	derived
+web views	signal:screenshot-protection	open	1	derived
+web views	signal:sensitive-screen	open	1	derived
+web views	signal:token-storage	open	4	derived
 web-headers	signal:certificate-pinning	open	1	derived
 web-headers	signal:client-transport	open	1	derived
 web-headers	signal:device-session	open	1	derived
+web-headers	signal:source-map-upload	open	3	derived
 web-headers	signal:web-headers	open	1	derived
 web-property-content	signal:web-property-content	open	1	derived
+web-views	signal:analytics-attribution	open	4	derived
+web-views	signal:consent-capture	open	1	derived
+web-views	signal:location-permission	open	3	derived
+web-views	signal:media-permission	open	2	derived
+web-views	signal:permission-prompt	open	2	derived
+web-views	signal:screenshot-protection	open	1	derived
+web-views	signal:sensitive-screen	open	1	derived
+web-views	signal:token-storage	open	4	derived
 webhook	signal:webhook	open	6	derived
 webhook and projection rules	signal:error-boundary	open	6	derived
 webhook and projection rules	signal:error-infrastructure	open	6	derived

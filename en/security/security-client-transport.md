@@ -3,15 +3,15 @@
 ```kit-cover
 type: normative
 part-of: README.md
-binds: SEC-M-WEB-HDR-1, SEC-M-PIN-1, SEC-M-CLIENT-TOK-1, SEC-N-PAY-1 and SEC-M-HIJ-1 -- the web security headers a browser client must receive, certificate pinning, how the client holds a token, the payment-data prohibition and the session-hijack countermeasure
-open-when: shape:frontend-heavy, signal:client-transport, signal:web-headers, signal:certificate-pinning, signal:device-session
+binds: SEC-M-WEB-HDR-1, SEC-M-WEB-SINK-1, SEC-M-WEB-MSG-1, SEC-M-WEB-MAP-1, SEC-M-WEB-SRI-1, SEC-M-PIN-1, SEC-M-CLIENT-TOK-1, SEC-N-PAY-1 and SEC-M-HIJ-1 -- the web security headers a browser client must receive, URL and HTML sinks, cross-window messages, public source maps and third-party script, certificate pinning, how the client holds a token, the payment-data prohibition and the session-hijack countermeasure
+open-when: shape:frontend-heavy, signal:client-transport, signal:web-headers, signal:certificate-pinning, signal:device-session, signal:source-map-upload
 skip-when: signal:backend-only, signal:no-client-surface
-owns: SEC-M-WEB-HDR-1, SEC-M-PIN-1, SEC-M-CLIENT-TOK-1, SEC-N-PAY-1, SEC-M-HIJ-1
+owns: SEC-M-WEB-HDR-1, SEC-M-WEB-SINK-1, SEC-M-WEB-MSG-1, SEC-M-WEB-MAP-1, SEC-M-WEB-SRI-1, SEC-M-PIN-1, SEC-M-CLIENT-TOK-1, SEC-N-PAY-1, SEC-M-HIJ-1
 ```
 
 Scope
 
-- Included: Web static host security headers, SEC-M-PIN-1 (mobile pinning), client token retry rules (reference SEC-D2), SEC-N-PAY-1 (payment data on client), SEC-S-DEVICE (SHOULD), SEC-M-HIJ-1 (SHOULD — cross-ref).
+- Included: Web static host security headers, web script sinks, cross-window messages, public source maps and third-party script (SEC-M-WEB-SINK-1, SEC-M-WEB-MSG-1, SEC-M-WEB-MAP-1, SEC-M-WEB-SRI-1), SEC-M-PIN-1 (mobile pinning), client token retry rules (reference SEC-D2), SEC-N-PAY-1 (payment data on client), SEC-S-DEVICE (SHOULD), SEC-M-HIJ-1 (SHOULD — cross-ref).
 
 Document type: Normative — SEC-M- rows, SEC-N-PAY-1; SEC-S- / SEC-M-HIJ-1 as SHOULD.
 
@@ -36,6 +36,17 @@ SEC-M-WEB-HDR-1 narrower-link corollary (binding): a link that hands out part of
 SEC-M-WEB-HDR-1 nonce-CSP corollary (binding): a nonce-based CSP (`'strict-dynamic'`) **MUST** be applied only to surfaces rendered per request, and privileged (admin) and token-bearing surfaces **MUST** be on it; statically prerendered or CDN-served pages cannot carry a per-request nonce, so they **MUST** use a static policy that never contains `'unsafe-eval'`, and the request-time layer **MUST** decide which policy applies from the decoded path, never the raw one. Reason: a nonce cannot be baked into cached HTML, and a matcher on the raw path lets an encoded admin address fall through to the weaker policy.
 
 SEC-M-WEB-HDR-1 service-worker corollary (binding): a web app's service worker **MUST** answer from its cache only same-origin GET requests for the static shell (the page as an offline fallback, content-hashed bundles and assets); it **MUST NOT** answer or store a cross-origin (API, error-reporting) or non-GET request, the deploy's version file, or an HTML fallback served for a missing file, and its cache **MUST** be named by the build identity and dropped on the next build's activation. Reason: a worker cache outlives sign-out and deploys, so anything signed-in or stale it holds is served to the next person or to an old tab.
+
+---
+
+## Web — script sinks, cross-window messages, source maps and third-party script
+
+| ID | Rule | On violation | Verify by |
+|----|------|--------------|-----------|
+| **SEC-M-WEB-SINK-1** | A URL built from data the page did not author — a server field, a link or query parameter, a message — **MUST** pass a scheme-and-host allowlist (`https:` to known hosts, or an in-app route) before it reaches `href`, `src`, `window.location`, `window.open` or a navigation call; `javascript:`, `data:` and unknown schemes are rejected. A raw-HTML sink (`dangerouslySetInnerHTML`, `innerHTML`, `document.write`) **MUST** receive only the output of one sanitizer, or of an escaper over fixed markup. The native counterpart is [COB-RN-M5](../client-observability-rn/outbound-link-ownership-and-visibility.md). Reason: a `javascript:` address or unsanitized markup runs script inside the signed-in origin. | Security bug. | Review of every URL and HTML sink. |
+| **SEC-M-WEB-MSG-1** | A cross-window message listener **MUST** compare the event's origin by equality with an expected origin and validate the payload with a schema before acting, and a sender **MUST** name the exact target origin, never `'*'`, when the message carries data. Same-origin channels (a broadcast channel, the page's own service worker) are not cross-window. Reason: any page that holds a window reference can post to the listener, and a wildcard target hands the data to whatever origin the window now shows. | Security bug. | Review of every message listener and sender. |
+| **SEC-M-WEB-MAP-1** | A production source map **MUST** be uploaded to the error tracker and removed from, or never placed in, every publicly served output — the web export, a CDN path, an over-the-air update's published assets — in the same release step. Reason: a public map hands anyone the original source, its comments and internal routes. | Bug — information disclosure. | Review of each release script + the published asset list. |
+| **SEC-M-WEB-SRI-1** | A page **MUST NOT** load script from a third-party origin unless the script is self-hosted or pinned with Subresource Integrity, and the CSP `script-src` **MUST** list only those origins. Reason: a third-party script runs with the page's full authority, so a compromise of its host becomes a compromise of every signed-in session. | Security bug. | Review of the CSP and the HTML shell. |
 
 ---
 

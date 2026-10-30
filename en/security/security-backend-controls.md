@@ -3,17 +3,17 @@
 ```kit-cover
 type: normative
 part-of: README.md
-binds: the backend control surface -- SEC-M-CSRF-1, SEC-M-HELMET-1, SEC-M-BE-NOSQL-1, SEC-M-WH, SEC-M-UP and SEC-S-UP-2, SEC-M-CORS-1, SEC-N-CORS-1, SEC-M-SSRF-1, SEC-N-RESP, SEC-M-RESOURCE-MONEY-1 and the failure path
+binds: the backend control surface -- SEC-M-CSRF-1, SEC-M-HELMET-1, SEC-M-BE-NOSQL-1, SEC-M-WH, SEC-M-UP and SEC-S-UP-2, SEC-M-CORS-1, SEC-N-CORS-1, SEC-M-SSRF-1, SEC-M-INPUT, SEC-M-REDIRECT-1, SEC-N-EXEC-1, SEC-N-ROUTE-1, SEC-N-RESP, SEC-M-RESOURCE-MONEY-1 and the failure path
 open-when: shape:backend-heavy, signal:api-endpoint, signal:rate-limit, signal:security-headers, signal:file-upload, signal:cors, signal:ssrf
 skip-when: signal:client-only, signal:no-backend-surface
-owns: SEC-M-CSRF-1, SEC-M-HELMET-1, SEC-M-BE-NOSQL-1, SEC-M-WH-1, SEC-M-WH-2, SEC-M-WH-3, SEC-M-UP-1, SEC-S-UP-2, SEC-M-UP-3, SEC-M-UP-N1, SEC-M-CORS-1, SEC-N-CORS-1, SEC-M-SSRF-1, SEC-N-RESP-1, SEC-N-RESP-2, SEC-N-RESP-3, SEC-N-RESP-4, SEC-N-RESP-5, SEC-N-RESP-6, SEC-N-RESP-7, SEC-N-RESP-8, SEC-M-RESOURCE-MONEY-1
+owns: SEC-M-CSRF-1, SEC-M-HELMET-1, SEC-M-BE-NOSQL-1, SEC-M-WH-1, SEC-M-WH-2, SEC-M-WH-3, SEC-M-UP-1, SEC-S-UP-2, SEC-M-UP-3, SEC-M-UP-N1, SEC-M-CORS-1, SEC-N-CORS-1, SEC-M-SSRF-1, SEC-M-INPUT-1, SEC-M-INPUT-2, SEC-M-INPUT-3, SEC-M-REDIRECT-1, SEC-N-EXEC-1, SEC-N-ROUTE-1, SEC-N-RESP-1, SEC-N-RESP-2, SEC-N-RESP-3, SEC-N-RESP-4, SEC-N-RESP-5, SEC-N-RESP-6, SEC-N-RESP-7, SEC-N-RESP-8, SEC-M-RESOURCE-MONEY-1
 ```
 
 Normative parts split out of this file: [zero trust — server authority and provider evidence](security-zero-trust-authority.md) (SEC-M-ZT-1, SEC-M-ZT-2); [zero trust — tenant scope, membership gates and recovery anchors](security-tenant-scope-gates.md) (SEC-M-ZT-3, SEC-M-ZT-5, SEC-M-ZT-8); [zero trust — the actor-class gate](security-actor-class-gates.md) (SEC-M-ZT-6); [subject-owned resources and skippable gates](security-subject-owned-resource-access.md) (SEC-M-SUBJ-1, SEC-M-SUBJ-2, SEC-M-SUBJ-3, SEC-M-SUBJ-4); [rate limiting and the client-address authority](security-rate-limiting.md) (SEC-M-RL-1–SEC-M-RL-5, SEC-S-RL-2).
 
 Scope
 
-- Included: Conditional SEC-M-CSRF-1, rate limiting, Helmet / security headers, MongoDB / NoSQL bridge (SEC-M-BE-NOSQL-1), webhook exception, upload rules, CORS, SEC-M-ZT-1–SEC-M-ZT-3. SSRF minimum when surface exists (OWASP A10). NoSQL detail: [`nosql-query-safety`](../nosql-query-safety/README.md).
+- Included: Conditional SEC-M-CSRF-1, rate limiting, Helmet / security headers, MongoDB / NoSQL bridge (SEC-M-BE-NOSQL-1), webhook exception, upload rules, CORS, SEC-M-ZT-1–SEC-M-ZT-3. SSRF minimum when surface exists (OWASP A10). Request input shape, redirects, server-side code execution and the production route set (SEC-M-INPUT-1–SEC-M-INPUT-3, SEC-M-REDIRECT-1, SEC-N-EXEC-1, SEC-N-ROUTE-1). NoSQL detail: [`nosql-query-safety`](../nosql-query-safety/README.md).
 
 Document type: Normative — SEC-M- / SEC-N- rows below.
 
@@ -94,6 +94,22 @@ The rows SEC-M-ZT-1 (with its three notes) and SEC-M-ZT-2 are defined in [securi
 ## SSRF (when surface exists)
 
 SEC-M-SSRF-1: If the product fetches user-supplied URLs server-side: allowlist hosts/schemes + Zod URL schema; if no such surface, SEC-NA-1 (OWASP A10). [Consequence: Bug when surface exists] [Verify: Architecture + code search]
+
+---
+
+## Request input and server-side execution
+
+SEC-M-INPUT-1: A key taken from request or stored user data **MUST NOT** be deep-merged, path-assigned or written as a computed key into an object that inherits from `Object.prototype`; a copy keyed by such keys **MUST** use a null-prototype accumulator or a `Map`, or admit only an allowlisted key set that excludes `__proto__`, `constructor` and `prototype`. A caller-controlled key that reads a plain-object table **MUST** first be narrowed to the table's closed key set by the boundary schema, or be checked as an own property. Reason: assigning `__proto__` replaces the target's prototype — the field vanishes from the copy, and a recursive merge reaches `Object.prototype` and changes every object in the process — while reading an inherited name returns a function where data was expected. [Consequence: Bug — security] [Verify: review of every loop that copies caller keys and every computed lookup keyed by input]
+
+SEC-M-INPUT-2: A query-string or route-parameter value **MUST** be narrowed to its expected type by the boundary schema, or by an explicit type check that admits only that type, before any use; a raw value **MUST NOT** be coerced (`String()`, `Number()`, `parseInt`, template text, truthiness) or handed on unnarrowed. Reason: a repeated query key arrives as an array and an extended parser yields nested objects, so an unnarrowed value silently changes meaning (`String(['2','3'])` is `"2,3"`) or reaches a sink as an operator object; the database-filter half is [SEC-M-NOSQL-1](../nosql-query-safety/nosql-zod-and-sanitizefilter.md). [Consequence: Bug] [Verify: review — raw `query` / `params` member reads outside a parse gate]
+
+SEC-M-INPUT-3: Untrusted structured input **MUST** be size-bounded where it is parsed, and every recursive walk over it (copy, redaction, scrub, normalization) **MUST** carry a depth bound and an entry bound. A regular expression applied to untrusted text **MUST NOT** allow catastrophic backtracking: no quantified group whose body can match the same text in more than one way, and no adjacent unbounded quantifiers over overlapping characters. A pattern built from input is [SEC-M-NOSQL-10](../nosql-query-safety/nosql-zod-and-sanitizefilter.md). Reason: one request with deep nesting or a crafted string holds the event loop, and with it every tenant on the instance. [Consequence: Bug — availability] [Verify: review; a star-height scan of the regex literals applied to input]
+
+SEC-M-REDIRECT-1: A redirect target — a server `Location` header, an intent or fallback address, or a client navigation to an address that arrived in a link, query or message — **MUST** come from a closed server-side set: a route key mapped to a fixed or configured origin, or an address the server built and stored itself. A query or body parameter, path text, `Referer` or forwarded header **MUST NOT** choose it, and prefix, substring or regex validation **MUST NOT** stand in for the closed set. A self-address rebuilt from the request's own `Host` names only the origin the request reached and is allowed on a response no shared cache stores. Reason: an attacker-chosen target turns the product's trusted domain into a phishing hop and a token-leak path; a delegated-authorization return address is held to the same closed set, and a native link open is [COB-RN-M5](../client-observability-rn/outbound-link-ownership-and-visibility.md). [Consequence: Bug — security] [Verify: review of every redirect, `Location` and navigation sink]
+
+SEC-N-EXEC-1: Text from a request, a stored record or another service **MUST NOT** become code or a command: no `eval`, `Function` constructor, string-bodied timer or `vm` evaluation of it, and a child process **MUST** start from an argument vector without a shell, never from an interpolated command string. Reason: either path hands the caller the server process. Enforced by the upstream lint rules `no-eval`, `no-implied-eval` and `no-new-func` over every linted tree; `vm`, an aliased global and child processes are review-held. [Consequence: Critical security bug] [Verify: the named lint rules + review]
+
+SEC-N-ROUTE-1: A debug, test, seed, fixture or diagnostic route **MUST NOT** be registered in the code the production process starts — an environment flag around its mount is not an exclusion — and every route the process serves **MUST** be mounted where the boot-time route access-declaration check sees it ([missing sibling guard](security-enforcement-and-na.md)). Reason: a flag-gated mount opens in production on one misread or absent flag, and a mount outside the checked stack escapes the deny-by-default declaration. [Consequence: Bug — security] [Verify: review of the route registry and the start path]
 
 ---
 

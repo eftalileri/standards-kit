@@ -14,12 +14,12 @@
 # carried on the line: one grep gives both the files and their place in the order.
 # File paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. 2063 rows. The kit byte ceiling does not apply: it
+# DO NOT OPEN THIS FILE WHOLE. 2067 rows. The kit byte ceiling does not apply: it
 # measures single-read ingestion, and nothing here is ingested whole. Exemption and reasoning:
 # en/authoring/kit-structural-invariants.md KIT-INV-5.
 #
 # 437 distinct open-when tokens (430 signals, of which
-# 204 name exactly one file; widest is signal:idempotency at 15),
+# 202 name exactly one file; widest is signal:idempotency at 15),
 # and 112 distinct skip-when tokens. A skip-when token is a NEGATIVE the task
 # declares about itself ("this change is client-only"); P5 requires those declarations, because
 # a skip condition no task ever states can never fire and is decoration.
@@ -1188,8 +1188,9 @@ signal:locale-sourced-label	open	4	en/internationalization-rn/product-term-visib
 signal:locale-sourced-label	open	4	en/internationalization-rn/user-text-catalogs-and-parity.md
 signal:locale-sourced-label	open	4	en/locale-names/country-currency-ui-display.md
 signal:locale-sourced-label	open	4	en/phone/placeholder-i18n.md
-signal:location-permission	open	2	en/maps-location-rn/coordinate-authority-and-geospatial-query.md
-signal:location-permission	open	2	en/maps-location-rn/maps-location-rn.md
+signal:location-permission	open	3	en/maps-location-rn/coordinate-authority-and-geospatial-query.md
+signal:location-permission	open	3	en/maps-location-rn/maps-location-rn.md
+signal:location-permission	open	3	en/security/security-client-mobile-surface.md
 signal:log-write	open	11	en/logging-policy/background-boundaries-and-sink-safety.md
 signal:log-write	open	11	en/logging-policy/background-lifecycle-authority.md
 signal:log-write	open	11	en/logging-policy/caught-error-text-proof.md
@@ -1212,7 +1213,8 @@ signal:md-code-verification	open	6	en/implementation-verification/change-accepta
 signal:md-code-verification	open	6	en/implementation-verification/execution-procedure.md
 signal:md-code-verification	open	6	en/implementation-verification/validation-rules.md
 signal:md-code-verification	open	6	en/implementation-verification/verification-must-rules.md
-signal:media-permission	open	1	en/native-media-rn/native-media-rn.md
+signal:media-permission	open	2	en/native-media-rn/native-media-rn.md
+signal:media-permission	open	2	en/security/security-client-mobile-surface.md
 signal:membership-gate	open	2	en/security/security-actor-class-gates.md
 signal:membership-gate	open	2	en/security/security-tenant-scope-gates.md
 signal:mmkv-instance	open	1	en/mmkv/mmkv-instance-and-lazy-init.md
@@ -1671,7 +1673,8 @@ signal:pdf-report	open	5	en/report-pdf/report-pdf.md
 signal:pdf-template-markup	open	2	en/report-pdf/report-pdf-output-encoding-and-runtime.md
 signal:pdf-template-markup	open	2	en/styling/stylesheet-and-theme-tokens.md
 signal:per-item-query	open	1	en/backend-http-efficiency/set-loading-and-query-fan-out.md
-signal:permission-prompt	open	1	en/expo-notifications/notification-opt-in-and-ux.md
+signal:permission-prompt	open	2	en/expo-notifications/notification-opt-in-and-ux.md
+signal:permission-prompt	open	2	en/security/security-client-mobile-surface.md
 signal:persistence-backend-selection	open	1	en/mmkv/mmkv.md
 signal:persistence-invariant	open	4	en/mmkv/mmkv-cleanup-and-teardown.md
 signal:persistence-invariant	open	4	en/mmkv/mmkv-encrypted-instance-design.md
@@ -1971,8 +1974,9 @@ signal:source-file-change	open	7	en/dead-code/dead-code.md
 signal:source-file-change	open	7	en/implementation-verification/change-acceptance-bar.md
 signal:source-file-change	open	7	en/monorepo/monorepo-architecture.md
 signal:source-file-change	open	7	en/monorepo/monorepo-rules.md
-signal:source-map-upload	open	2	en/client-observability-rn/build-symbol-upload-credentials.md
-signal:source-map-upload	open	2	en/client-observability-rn/credential-masking-and-build-secrets.md
+signal:source-map-upload	open	3	en/client-observability-rn/build-symbol-upload-credentials.md
+signal:source-map-upload	open	3	en/client-observability-rn/credential-masking-and-build-secrets.md
+signal:source-map-upload	open	3	en/security/security-client-transport.md
 signal:ssot-authority	open	11	en/ssot/README.md
 signal:ssot-authority	open	11	en/ssot/ssot-must-access-and-schema.md
 signal:ssot-authority	open	11	en/ssot/ssot-must-authority-and-derivation.md

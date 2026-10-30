@@ -37,6 +37,8 @@ RTG-M5: Params are runtime-validated before the screen renders business UI (sche
 
 RTG-M6: Deep-link paths map to route names and params through one linking configuration; after parsing, **RTG-M5** applies. [Consequence: Bug — must not ship] [Verify: Confirm the configured linking authority uses the same route-parameter types as the navigator.]
 
+**RTG-M6** received-link clause (binding). A received link — deep link, app link or web address — only selects a destination: it **MUST NOT** perform a state change on open, a protected destination opens only once a session exists and through the same gates as in-app navigation (a link that arrives before sign-in waits for it), and the link **MUST NOT** carry a long-lived credential such as a session or refresh token; a purpose-bound capability link follows the [narrower-link corollary](../security/security-client-transport.md) of **SEC-M-WEB-HDR-1**. Reason: any app, page or message can hand the app a link, so an action taken on open is an action the sender chose, and a credential in a link survives in history, logs and shares. Verify: review of every link receiver.
+
 
 RTG-M7: After login, logout, or session switch, use the stack reset/replace policy so Back cannot return to prior-session screens. [Consequence: Bug — must not ship; security/privacy defect if violated] [Verify: Inspect each session transition and confirm it removes routes belonging to the prior session.]
 

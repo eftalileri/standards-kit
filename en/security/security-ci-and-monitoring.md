@@ -44,6 +44,20 @@ These are minimum profiles for the named repository classes, not a universal pro
 
 SEC-C1-D, SEC-C1-E, SEC-S-C1-G **must** be on or N/A per SEC-NA-1 in the project security scope register.
 
+SEC-C1-A coverage: The secret scan **must** read every tracked path in every format,
+including files the linter does not parse and binary credential files recognised by
+name, and every line added by the commits about to be pushed — a secret committed and
+deleted before the push still travels in history, where only rotation removes it. A
+provider-format match is a finding on its own; a generic secret-named assignment
+**must** pass an entropy and placeholder filter, because unfiltered noise trains
+suppression. The scan **must not** print a matched value beyond a short masked prefix,
+or its own log becomes the second leak.
+
+SEC-C1-C coverage: The token-store check **must** judge the write into a general store
+by the key or value it names, and **must** cover state-persistence payloads (a store
+middleware's persisted-field selector) as well as direct storage calls; a token reaching
+the store through a persisted state object is the same defect as a direct write.
+
 SEC-C1-B package-root coverage: In a repository with multiple package roots or
 lockfiles, the production dependency scan **must** run against the own package root
 and lockfile of every independently deployable production service. A root-only scan

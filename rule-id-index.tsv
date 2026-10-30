@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3241 rows; the longest is 86 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3258 rows; the longest is 86 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2516 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2533 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -2458,6 +2458,7 @@ RDS-N11	en/redis/redis-prohibitions.md
 RDS-N12	en/redis/redis-prohibitions.md
 RDS-N13	en/redis/redis-prohibitions.md
 RDS-N14	en/redis/redis-prohibitions.md
+RDS-N15	en/redis/redis-prohibitions.md
 RDS-N2	en/redis/redis-prohibitions.md
 RDS-N3	en/redis/redis-prohibitions.md
 RDS-N4	en/redis/redis-prohibitions.md
@@ -2711,6 +2712,7 @@ SEC-LIB-1	en/security/security-governance.md
 SEC-LIB-N1	en/security/security-governance.md
 SEC-M-BE-NOSQL-1	en/security/security-backend-controls.md
 SEC-M-CLIENT-TOK-1	en/security/security-client-transport.md
+SEC-M-CONFIG-1	en/security/security-secrets-and-logging.md
 SEC-M-CORS-1	en/security/security-backend-controls.md
 SEC-M-CRYPTO-1	en/security/security-cryptography.md
 SEC-M-CRYPTO-2	en/security/security-cryptography.md
@@ -2724,6 +2726,9 @@ SEC-M-ENV-1	en/security/security-secrets-and-logging.md
 SEC-M-ENV-2	en/security/security-secrets-and-logging.md
 SEC-M-HELMET-1	en/security/security-backend-controls.md
 SEC-M-HIJ-1	en/security/security-client-transport.md
+SEC-M-INPUT-1	en/security/security-backend-controls.md
+SEC-M-INPUT-2	en/security/security-backend-controls.md
+SEC-M-INPUT-3	en/security/security-backend-controls.md
 SEC-M-JWT-1	en/security/security-cryptography.md
 SEC-M-JWT-2	en/security/security-cryptography.md
 SEC-M-JWT-3	en/security/security-cryptography.md
@@ -2749,6 +2754,9 @@ SEC-M-LOG-CORR-1	en/security/security-logging-correlation-and-fields.md
 SEC-M-LOG-CORR-2	en/security/security-logging-correlation-and-fields.md
 SEC-M-MOB-M1	en/security/security-client-mobile-surface.md
 SEC-M-MOB-M2	en/security/security-client-mobile-surface.md
+SEC-M-MOB-M3	en/security/security-client-mobile-surface.md
+SEC-M-MOB-M4	en/security/security-client-mobile-surface.md
+SEC-M-MOB-M5	en/security/security-client-mobile-surface.md
 SEC-M-MOB-N1	en/security/security-client-mobile-surface.md
 SEC-M-MOB-S1	en/security/security-client-mobile-surface.md
 SEC-M-MOD-1	en/security/security-ci-and-monitoring.md
@@ -2767,6 +2775,7 @@ SEC-M-NOSQL-8	en/nosql-query-safety/nosql-declaration-index-and-destructive-writ
 SEC-M-NOSQL-9	en/nosql-query-safety/nosql-declaration-index-and-destructive-writes.md
 SEC-M-NOSQL-WH-1	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-M-PIN-1	en/security/security-client-transport.md
+SEC-M-REDIRECT-1	en/security/security-backend-controls.md
 SEC-M-RESOURCE-MONEY-1	en/security/security-backend-controls.md
 SEC-M-RL-1	en/security/security-rate-limiting.md
 SEC-M-RL-3	en/security/security-rate-limiting.md
@@ -2790,6 +2799,10 @@ SEC-M-UP-3	en/security/security-backend-controls.md
 SEC-M-UP-N1	en/security/security-backend-controls.md
 SEC-M-WEB-1	en/security/security-secrets-and-logging.md
 SEC-M-WEB-HDR-1	en/security/security-client-transport.md
+SEC-M-WEB-MAP-1	en/security/security-client-transport.md
+SEC-M-WEB-MSG-1	en/security/security-client-transport.md
+SEC-M-WEB-SINK-1	en/security/security-client-transport.md
+SEC-M-WEB-SRI-1	en/security/security-client-transport.md
 SEC-M-WH-1	en/security/security-backend-controls.md
 SEC-M-WH-2	en/security/security-backend-controls.md
 SEC-M-WH-3	en/security/security-backend-controls.md
@@ -2805,6 +2818,7 @@ SEC-M-ZT-7	en/security/security-tenant-published-profile.md
 SEC-M-ZT-8	en/security/security-tenant-scope-gates.md
 SEC-N-CORS-1	en/security/security-backend-controls.md
 SEC-N-CRYPTO-1	en/security/security-cryptography.md
+SEC-N-EXEC-1	en/security/security-backend-controls.md
 SEC-N-JWT-1	en/security/security-cryptography.md
 SEC-N-JWT-2	en/security/security-cryptography.md
 SEC-N-JWT-3	en/security/security-cryptography.md
@@ -2819,6 +2833,7 @@ SEC-N-NOSQL-1	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-N-NOSQL-2	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-N-NOSQL-3	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-N-NOSQL-4	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
+SEC-N-NOSQL-5	en/nosql-query-safety/nosql-zod-and-sanitizefilter.md
 SEC-N-PAY-1	en/security/security-client-transport.md
 SEC-N-RESP-1	en/security/security-backend-controls.md
 SEC-N-RESP-2	en/security/security-backend-controls.md
@@ -2828,8 +2843,10 @@ SEC-N-RESP-5	en/security/security-backend-controls.md
 SEC-N-RESP-6	en/security/security-backend-controls.md
 SEC-N-RESP-7	en/security/security-backend-controls.md
 SEC-N-RESP-8	en/security/security-backend-controls.md
+SEC-N-ROUTE-1	en/security/security-backend-controls.md
 SEC-N-STORE-1	en/security/security-secrets-and-logging.md
 SEC-N-STORE-2	en/security/security-secrets-and-logging.md
+SEC-N-TLS-1	en/security/security-secrets-and-logging.md
 SEC-NA-1	en/security/security-enforcement-and-na.md
 SEC-NA-1a	en/security/security-enforcement-and-na.md
 SEC-NA-1b	en/security/security-enforcement-and-na.md
