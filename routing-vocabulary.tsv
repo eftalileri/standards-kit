@@ -14,11 +14,11 @@
 # carried on the line: one grep gives both the files and their place in the order.
 # File paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. 2061 rows. The kit byte ceiling does not apply: it
+# DO NOT OPEN THIS FILE WHOLE. 2063 rows. The kit byte ceiling does not apply: it
 # measures single-read ingestion, and nothing here is ingested whole. Exemption and reasoning:
 # en/authoring/kit-structural-invariants.md KIT-INV-5.
 #
-# 436 distinct open-when tokens (429 signals, of which
+# 437 distinct open-when tokens (430 signals, of which
 # 204 name exactly one file; widest is signal:idempotency at 15),
 # and 112 distinct skip-when tokens. A skip-when token is a NEGATIVE the task
 # declares about itself ("this change is client-only"); P5 requires those declarations, because
@@ -1890,7 +1890,8 @@ signal:screenshot-protection	open	1	en/security/security-client-mobile-surface.m
 signal:scroll-bottom-padding	open	1	en/android-edge-to-edge/safe-area-ssot.md
 signal:secret-handling	open	1	en/security/security-secrets-and-logging.md
 signal:secure-store-selection	open	1	en/security/security-governance.md
-signal:security-audit	open	1	en/security/security-enforcement-and-na.md
+signal:security-audit	open	2	en/security/security-enforcement-and-na.md
+signal:security-audit	open	2	en/security/security-program.md
 signal:security-gate-routing	open	2	en/security/security-authorization-decision-gates.md
 signal:security-gate-routing	open	2	en/security/security-decision-gates.md
 signal:security-governance	open	1	en/security/security-governance.md
@@ -1898,6 +1899,7 @@ signal:security-headers	open	2	en/security/security-backend-controls.md
 signal:security-headers	open	2	en/security/security-rate-limiting.md
 signal:security-monitoring	open	1	en/security/security-ci-and-monitoring.md
 signal:security-ownership	open	1	en/security/security-program.md
+signal:security-review	open	1	en/security/security-governance.md
 signal:selection-state	open	3	en/ssot-readiness/readiness-writes-outcome-and-seed.md
 signal:selection-state	open	3	en/ssot-readiness/ssot-readiness-and-form-data.md
 signal:selection-state	open	3	en/ssot-readiness/ssot-readiness-rules.md

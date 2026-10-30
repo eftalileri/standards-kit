@@ -13,6 +13,7 @@ This guide takes you from an empty repository to a working setup in about 30 min
 | `agent-notes/` | An empty note registry for deferred observations and plan divergences. |
 | `templates/CLAUDE.template.md` | A root agent file (`CLAUDE.md` / `AGENTS.md`) template, taken from a project where this setup works well, with all project facts replaced by placeholders. |
 | `templates/skills/task-orchestration/` | An optional Claude Code skill for running implementation work with several autonomous agents: outcome-sized assignments, one independent review per item, one release owner, a run ledger. |
+| `templates/skills/security/` | Fourteen optional Claude Code skills for a read-only security assessment and the kit-driven pre-push review (orchestrator, pre-push review, threat model, finding verification, and web, API, auth, data store, mobile, infrastructure, supply chain, LLM, privacy and agent-tooling checklists). Each check names the kit rule that governs it on a `Kit:` line instead of restating it. |
 | `tools/` | Zero-dependency Node scripts that generate the lookup tables and the topic index. |
 | `*.tsv` (root) | Generated lookups: rule id → file, routing tokens, synonyms; plus the retired-id ledger. Never edited by hand. |
 
@@ -88,6 +89,7 @@ cp docs/standards-kit/templates/CLAUDE.template.md CLAUDE.md
    | `<SOURCE_DIRS>` | Your source folders, e.g. `src/`, `server/`, `packages/`. |
    | `<COMMIT_GATE_COMMAND>` | The fast checks before every commit, e.g. `npm run lint && npm run typecheck && npm run format:check`. |
    | `<FULL_CI_COMMAND>` | The full gate before push. |
+   | `<AUDIT_CADENCE>` | How often the full security audit runs, e.g. `monthly and before every major release` (kit SEC-PROG-M-3); name the same cadence and the record location on your security policy page. |
    | `<SAFE_LINT_FIX_COMMAND>` | An autofix you trust to touch source, or delete the exception. |
    | `PROJECT FACTS` placeholders | Deploy host and commands, the logging helper, the error registry and central error handler. |
 
@@ -107,6 +109,16 @@ mkdir -p .claude/skills && cp -R docs/standards-kit/templates/skills/task-orches
 ```
 
 Replace `<OWNER_LANGUAGE>`, `<AGENT_NOTES_PATH>` and `<KIT_ROOT>`. Keep the "Conditional client release" section only if the project ships a web or mobile client from this workflow, and replace `<WEB_RELEASE_COMMAND>` / `<OTA_PUBLISH_COMMAND>` with your own commands; otherwise delete it. The skill grants no push authority of its own: it pushes only where your root agent file allows it. Invoke it with `/task-orchestration`.
+
+### Optional — the security skill set
+
+To run a read-only security assessment against the kit's rules, copy the skill folders:
+
+```bash
+mkdir -p .claude/skills && cp -R docs/standards-kit/templates/skills/security/security-* .claude/skills/
+```
+
+Replace `<KIT_ROOT>` in the copied files (`grep -rn '<KIT_ROOT>' .claude/skills/security-*`). Checks carry `Kit: <RULE-ID>` lines that resolve through `rule-id-index.tsv`; a line naming a topic your project does not use simply does not apply, and a check with no `Kit:` line stands on its own text. The assessment skills never change code, consoles or settings; `security-push-review` is the exception — it fixes confirmed findings inside the push your root agent file's gate authorizes (replace its example area map with your paths). The skills never create test artifacts and need the owner's approval before any scanner is installed. Start with `/security-audit-orchestrator`; the folder's [README](templates/skills/security/README.md) lists every skill.
 
 ## Step 6 — First run
 

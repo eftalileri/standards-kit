@@ -75,9 +75,9 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6435 rows, of which 2721 carry a space and 0 carry an
+# 6449 rows, of which 2726 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
-# 436 open tokens + 112 skip tokens are covered; 252 rows
+# 437 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
 # The kit file-size guidance does not apply: it is about single-read ingestion, and nothing
 # here is ingested whole (en/authoring/kit-structural-invariants.md KIT-INV-5).
@@ -87,10 +87,10 @@
 #
 a policy	signal:enforcement-type	open	2	derived
 a policy	signal:not-applicable-record	open	1	derived
-a policy	signal:security-audit	open	1	derived
+a policy	signal:security-audit	open	2	derived
 a-policy	signal:enforcement-type	open	2	derived
 a-policy	signal:not-applicable-record	open	1	derived
-a-policy	signal:security-audit	open	1	derived
+a-policy	signal:security-audit	open	2	derived
 access logging	signal:access-logging	open	1	derived
 access logging	signal:log-write	open	11	derived
 access logging	signal:request-correlation	open	2	derived
@@ -249,6 +249,7 @@ and offline first	signal:offline-ui	open	5	derived
 and offline first	signal:retry-ux	open	6	derived
 and operational readiness	signal:incident-response	open	1	derived
 and operational readiness	signal:operational-readiness	open	1	derived
+and operational readiness	signal:security-audit	open	2	derived
 and operational readiness	signal:security-ownership	open	1	derived
 and orchestration	signal:cache-lifecycle	open	11	derived
 and orchestration	signal:cross-domain-write	open	7	derived
@@ -267,6 +268,7 @@ and the verification checklist	signal:payment-field	open	10	derived
 and the verification checklist	signal:payment-status	open	7	derived
 and threat model	signal:secure-store-selection	open	1	derived
 and threat model	signal:security-governance	open	1	derived
+and threat model	signal:security-review	open	1	derived
 and threat model	signal:threat-model	open	1	derived
 and-artifacts	signal:build-config	open	7	derived
 and-artifacts	signal:build-script	open	6	derived
@@ -320,6 +322,7 @@ and-offline-first	signal:offline-ui	open	5	derived
 and-offline-first	signal:retry-ux	open	6	derived
 and-operational-readiness	signal:incident-response	open	1	derived
 and-operational-readiness	signal:operational-readiness	open	1	derived
+and-operational-readiness	signal:security-audit	open	2	derived
 and-operational-readiness	signal:security-ownership	open	1	derived
 and-orchestration	signal:cache-lifecycle	open	11	derived
 and-orchestration	signal:cross-domain-write	open	7	derived
@@ -338,6 +341,7 @@ and-the-verification-checklist	signal:payment-field	open	10	derived
 and-the-verification-checklist	signal:payment-status	open	7	derived
 and-threat-model	signal:secure-store-selection	open	1	derived
 and-threat-model	signal:security-governance	open	1	derived
+and-threat-model	signal:security-review	open	1	derived
 and-threat-model	signal:threat-model	open	1	derived
 android 16	signal:android-16-behavior	open	2	derived
 android 16	signal:android-manifest	open	4	derived
@@ -525,10 +529,10 @@ audience eligibility	signal:audience-eligibility	open	2	derived
 audience-eligibility	signal:audience-eligibility	open	2	derived
 audit ssot	signal:enforcement-type	open	2	derived
 audit ssot	signal:not-applicable-record	open	1	derived
-audit ssot	signal:security-audit	open	1	derived
+audit ssot	signal:security-audit	open	2	derived
 audit-ssot	signal:enforcement-type	open	2	derived
 audit-ssot	signal:not-applicable-record	open	1	derived
-audit-ssot	signal:security-audit	open	1	derived
+audit-ssot	signal:security-audit	open	2	derived
 auth	signal:authority-lookup	open	2	derived
 auth	signal:client-auth-integration	open	2	derived
 auth	signal:client-state-store	open	7	derived
@@ -1918,7 +1922,7 @@ enforcement scope	signal:lint-scope	open	5	alias
 enforcement type	signal:enforcement-type	open	2	derived
 enforcement types and n	signal:enforcement-type	open	2	derived
 enforcement types and n	signal:not-applicable-record	open	1	derived
-enforcement types and n	signal:security-audit	open	1	derived
+enforcement types and n	signal:security-audit	open	2	derived
 enforcement-architecture	signal:ci-pipeline	open	4	derived
 enforcement-architecture	signal:guard-authoring	open	2	derived
 enforcement-architecture	signal:kit-rule-change	open	13	derived
@@ -1935,7 +1939,7 @@ enforcement-scope	signal:lint-scope	open	5	alias
 enforcement-type	signal:enforcement-type	open	2	derived
 enforcement-types-and-n	signal:enforcement-type	open	2	derived
 enforcement-types-and-n	signal:not-applicable-record	open	1	derived
-enforcement-types-and-n	signal:security-audit	open	1	derived
+enforcement-types-and-n	signal:security-audit	open	2	derived
 engagement	signal:engagement-inactivity	open	2	alias
 engagement inactivity	signal:engagement-inactivity	open	2	derived
 engagement-inactivity	signal:engagement-inactivity	open	2	derived
@@ -2452,6 +2456,7 @@ global ssot	signal:route-guard	open	2	derived
 global ssot	signal:screen-composition	open	2	derived
 global ssot	signal:secure-store-selection	open	1	derived
 global ssot	signal:security-governance	open	1	derived
+global ssot	signal:security-review	open	1	derived
 global ssot	signal:server-state-cache	open	5	derived
 global ssot	signal:shared-type	open	3	derived
 global ssot	signal:source-file-change	open	7	derived
@@ -2499,6 +2504,7 @@ global-ssot	signal:route-guard	open	2	derived
 global-ssot	signal:screen-composition	open	2	derived
 global-ssot	signal:secure-store-selection	open	1	derived
 global-ssot	signal:security-governance	open	1	derived
+global-ssot	signal:security-review	open	1	derived
 global-ssot	signal:server-state-cache	open	5	derived
 global-ssot	signal:shared-type	open	3	derived
 global-ssot	signal:source-file-change	open	7	derived
@@ -2511,6 +2517,7 @@ global-ssot	signal:workspace-boundary	open	4	derived
 global-ssot	signal:zustand-store	open	1	derived
 governance	signal:secure-store-selection	open	1	derived
 governance	signal:security-governance	open	1	derived
+governance	signal:security-review	open	1	derived
 governance	signal:threat-model	open	1	derived
 governance and scope	signal:authority-lookup	open	2	derived
 governance and scope	signal:client-auth-integration	open	2	derived
@@ -3944,6 +3951,7 @@ output encoding	signal:output-encoding	open	1	derived
 output-encoding	signal:output-encoding	open	1	derived
 ownership	signal:incident-response	open	1	derived
 ownership	signal:operational-readiness	open	1	derived
+ownership	signal:security-audit	open	2	derived
 ownership	signal:security-ownership	open	1	derived
 package admission	signal:agent-extension	open	1	derived
 package admission	signal:dependency-audit	open	2	derived
@@ -5287,6 +5295,7 @@ schema-parse	signal:schema-parse	open	2	derived
 schema-validation	signal:schema-validation	open	2	derived
 scope	signal:secure-store-selection	open	1	derived
 scope	signal:security-governance	open	1	derived
+scope	signal:security-review	open	1	derived
 scope	signal:threat-model	open	1	derived
 scope resolver	signal:authorization	open	8	derived
 scope resolver	signal:security-gate-routing	open	2	derived
@@ -5398,11 +5407,12 @@ security	signal:request-correlation	open	2	derived
 security	signal:scoped-role	open	2	derived
 security	signal:secret-handling	open	1	derived
 security	signal:secure-store-selection	open	1	derived
-security	signal:security-audit	open	1	derived
+security	signal:security-audit	open	2	derived
 security	signal:security-gate-routing	open	2	derived
 security	signal:security-governance	open	1	derived
 security	signal:security-headers	open	2	derived
 security	signal:security-monitoring	open	1	derived
+security	signal:security-review	open	1	derived
 security	signal:server-authority	open	2	derived
 security	signal:ssrf	open	2	derived
 security	signal:stack-choice	open	5	derived
@@ -5411,7 +5421,7 @@ security	signal:tenant-isolation	open	1	derived
 security	signal:threat-model	open	1	derived
 security	signal:token-storage	open	4	derived
 security	signal:web-headers	open	1	derived
-security audit	signal:security-audit	open	1	derived
+security audit	signal:security-audit	open	2	derived
 security gate routing	signal:security-gate-routing	open	2	derived
 security governance	signal:security-governance	open	1	derived
 security headers	signal:security-headers	open	2	derived
@@ -5419,8 +5429,10 @@ security monitoring	signal:security-monitoring	open	1	derived
 security ownership	signal:security-ownership	open	1	derived
 security program	signal:incident-response	open	1	derived
 security program	signal:operational-readiness	open	1	derived
+security program	signal:security-audit	open	2	derived
 security program	signal:security-ownership	open	1	derived
-security-audit	signal:security-audit	open	1	derived
+security review	signal:security-review	open	1	derived
+security-audit	signal:security-audit	open	2	derived
 security-gate-routing	signal:security-gate-routing	open	2	derived
 security-governance	signal:security-governance	open	1	derived
 security-headers	signal:security-headers	open	2	derived
@@ -5428,7 +5440,9 @@ security-monitoring	signal:security-monitoring	open	1	derived
 security-ownership	signal:security-ownership	open	1	derived
 security-program	signal:incident-response	open	1	derived
 security-program	signal:operational-readiness	open	1	derived
+security-program	signal:security-audit	open	2	derived
 security-program	signal:security-ownership	open	1	derived
+security-review	signal:security-review	open	1	derived
 selection state	signal:selection-state	open	3	derived
 selection-state	signal:selection-state	open	3	derived
 selectors and subscription discipline	signal:client-state-store	open	7	derived

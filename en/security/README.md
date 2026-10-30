@@ -17,7 +17,7 @@ Related: [Architecture core](../_meta/architecture-core.md) (non-normative: clie
 
 SSOT for the security obligations in this kit. If a consuming project has older security guidance, map and retire it through that project's own migration process.
 
-Normative contract and scope: [security-governance.md](security-governance.md) (SEC-GC-1–SEC-GC-13, TM-1–TM-9, SEC-LIB-1, SEC-LIB-N1). N/A discipline: [security-enforcement-and-na.md](security-enforcement-and-na.md) (SEC-NA-1).
+Normative contract and scope: [security-governance.md](security-governance.md) (SEC-GC-1–SEC-GC-15, TM-1–TM-9, SEC-LIB-1, SEC-LIB-N1). N/A discipline: [security-enforcement-and-na.md](security-enforcement-and-na.md) (SEC-NA-1).
 
 ## Quick orientation
 
@@ -31,7 +31,7 @@ Normative contract and scope: [security-governance.md](security-governance.md) (
 
 ## Reading order (recommended)
 
-1. [security-governance.md](security-governance.md) — review contract, threat model, OWASP map, secure credential-store selection (SEC-LIB-1, SEC-LIB-N1)  
+1. [security-governance.md](security-governance.md) — review contract, pre-release review and finding triage, threat model, OWASP map, secure credential-store selection (SEC-LIB-1, SEC-LIB-N1)  
 2. [security-enforcement-and-na.md](security-enforcement-and-na.md) — static / runtime / review, SEC-NA-1 record shape and SEC-NA-2 review window; the enforcement matrix audit aid is in [security-enforcement-matrix.md](security-enforcement-matrix.md)  
 2a. [security-na-register.md](security-na-register.md) — blank SEC-NA-1 record template for a consuming project's register
 3. [security-decision-gates.md](security-decision-gates.md) — SEC-D1, SEC-D2, GSEC1–GSEC6  
@@ -56,7 +56,7 @@ Zero-trust band set (SEC-M-ZT-\*): the family is defined across the five files 6
 7. [security-client-transport.md](security-client-transport.md) — web headers, pinning, SEC-S-DEVICE, SEC-M-HIJ-1 SHOULD  
 8. [security-ci-and-monitoring.md](security-ci-and-monitoring.md) — applicable SEC-C1-A–SEC-C1-F gates by repository class and security surface (SEC-NA-1 for out-of-scope controls), SEC-S-C1-G, SEC-M-MON-1, SEC-M-MON-2  
 8a. [security-supply-chain-admission.md](security-supply-chain-admission.md) — SEC-SUP-1–SEC-SUP-6 (release-age cool-down, dependency install scripts off, new-package vetting note, exact direct-dependency versions, agent extensions inventoried, pinned and read rather than executed)  
-9. [security-program.md](security-program.md) — ownership, IR minimums, audit bridge (program layer)  
+9. [security-program.md](security-program.md) — ownership, IR minimums, periodic full audit, audit bridge (program layer)  
 10. [security-client-mobile-surface.md](security-client-mobile-surface.md) — optional screenshot/recording hardening (SEC-M-MOB-\* ) when product requires sensitive screens.
 
 Non-normative code samples: [`../_meta/examples/security-code-samples.md`](../_meta/examples/security-code-samples.md).

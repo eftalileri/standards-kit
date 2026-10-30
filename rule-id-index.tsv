@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3238 rows; the longest is 86 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3241 rows; the longest is 86 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2513 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2516 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -2701,6 +2701,8 @@ SEC-GC-10	en/security/security-governance.md
 SEC-GC-11	en/security/security-governance.md
 SEC-GC-12	en/security/security-governance.md
 SEC-GC-13	en/security/security-governance.md
+SEC-GC-14	en/security/security-governance.md
+SEC-GC-15	en/security/security-governance.md
 SEC-GC-3	en/security/security-governance.md
 SEC-GC-6	en/security/security-governance.md
 SEC-GC-7	en/security/security-governance.md
@@ -2838,6 +2840,7 @@ SEC-NA-2	en/security/security-enforcement-and-na.md
 SEC-NA-N1	en/security/security-enforcement-and-na.md
 SEC-PROG-M-1	en/security/security-program.md
 SEC-PROG-M-2	en/security/security-program.md
+SEC-PROG-M-3	en/security/security-program.md
 SEC-PROG-N1	en/security/security-program.md
 SEC-PROG-S-1	en/security/security-program.md
 SEC-PROG-S-2	en/security/security-program.md

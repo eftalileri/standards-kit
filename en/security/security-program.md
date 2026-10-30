@@ -3,17 +3,17 @@
 ```kit-cover
 type: normative
 part-of: README.md
-binds: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-N1, SEC-PROG-S-1 and SEC-PROG-S-2 -- who owns security, what incident response must exist, and the operational readiness expectations around it
-open-when: signal:security-ownership, signal:incident-response, signal:operational-readiness
+binds: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3, SEC-PROG-N1, SEC-PROG-S-1 and SEC-PROG-S-2 -- who owns security, what incident response must exist, how often the whole project is audited and where the audit is kept, and the operational readiness expectations around it
+open-when: signal:security-ownership, signal:incident-response, signal:operational-readiness, signal:security-audit
 skip-when: signal:no-security-surface
-owns: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-N1, SEC-PROG-S-1, SEC-PROG-S-2
+owns: SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3, SEC-PROG-N1, SEC-PROG-S-1, SEC-PROG-S-2
 ```
 
 Scope
 
-- Included: Program layer items that are not a substitute for SEC-M/SEC-N technical controls: accountability, incident response minimums, optional SLOs, tabletop exercises, audit readiness bridge.
+- Included: Program layer items that are not a substitute for SEC-M/SEC-N technical controls: accountability, incident response minimums, the periodic full audit cadence, optional SLOs, tabletop exercises, audit readiness bridge.
 
-Document type: Normative minimums (SEC-PROG-M-1, SEC-PROG-M-2); SEC-PROG-S-\* are SHOULD (enterprise hardening).
+Document type: Normative minimums (SEC-PROG-M-1, SEC-PROG-M-2, SEC-PROG-M-3); SEC-PROG-S-\* are SHOULD (enterprise hardening).
 
 Environment: Organization / product team; applies per production service boundary.
 
@@ -42,6 +42,14 @@ This file does not repeat SEC-C1 or SEC-CRYPTO rules — it sits above them for 
 |----|------|--------------|-----------|
 | **SEC-PROG-S-1** | SHOULD: document MTTD / MTTR targets (or N/A per SEC-NA-1) for prod security incidents — ties to SEC-S-MON-2 alerts. | Roadmap gap. | Runbook / SLO doc. |
 | **SEC-PROG-S-2** | SHOULD: tabletop or walkthrough annually for *credential leak*, *bad deploy*, *data exposure* scenarios — output stored (notes, actions). | Maturity gap. | Calendar + notes link. |
+
+---
+
+## Periodic full audit
+
+| ID | Rule | On violation | Verify by |
+|----|------|--------------|-----------|
+| **SEC-PROG-M-3** | A full security audit of every production surface — code, shipped artifacts, data stores, hosting, DNS and mail, the delivery pipeline, third parties, AI features and human accounts — **must** run at the cadence the **SEC-PROG-M-1** page declares: at most one calendar month apart for a service that holds tenant or money data, and before every major release. Each run walks the applicable security rules of this kit against every surface, triages each candidate under [SEC-GC-15](security-governance.md), and stores its report, coverage ledger (including what was not reviewed and why), findings with stable fingerprints and rejected-candidate log in the durable location that page names, so the next run re-checks additively and a missed run is visible from the newest record's date. *Reason:* the per-release review of [SEC-GC-9](security-governance.md) sees only the change set; drift in consoles, DNS, dependencies and code no recent change touched is found only by a periodic whole-project pass. | Undetected drift outside every reviewed change. | Dated run record in the named location; the **SEC-PROG-M-1** page states cadence and location. |
 
 ---
 
