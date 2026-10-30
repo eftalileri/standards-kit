@@ -56,6 +56,7 @@ A task usually does several of these; declare the signals of every row it matche
 | e-mail | `signal:transactional-email` |
 | state, cache, lock or rate limit that must hold across server instances | `signal:cross-instance-state`, `signal:distributed-lock` |
 | a background job, scheduler, queue worker | `signal:scheduled-job`, `signal:background-worker` |
+| a feature that calls a language model: an AI assistant, summary or classifier, an agent's tools | `signal:model-provider-call`, `signal:outbound-call`, `signal:rate-limit`, `signal:log-write` |
 | raising errors or writing logs on the server | `signal:error-raise`, `signal:log-write` |
 | text the user sees: labels, messages, error copy, a new language, country or currency names | `signal:user-facing-string`, `signal:display-names` |
 | a form or input field | `signal:form-input` |

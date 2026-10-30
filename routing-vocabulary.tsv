@@ -14,12 +14,12 @@
 # carried on the line: one grep gives both the files and their place in the order.
 # File paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. 2056 rows. The kit byte ceiling does not apply: it
+# DO NOT OPEN THIS FILE WHOLE. 2057 rows. The kit byte ceiling does not apply: it
 # measures single-read ingestion, and nothing here is ingested whole. Exemption and reasoning:
 # en/authoring/kit-structural-invariants.md KIT-INV-5.
 #
-# 434 distinct open-when tokens (427 signals, of which
-# 203 name exactly one file; widest is signal:idempotency at 15),
+# 435 distinct open-when tokens (428 signals, of which
+# 204 name exactly one file; widest is signal:idempotency at 15),
 # and 112 distinct skip-when tokens. A skip-when token is a NEGATIVE the task
 # declares about itself ("this change is client-only"); P5 requires those declarations, because
 # a skip condition no task ever states can never fire and is decoration.
@@ -1221,6 +1221,7 @@ signal:model-mutation	open	6	en/tanstack-query/mutations-cache-sync.md
 signal:model-mutation	open	6	en/tanstack-query/mutations-invalidation-and-bridge.md
 signal:model-mutation	open	6	en/tanstack-query/mutations-optimistic-strategy.md
 signal:model-mutation	open	6	en/tanstack-query/mutations-provider-and-post-write-sync.md
+signal:model-provider-call	open	1	en/security/security-model-provider-calls.md
 signal:module-split	open	1	en/code-modularity/code-modularity.md
 signal:money-derivation	open	2	en/payment-ssot/derivation.md
 signal:money-derivation	open	2	en/payment-ssot/rules.md

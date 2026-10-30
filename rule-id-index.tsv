@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3228 rows; the longest is 86 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3232 rows; the longest is 86 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2503 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2507 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -2733,6 +2733,10 @@ SEC-M-JWT-8	en/security/security-cryptography.md
 SEC-M-KEY-1	en/security/security-secrets-and-logging.md
 SEC-M-LIFE-1	en/security/security-secrets-and-logging.md
 SEC-M-LIFE-2	en/security/security-secrets-and-logging.md
+SEC-M-LLM-1	en/security/security-model-provider-calls.md
+SEC-M-LLM-2	en/security/security-model-provider-calls.md
+SEC-M-LLM-3	en/security/security-model-provider-calls.md
+SEC-M-LLM-4	en/security/security-model-provider-calls.md
 SEC-M-LOG-1	en/security/security-logging-core.md
 SEC-M-LOG-2	en/security/security-logging-core.md
 SEC-M-LOG-3	en/security/security-logging-core.md

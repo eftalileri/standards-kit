@@ -75,9 +75,9 @@
 # selects nothing; and a `skip` token is a sentence about the TASK, so the subject of a file it
 # closes must never become its name. Those three carry only their own spelling here.
 #
-# 6291 rows, of which 2660 carry a space and 0 carry an
+# 6312 rows, of which 2669 carry a space and 0 carry an
 # accent - and each of those has a published unaccented twin pointing at the same token.
-# 434 open tokens + 112 skip tokens are covered; 252 rows
+# 435 open tokens + 112 skip tokens are covered; 252 rows
 # are hand-kept English aliases and 0 are the strippable project layer.
 # The kit file-size guidance does not apply: it is about single-read ingestion, and nothing
 # here is ingested whole (en/authoring/kit-structural-invariants.md KIT-INV-5).
@@ -141,6 +141,7 @@ agent planning	signal:conflicting-standards	open	4	derived
 agent planning	signal:stack-choice	open	4	derived
 agent planning	signal:work-registry-update	open	2	derived
 agent runner protocol	signal:authoritative-execution-document	open	1	derived
+agent tools	signal:model-provider-call	open	1	derived
 agent-execution	signal:authoritative-execution-document	open	1	derived
 agent-execution-contract	signal:android-manifest	open	4	derived
 agent-execution-contract	signal:edge-to-edge	open	5	derived
@@ -149,7 +150,12 @@ agent-planning	signal:conflicting-standards	open	4	derived
 agent-planning	signal:stack-choice	open	4	derived
 agent-planning	signal:work-registry-update	open	2	derived
 agent-runner-protocol	signal:authoritative-execution-document	open	1	derived
+agent-tools	signal:model-provider-call	open	1	derived
+ai assistant	signal:model-provider-call	open	1	derived
+ai feature	signal:model-provider-call	open	1	derived
 ai visibility	signal:ai-visibility	open	1	derived
+ai-assistant	signal:model-provider-call	open	1	derived
+ai-feature	signal:model-provider-call	open	1	derived
 ai-visibility	signal:ai-visibility	open	1	derived
 all or none	signal:mutation-endpoint	open	11	derived
 all or none	signal:provider-integration	open	7	derived
@@ -1096,6 +1102,7 @@ complete-verification-gate	signal:ci-pipeline	open	4	derived
 complete-verification-gate	signal:kit-rule-change	open	13	derived
 complete-verification-gate	signal:new-guard	open	10	derived
 complete-verification-gate	signal:new-lint-rule	open	10	derived
+completion	signal:model-provider-call	open	1	derived
 component and module imports	signal:barrel-export	open	1	derived
 component and module imports	signal:client-source-change	open	1	derived
 component and module imports	signal:import-path	open	1	derived
@@ -2795,7 +2802,9 @@ knip-optimization-playbook	signal:unused-report	open	5	derived
 knip-tuning	signal:knip-tuning	open	2	derived
 label enforcement	signal:label-enforcement	open	1	derived
 label-enforcement	signal:label-enforcement	open	1	derived
+language model	signal:model-provider-call	open	1	derived
 language switch	signal:language-switch	open	2	derived
+language-model	signal:model-provider-call	open	1	derived
 language-switch	signal:language-switch	open	2	derived
 large refactor	signal:large-refactor	open	1	derived
 large screen layout	signal:large-screen-layout	open	1	derived
@@ -2906,6 +2915,7 @@ liveness blind spot	signal:scheduled-job	open	12	derived
 liveness-blind-spot	signal:background-worker	open	9	derived
 liveness-blind-spot	signal:crash-sink	open	7	derived
 liveness-blind-spot	signal:scheduled-job	open	12	derived
+llm	signal:model-provider-call	open	1	derived
 loading	signal:cache-lifecycle	open	11	derived
 loading	signal:client-state-store	open	7	derived
 loading	signal:form-input	open	4	derived
@@ -3175,7 +3185,13 @@ mobile-ui-patterns	signal:screen-composition	open	2	derived
 modal focus	signal:modal-focus	open	1	derived
 modal-focus	signal:modal-focus	open	1	derived
 model mutation	signal:model-mutation	open	6	derived
+model output	signal:model-provider-call	open	1	derived
+model provider	signal:model-provider-call	open	1	derived
+model provider call	signal:model-provider-call	open	1	derived
 model-mutation	signal:model-mutation	open	6	derived
+model-output	signal:model-provider-call	open	1	derived
+model-provider	signal:model-provider-call	open	1	derived
+model-provider-call	signal:model-provider-call	open	1	derived
 module layout	signal:cache-persistence	open	10	derived
 module layout	signal:client-state-store	open	7	derived
 module layout	signal:store-persistence	open	3	derived
@@ -4268,6 +4284,8 @@ prohibitions-and-failure-path	signal:build-script	open	6	derived
 prohibitions-and-failure-path	signal:ci-workflow	open	5	derived
 prohibitions-and-failure-path	signal:env-variable	open	10	derived
 prohibitions-and-failure-path	signal:lint-scope	open	5	derived
+prompt injection	signal:model-provider-call	open	1	derived
+prompt-injection	signal:model-provider-call	open	1	derived
 protected field	signal:protected-field	open	2	derived
 protected-field	signal:protected-field	open	2	derived
 provider abstraction	signal:email-provider	open	2	derived
@@ -5259,6 +5277,7 @@ security	signal:file-upload	open	2	derived
 security	signal:jwt	open	1	derived
 security	signal:log-write	open	11	derived
 security	signal:membership-gate	open	2	derived
+security	signal:model-provider-call	open	1	derived
 security	signal:multi-tenant-scope	open	4	derived
 security	signal:not-applicable-record	open	1	derived
 security	signal:outbound-call	open	5	derived
@@ -5947,12 +5966,14 @@ timezone-resolution-standard	signal:calendar-day-display	open	5	derived
 timezone-resolution-standard	signal:local-to-utc	open	5	derived
 timezone-resolution-standard	signal:timezone-resolution	open	8	derived
 toggle	signal:feature-flag	open	1	alias
+token budget	signal:model-provider-call	open	1	derived
 token refresh	signal:token-refresh	open	1	derived
 token storage	signal:api-key	open	1	derived
 token storage	signal:env-config	open	1	derived
 token storage	signal:pii-masking	open	3	derived
 token storage	signal:secret-handling	open	1	derived
 token storage	signal:token-storage	open	4	derived
+token-budget	signal:model-provider-call	open	1	derived
 token-refresh	signal:token-refresh	open	1	derived
 token-storage	signal:api-key	open	1	derived
 token-storage	signal:env-config	open	1	derived
