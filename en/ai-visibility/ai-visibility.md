@@ -6,7 +6,7 @@ part-of: README.md
 binds: the AIV obligation set as a whole -- server-rendered crawlability, structured data, entity and query coverage, published behavior mirrors, robots/sitemap/llms surfaces, the anti-cloaking prohibitions and the GAIV gates
 open-when: signal:ai-visibility, signal:geo-aeo, signal:web-property-content, signal:seo-crawlability, signal:json-ld, signal:robots-txt
 skip-when: signal:mobile-app-only, signal:no-web-surface
-owns: AIV-C1, AIV-C2, AIV-C3, AIV-C4, AIV-M1, AIV-M2, AIV-M3, AIV-M4, AIV-M5, AIV-M6, AIV-M7, AIV-M8, AIV-M9, AIV-M10, AIV-M11, AIV-M12, AIV-M13, AIV-M19, AIV-M20, AIV-M21, AIV-M22, AIV-M23, AIV-M24, AIV-M14, AIV-M15, AIV-M16, AIV-M17, AIV-M18, AIV-N1, AIV-N2, AIV-N3, AIV-N4, AIV-N5, AIV-N6, GAIV1, GAIV2, GAIV3, GAIV4, GAIV5, AIV-V1, AIV-V2, AIV-V3, AIV-V4, AIV-V5, AIV-V6, AIV-V7
+owns: AIV-C1, AIV-C2, AIV-C3, AIV-C4, AIV-M1, AIV-M2, AIV-M3, AIV-M4, AIV-M5, AIV-M6, AIV-M7, AIV-M8, AIV-M9, AIV-M10, AIV-M11, AIV-M12, AIV-M13, AIV-M19, AIV-M20, AIV-M21, AIV-M22, AIV-M23, AIV-M24, AIV-M14, AIV-M15, AIV-M16, AIV-M17, AIV-M18, AIV-M26, AIV-N1, AIV-N2, AIV-N3, AIV-N4, AIV-N5, AIV-N6, GAIV1, GAIV2, GAIV3, GAIV4, GAIV5, AIV-V1, AIV-V2, AIV-V3, AIV-V4, AIV-V5, AIV-V6, AIV-V7
 ```
 
 Rule IDs: `AIV-C*` (contract), `AIV-M*` (**MUST**), `AIV-N*` (**MUST NOT**), `GAIV1-GAIV4` (gates), `AIV-V*` (verification).
@@ -43,7 +43,7 @@ Binding principle: Visibility is measured by the server-rendered, script-strippe
 
 | ID | Rule |
 |----|------|
-| **AIV-M7** | Provide server-rendered **JSON-LD**: `Organization` (with `sameAs`, `logo`, `name`), the product type (`SoftwareApplication` / `MobileApplication` / `Product`), and `FAQPage` where Q&A exists. Content pages add `Article` + `BreadcrumbList`; how-tos add `HowTo`. |
+| **AIV-M7** | Provide server-rendered **JSON-LD**: `Organization` (with `sameAs`, `logo`, `name`) and the product type (`SoftwareApplication` / `MobileApplication` / `Product`); content pages add `Article` + `BreadcrumbList`. Q&A **MUST** be visible on the page (**AIV-M4**); `FAQPage` / `HowTo` markup MAY mirror it exactly. Structured data serves rich results and entity identity; it is not an AI-citation lever. Reason: Google no longer shows FAQ rich results and documents no special markup for AI features, and controlled tests found no citation gain from adding schema. |
 | **AIV-M8** | `sameAs` **MUST** link the entity to authoritative external profiles (app stores, social, Crunchbase / Wikidata) — the primary disambiguation signal for an ambiguous brand name. Omit the field when no real URL exists (no fabricated or empty values). |
 | **AIV-M9** | All **JSON-LD** **MUST** be valid JSON, types correct, and consistent with the visible content (same name/description). Never fabricate ratings/reviews/counts. |
 
@@ -66,11 +66,12 @@ Binding principle: Visibility is measured by the server-rendered, script-strippe
 
 | ID | Rule |
 |----|------|
-| **AIV-M14** | `robots.txt` **MUST** explicitly allow the AI crawlers you want to be cited by — `GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `ClaudeBot` (+ `anthropic-ai`), `PerplexityBot`, `Google-Extended`, `CCBot`, `Bingbot`, `Bytespider` — and declare the sitemap. |
+| **AIV-M14** | `robots.txt` **MUST** explicitly allow the search and answer crawlers you want to be cited by — `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `Perplexity-User`, `Claude-SearchBot`, `Claude-User`, `Googlebot`, `Bingbot` — and declare the sitemap. Training-only crawlers (`GPTBot`, `ClaudeBot`, `anthropic-ai`, `CCBot`, `Google-Extended`, `Applebot-Extended`, `Meta-ExternalAgent`, `Bytespider`) are a separate decision that **MUST** be made explicitly and recorded; allowing or blocking them does not change search citation. A bot named in its own `User-agent` group ignores every `User-agent: *` rule, so all groups **MUST** be generated from one list. Verify the served file, not the repository copy (a CDN may prepend rules). Reason: the search crawlers decide citation, and copied "block AI bots" lists also block them. |
 | **AIV-M15** | `sitemap.xml` **MUST** be current, list canonical 200 URLs (multilingual via `alternates`), and be referenced in `robots.txt`. |
-| **AIV-M16** | Provide `llms.txt` at root (concise machine-readable summary + map of the most important pages); optional `llms-full.txt` for a full content dump. |
+| **AIV-M16** | `llms.txt` (MAY): a site MAY publish `llms.txt` (concise summary + map of the most important pages) and `llms-full.txt`. If published, it **MUST** be generated from the same source as the pages and list only 200 URLs. It is not a visibility lever. Reason: no answer engine documents reading it, Google's AI features need no special file, and request logs show it is rarely fetched. |
 | **AIV-M17** | Per-page meta **MUST** include unique `<title>`, `meta description`, canonical, OpenGraph, Twitter card, `lang`, and `hreflang` (including `x-default`) for multilingual. |
 | **AIV-M18** | For multilingual sites, serve the default locale at the prefix-less root (`/`, `/page`) with HTTP 200; other locales under a prefix (`/tr/...`). canonical, hreflang, sitemap, and llms **MUST** all agree on this one scheme and all resolve to 200. Old prefixed default-locale URLs (`/en/...`) redirect permanently (308) to the prefix-less equivalent. |
+| **AIV-M26** | Firewall and bot protection: CDN / WAF / bot-protection rules **MUST NOT** block or challenge verified search and answer crawlers (**AIV-M14**). No blanket "AI bots: deny" action that also covers search and user-triggered fetchers — block training crawlers only with targeted rules; no permanent site-wide challenge mode; the discovery paths (`/robots.txt`, sitemaps, `/llms.txt`, `/.well-known/*`) **MUST** answer 200 to every client. Firewall settings are written down and re-checked after every change. Reason: `robots.txt` permission is void when the firewall denies the crawler, and managed AI-bot lists include search bots. |
 
 ## **MUST NOT** (**AIV-N**)
 
@@ -88,7 +89,7 @@ Binding principle: Visibility is measured by the server-rendered, script-strippe
 | Gate | Pass condition | On fail |
 |------|----------------|---------|
 | GAIV1 | Bare canonical URL `curl -s` (no redirect-follow) returns 200 and script-stripped visible text contains the core entity/positioning content. | **AIV-M1** / **M2** / **M3** |
-| GAIV2 | Each real bot UA (GPTBot, ChatGPT-User, OAI-SearchBot, Googlebot, ClaudeBot, PerplexityBot) fetching the bare URL gets byte-identical full content (no cloaking, no empty stub). | **AIV-N1** / **AIV-M1** |
+| GAIV2 | Verified crawler access: firewall/CDN or server logs show the verified search crawlers (Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot) receiving 2xx with full content, and Search Console / Bing live URL inspection pass. No cloaking: a browser UA and a non-browser UA from the same client get identical content. A spoofed bot UA from your own IP is not evidence of crawler access — firewalls verify bots by IP range, reverse DNS or signature and challenge spoofs by design. | **AIV-N1** / **AIV-M1** / **AIV-M26** |
 | GAIV3 | All sitemap URLs return 200 (no redirects); canonical self-references a 200. | **AIV-M6** / **M15** |
 | GAIV4 | **JSON-LD** blocks parse as valid JSON with expected `@type`s; `Organization` has `sameAs` (or the field is omitted pending real URLs). | **AIV-M7** / **M8** / **M9** |
 | GAIV5 | External AI validation (outcome gate): ask an external AI system, in a fresh/uncached session, "What is `<brand>`?" The answer **MUST** contain the intended entity definition (**AIV-M20**). If it does not, entity construction is incomplete — iterate **AIV-M10**..**M23**. (Allow for crawler/cache-refresh lag before concluding failure.) | **AIV-M10** / **M20** / **M22** / **M23** |
@@ -103,9 +104,9 @@ curl -s <url> | python3 -c "import re,sys;h=sys.stdin.read();v=re.sub(r'<script[
 ```bash
 curl -s -o /dev/null -w "HTTP %{http_code} size %{size_download} redirect '%{redirect_url}'\n" <url>
 ```
-**AIV-V3** — per-bot fetch (no `-L`); confirm full content to each AI crawler:
+**AIV-V3** — discovery paths open to every client, and no cloaking (spoofed UAs prove neither crawler access nor blocking; for access use the firewall/server logs and live URL inspection, GAIV2):
 ```bash
-for ua in "GPTBot/1.2" "ChatGPT-User/1.0" "OAI-SearchBot/1.0" "Googlebot/2.1" "ClaudeBot/1.0" "PerplexityBot/1.0"; do curl -s -A "$ua" -o /tmp/b.html -w "$ua -> HTTP %{http_code} %{size_download}b\n" <url>; done
+for p in / /robots.txt /sitemap.xml /llms.txt; do for ua in "Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/130 Safari/537.36" "ExampleFetcher/1.0"; do curl -s -A "$ua" -o /dev/null -w "%{http_code} %{size_download}b $p [$ua]\n" <url>$p; done; done
 ```
 **AIV-V4** — sitemap all-200 sweep (use a `while read` loop; shells like zsh do not word-split unquoted `$(...)`):
 ```bash
@@ -123,4 +124,4 @@ curl -s <url>/robots.txt | grep -iE "GPTBot|OAI-SearchBot|ClaudeBot|PerplexityBo
 
 ## Rationale (non-normative)
 
-These rules address common crawlability failures: a canonical URL that redirects to a thin page, critical content rendered only after client interaction, orphaned sections that are never mounted, and answers omitted from the initial document. Validate the resulting behavior against the target site's actual rendering and crawler requirements.
+These rules address common crawlability failures: a canonical URL that redirects to a thin page, critical content rendered only after client interaction, orphaned sections that are never mounted, answers omitted from the initial document, and firewall rules or copied block lists that shut out the search crawlers. Bot access is proved from logs and live URL inspection, not from user-agent spoofing. Validate the resulting behavior against the target site's actual rendering and crawler requirements.

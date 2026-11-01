@@ -10,13 +10,13 @@
 # number (e.g. "#363e"), so a comment filter must key on "# ", never on "#" alone.
 # Paths are relative to the kit root (the folder holding this file).
 #
-# DO NOT OPEN THIS FILE WHOLE. It carries 3269 rows; the longest is 86 bytes,
+# DO NOT OPEN THIS FILE WHOLE. It carries 3270 rows; the longest is 86 bytes,
 # and one matched line is the entire cost of a resolved lookup. Reading it whole would
 # re-create the over-reading this kit was cut to remove. The kit file-size guidance
 # (en/authoring/kit-structural-invariants.md KIT-INV-5) does not apply: it is
 # about single-read ingestion, and nothing here is ingested whole.
 #
-# 2544 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
+# 2545 prefixed identities (SSG-M8, IDEMP-M14, COD-M1) each resolve to exactly one file
 # — 0 of them have a second home — so a prefixed grep returns a single line.
 # A bare, file-local identity (M8, C4, N2) legitimately lives in several files:
 # 63 bare identities list more than one home here. Cite a bare identity only
@@ -179,6 +179,7 @@ AIV-M21	en/ai-visibility/ai-visibility.md
 AIV-M22	en/ai-visibility/ai-visibility.md
 AIV-M23	en/ai-visibility/ai-visibility.md
 AIV-M24	en/ai-visibility/ai-visibility.md
+AIV-M26	en/ai-visibility/ai-visibility.md
 AIV-M3	en/ai-visibility/ai-visibility.md
 AIV-M4	en/ai-visibility/ai-visibility.md
 AIV-M5	en/ai-visibility/ai-visibility.md
